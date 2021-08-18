@@ -21,3 +21,6 @@ Assim:
 * git add .
 * git commit -m 'message' -m 'optional, better description'
 * 
+* Alteração antes de produzir uma release
+* gfp - comando para dar uma atualizada no git
+* git pull origin main --allow-unrelated-histories - é o comando para quando há erro no push
