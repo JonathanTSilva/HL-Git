@@ -13,3 +13,4 @@ Assim:
 * Alteração antes de produzir uma release
 * gfp - comando para dar uma atualizada no git
 * git pull origin main --allow-unrelated-histories - é o comando para quando há erro no push
+* Este é uma nova lina incremenntada na main, com a develop mem um outro estado
