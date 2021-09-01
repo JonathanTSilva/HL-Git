@@ -38,8 +38,25 @@ git config --global user.name "[NOME]"
 git config --global user.email "[EMAIL]"
 git config --list
 ```
+
 Nos comandos acima, podemos verificar a versão instalada do git (1), configurar o nome (2) e email (3) e em seguida, verificar se os dados foram cadastrados corretamente.
 
+Ao iniciar um projeto, deve-se mostrar para o Git que esta pasta é um repositório local:
+
+```git
+git init
+dir -a
+```
+
+Ao inicializar o Git (1), é criada uma pasta oculta com o nome .git, sendo possível enxergá-la com uma opção -a para o código dir (2). Também é criada uma branch (que vem com o nome *default* `master`). Se no caso a branch padrão do GitHub estiver com outro nome, basta altrar no próprio GitHub ou alterar a do Git local com os seguintes comandos:
+
+```git
+git branch --list
+git branch -m [ANTIGO] [NOVO]
+git branch -a
+```
+
+A diferença entre o comando (1) e (3) é que o primeiro lista somente as *branchs* locais, já o segundo lista tanto as locais quanto remotas.
 
 
 
