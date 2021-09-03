@@ -189,6 +189,14 @@ git log
 
 No git log (1), as modificações são listadas sempre da mais recente (topo) para mais antiga e cada uma carrega um número **SHA** (algoritmo que consegue gerar um número único) para fácil rastreio do commit e cada um carrega o Nome, Email, Data e Mensagem de Commit. Note-se também nesta etapa o conceito **HEAD**. **HEAD** é um ponteiro que aponta sempre para última modificação de uma branch. Há variações do `git log` que estão disponíveis no arquivo CRIAR ARQUIVO COM TODOS OS COMANDOS [Minhas Aliases](#minhas-aliases).
 
+Para retornar a commits anteriores, usar o comando abaixo, sendo que não é necessário copiar o número SHA inteiro do commit, apenas os 5/6 primeiros dígitos já bastam.
+
+```
+git checkout [nºSHA]
+```
+
+Para retornar ao HEAD, utilizar o `git checkout [BRANCH]`. Há parâmetros que podem ser passados com o `checkout` como `-b`, que já cria e muda de branch de uma forma direta.
+
 ## Minhas Aliases
 | Alias |     Git Command     |                                                    Description                                                    |
 | ----- | :-----------------: | :---------------------------------------------------------------------------------------------------------------: |
