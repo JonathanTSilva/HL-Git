@@ -12,6 +12,7 @@ Passo a passo que adoto na minha utilização do git.
       - [PuTTY](#putty)
       - [Linha de comando](#linha-de-comando)
     - [Cruzando chave SSH](#cruzando-chave-ssh)
+  - [Comandos básicos](#comandos-básicos)
   - [Minhas Aliases](#minhas-aliases)
 
 ## Instalação e Configuração
@@ -78,7 +79,13 @@ Para realizar a comunicação entre o Git local e aplicações remotas é necess
 ### Criando chave SSH
 O SSH (*Secure Shell* ou *Secure Socket Shell*) é um protocolo que permite a conexão com servidores remotos, de forma criptografada e mais segura, usando um par de chaves (RSA, DSA...). Há duas principais formas de criarmos essa chave: utiliazando um software terceiro - PuTTY, ou criando por linha de comando.
 
-Primeiramente, deve-se criar uma pasta do **%UserProfile%** denominada **.ssh**, na qual guardará todas as chaves do usuário. É recomendado apenas uma de cada.
+Primeiramente, deve-se criar uma pasta do **%UserProfile%** denominada **.ssh**, na qual guardará todas as chaves do usuário. É recomendado apenas uma de cada. Para verificar se você já tem alguma chave cadastrada, dê o seguinte comando em seu Git Bash:
+
+```
+ls -al ~/.ssh
+```
+
+Também é possível criar uma chave de segurança de hardware para que cada vez que utilizar uma máquina diferente, não precise gerar outras chaves. Entretanto, é necessário ter o hardware para este tipo de chave.
 
 #### PuTTY
 1. Fazer o download do [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html), ou o programa completo, ou apenas o puttygen.exe
@@ -88,12 +95,32 @@ Primeiramente, deve-se criar uma pasta do **%UserProfile%** denominada **.ssh**,
 
 #### Linha de comando
 
+Cole o texto abaixo, substituindo o endereço de e-mail pelo seu GitHub.
+
+```
+ssh-keygen -t rsa -b 2048 -C "[EMAIL]"
+```
+
+Você pode optar por outro algoritmo como o Ed25519:
+
+```
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+
+Caso queira simplificar, apenas o comando abaixo realizará o trabalho:
+
 ```
 ssh-keygen -t rsa
 ```
 
+Esses comandos criaram uma nova chave SSH, usando o e-mail fornecido como uma etiqueta. Quando aparecer a solicitação "Enter a file in which to save the key" (Insira um arquivo no qual salvar a chave), presssione Enter. O local padrão do arquivo será aceito. Em seguida, digite uma frase secreta segura para essa senha gerada.
+
+No próximo tópico, será mostrado um código .bash que adiciona a chave criada ao `ssh-agent`, mas caso queira inserí-la manualmente, seguir os códigos abaixo:
+
 ```
-ssh-keygen -t rsa -b 2048 -C "[EMAIL]"
+eval "$(ssh-agent -s)"
+> Agent pid 59566
+ssh-add ~/.ssh/id_ed25519
 ```
 
 ### Cruzando chave SSH
@@ -133,8 +160,34 @@ alias gs='git status'
 
 Este arquivo deve ser colocado na pasta raiz do usuário (**%UserProfile%**) e rodado uma única vez para que crie os outros arquivos necessários.
 
+## Comandos básicos
+Ao criar o seu repositório local de trabalho e iniciar o seu Git (como visto na seção [Primeiros Passos](#primeiros-passos)), inicia-se os trabalhos neste repositório e os comandos básicos para manuseio do mesmo são:
 
+```
+git status
+git add [ARQUIVO]
+git commit -m "[MSG]"
+```
 
+Quando é realizada alguma alteração nos arquivos, ao dar o (1), será mostrado todos aqueles arquivos que estão diferentes do Git local. Atenção às cores: quando estiverem vermelhos é porque não foi passado para o Git quais arquivos devem ser *staged* (fica na *Staging Area*). Caso queria adicionar todos os arquivos (2), adicionar `git add --all` ou `git add .` ou `git add -A`. Uma outra observação válida é sobre adicionar outra submensagem ao commit (3) com uma outra opção `-m "MSG"` resultando em `git commit -m "[MSG1]" -m "[MSG2]"`. O `git commit` (apenas) abre o ambiente vi de edição para que essas mensagens sejam editadas lá (verificar subsubseção [Comandos para VI](#comandos-para-o-vi)).
+
+Para verificar alterações no repositório local, segue os códigos:
+```
+git diff
+git diff --cached
+git diff --staged
+
+```
+
+O (1) mostra a diferença que ocorreu entre o meu repositório de trabalho e as alterações do último commit. No (2) e (3), as diferenças da área de preparação (Staging Area) são apresentadas. Caso goste de todas as alterações mostradas nessas diferenças, mardar para staged com o `git add`.
+
+Já para listar o histórico de alterações, tem-se o comando:
+
+```
+git log
+```
+
+No git log (1), as modificações são listadas sempre da mais recente (topo) para mais antiga e cada uma carrega um número **SHA** (algoritmo que consegue gerar um número único) para fácil rastreio do commit e cada um carrega o Nome, Email, Data e Mensagem de Commit. Note-se também nesta etapa o conceito **HEAD**. **HEAD** é um ponteiro que aponta sempre para última modificação de uma branch. Há variações do `git log` que estão disponíveis no arquivo CRIAR ARQUIVO COM TODOS OS COMANDOS [Minhas Aliases](#minhas-aliases).
 
 ## Minhas Aliases
 | Alias |     Git Command     |                                                    Description                                                    |
@@ -175,3 +228,5 @@ Este arquivo deve ser colocado na pasta raiz do usuário (**%UserProfile%**) e r
 [2]: https://git-scm.com/download/linux
 [3]: https://cmder.net/
 [4]: https://www.cs.colostate.edu/helpdocs/vi.html
+
+<!-- ARQUIVOS -->
