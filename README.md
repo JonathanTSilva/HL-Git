@@ -12,6 +12,7 @@ Passo a passo que adoto na minha utilização do git.
       - [PuTTY](#putty)
       - [Linha de comando](#linha-de-comando)
     - [Cruzando chave SSH](#cruzando-chave-ssh)
+    - [Configuração com Proxy](#configuração-com-proxy)
   - [Comandos básicos](#comandos-básicos)
     - [Clonando Repositórios](#clonando-repositórios)
   - [Minhas Aliases](#minhas-aliases)
@@ -92,7 +93,9 @@ Também é possível criar uma chave de segurança de hardware para que cada vez
 1. Fazer o download do [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html), ou o programa completo, ou apenas o puttygen.exe
 2. Ao entrar no PuTTY Key Generator, realizar os seguintes passos:
    * <kbd>Generate</kbd> > Mexer o mouse pela tela, pois a geração ocorre de acordo com esses movimentos > Colocar a senha e confirmar a senha > <kbd>Save public key</kbd> (com o nome `id_rsa.pub`) > <kbd>Save private key</kbd> (com o nome `id_rsa`)
-   * **OBS.:** Essas duas chaves devem estar dentro da pasta **.ssh** criada anteriormente.
+   * **OBSERVAÇÕES:** 
+     * Essas duas chaves devem estar dentro da pasta **.ssh** criada anteriormente;
+     * Pode ser que as chaves criadas pelo PuTTYgen não seja reconhecida pelas aplicações remotas como GitHub, BitBucket. Assim, é necessária conversão da mesma para OpenSSH (no próprio programa).
 
 #### Linha de comando
 
@@ -111,6 +114,7 @@ ssh-keygen -t ed25519 -C "your_email@example.com"
 Caso queira simplificar, apenas o comando abaixo realizará o trabalho:
 
 ```
+ssh-keygen
 ssh-keygen -t rsa
 ```
 
@@ -160,6 +164,17 @@ alias gs='git status'
 ```
 
 Este arquivo deve ser colocado na pasta raiz do usuário (**%UserProfile%**) e rodado uma única vez para que crie os outros arquivos necessários.
+
+### Configuração com Proxy
+Caso o seu repositório local esteja em uma máquina na rede com proxy ou firewall e aconteça alguns problemas, é necessário configurar o git para aquele proxy, login e usuário, com os comando abaixo:
+
+```
+git config --global http.proxy yourproxy:8080
+git config --global http.sslVerify false
+git config --global http.proxyAuthMethod 'basic'
+```
+
+Em alguns caso o https também deve ser configurado.
 
 ## Comandos básicos
 Ao criar o seu repositório local de trabalho e iniciar o seu Git (como visto na seção [Primeiros Passos](#primeiros-passos)), inicia-se os trabalhos neste repositório e os comandos básicos para manuseio do mesmo são:
