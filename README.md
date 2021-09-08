@@ -169,12 +169,35 @@ Este arquivo deve ser colocado na pasta raiz do usuário (**%UserProfile%**) e r
 Caso o seu repositório local esteja em uma máquina na rede com proxy ou firewall e aconteça alguns problemas, é necessário configurar o git para aquele proxy, login e usuário, com os comando abaixo:
 
 ```
-git config --global http.proxy yourproxy:8080
-git config --global http.sslVerify false
-git config --global http.proxyAuthMethod 'basic'
+git config --global http.proxy http://proxyuser:proxypwd@proxy.server.com:8080
 ```
 
-Em alguns caso o https também deve ser configurado.
+É necessário alterar `proxyuser` para o seu usuário do proxy, `proxypwd` para a senha do usuário, `proxy.server.com` para o server e `8080` para a porta configurada.
+
+Em alguns casos o https também deve ser configurado. Se mesmo realizando a etapa acima não resolver, é necessário adicionar a chave manualmente na config do git seguindo os passos deste [LINK][6]
+
+```
+$ ssh -Tv git@bitbucket.org
+OpenSSH_6.9p1, LibreSSL 2.1.8
+...
+Permission denied (publickey).
+
+$ ssh-add -l 
+2048 SHA256:... /Users/user/.ssh/id_rsa (RSA)
+
+$ ssh-add ~/.ssh/user-Bitbucket
+Enter passphrase for /Users/user/.ssh/user-Bitbucket: 
+Identity added: /Users/user/.ssh/user-Bitbucket (/Users/user/.ssh/user-Bitbucket)
+
+$ ssh-add -l 
+2048 SHA256:... /Users/user/.ssh/id_rsa (RSA)
+2048 SHA256:... /Users/user/.ssh/user-Bitbucket (RSA)
+
+$ ssh -Tv git@bitbucket.org
+OpenSSH_6.9p1, LibreSSL 2.1.8
+...
+logged in as user.
+```
 
 ## Comandos básicos
 Ao criar o seu repositório local de trabalho e iniciar o seu Git (como visto na seção [Primeiros Passos](#primeiros-passos)), inicia-se os trabalhos neste repositório e os comandos básicos para manuseio do mesmo são:
@@ -282,6 +305,7 @@ git clone [URL]
 [3]: https://cmder.net/
 [4]: https://www.cs.colostate.edu/helpdocs/vi.html
 [5]: https://stackoverflow.com/questions/927358/how-do-i-undo-the-most-recent-local-commits-in-git
+[6]: https://www.notion.so/jonathansmar/Comunicar-Git-e-BitBucket-d528f973813047a7a8db45d0dccf570b#7e19b5d9b12f4c5ab6055de146ceff9e
 
 <!-- ARQUIVOS -->
 * Para cada passo será comentado uma linha, a fim de teste;
