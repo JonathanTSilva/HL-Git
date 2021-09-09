@@ -15,6 +15,9 @@ Passo a passo que adoto na minha utilização do git.
     - [Configuração com Proxy](#configuração-com-proxy)
   - [Comandos básicos](#comandos-básicos)
     - [Clonando Repositórios](#clonando-repositórios)
+  - [Comandos Intermediários e Avançados](#comandos-intermediários-e-avançados)
+  - [Mensagens de Erro](#mensagens-de-erro)
+    - [Alterações Não Versionadas](#alterações-não-versionadas)
   - [Minhas Aliases](#minhas-aliases)
 
 ## Instalação e Configuração
@@ -265,6 +268,24 @@ Mas o mais utilizado é para clonar repositórios do GitHub:
 cd [DIR]
 git clone [URL]
 ```
+
+## Comandos Intermediários e Avançados
+
+
+## Mensagens de Erro
+### Alterações Não Versionadas
+A mensagem de erro abaixa é dada sempre quando o usuário quer trocar de uma branch para a outra, mas tem alterações em arquivos da branch atual que mão foram "commitadas".
+
+```error
+error: Your local changes to the following files would be overwritten by checkout:
+  index.html
+Please commit your changes or stash them before you switch branches.
+```
+
+Para resolvê-lo, realizar algum dos passos a seguir:
+1. Commitar as mudanças na branch atual;
+2. Colocar as mudanças em stash utilizando o `git stash`
+3. Excluir as modificações com `git reset --hard`
 
 ## Minhas Aliases
 | Alias |     Git Command     |                                                    Description                                                    |
