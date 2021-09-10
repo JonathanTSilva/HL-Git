@@ -2,35 +2,37 @@
 Passo a passo que adoto na minha utilização do git.
 
 - [Meu CheatSheet de Git](#meu-cheatsheet-de-git)
-  - [Instalação e Configuração](#instalação-e-configuração)
-    - [Cmder](#cmder)
-      - [Keyboard Shortcuts](#keyboard-shortcuts)
-      - [Comandos para o vi](#comandos-para-o-vi)
-  - [Primeiros Passos](#primeiros-passos)
-  - [Comunicação com remotos (GitHub, GitBucket, GitLab)](#comunicação-com-remotos-github-gitbucket-gitlab)
-    - [Criando chave SSH](#criando-chave-ssh)
-      - [PuTTY](#putty)
-      - [Linha de comando](#linha-de-comando)
-    - [Cruzando chave SSH](#cruzando-chave-ssh)
-    - [Configuração com Proxy](#configuração-com-proxy)
-  - [Comandos básicos](#comandos-básicos)
-    - [Clonando Repositórios](#clonando-repositórios)
-  - [Comandos Intermediários e Avançados](#comandos-intermediários-e-avançados)
-  - [Mensagens de Erro](#mensagens-de-erro)
-    - [Alterações Não Versionadas](#alterações-não-versionadas)
-  - [Minhas Aliases](#minhas-aliases)
+  - [1 Instalação e Configuração](#1-instalação-e-configuração)
+    - [1.1 Cmder](#11-cmder)
+      - [1.1.1 Keyboard Shortcuts](#111-keyboard-shortcuts)
+      - [1.1.2 Comandos para o vi](#112-comandos-para-o-vi)
+  - [2 Primeiros Passos](#2-primeiros-passos)
+  - [3 Comunicação com remotos (GitHub, GitBucket, GitLab)](#3-comunicação-com-remotos-github-gitbucket-gitlab)
+    - [3.1 Criando chave SSH](#31-criando-chave-ssh)
+      - [3.1.1 PuTTY](#311-putty)
+      - [3.1.2 Linha de comando](#312-linha-de-comando)
+    - [3.2 Cruzando chave SSH](#32-cruzando-chave-ssh)
+    - [3.3 Configuração com Proxy](#33-configuração-com-proxy)
+  - [4 Comandos Básicos](#4-comandos-básicos)
+    - [4.1 Clonando Repositórios](#41-clonando-repositórios)
+  - [5 Comandos Intermediários e Avançados](#5-comandos-intermediários-e-avançados)
+    - [5.1 Enviando Branch para Remoto](#51-enviando-branch-para-remoto)
+    - [5.2](#52)
+  - [6 Mensagens de Erro](#6-mensagens-de-erro)
+    - [6.1 Alterações Não Versionadas](#61-alterações-não-versionadas)
+  - [7 Minhas Aliases](#7-minhas-aliases)
 
-## Instalação e Configuração
+## 1 Instalação e Configuração
 O download do Git pode ser feito pelo seguinte [LINK][1], e toda a instalação pode ser feita pelas opções *default* do instalador. Ou, no caso de um cliente Linux (Debian/Ubuntu), utilizar: `apt-get install git` (ver mais opções na [página de Linux do Git][2])
 
-### Cmder
+### 1.1 Cmder
 Uma outra opção de utilização do Git, é pelo aplicativo terceiro [Cmder][3]. Nele o git já vem instalado e basta realizar os seguintes passos para completar a configuração:
 1. Ao fazer o download do arquivo .zip, extrair todo o conteúdo dentro da pasta **.cmder** no **%UserProfile%**;
 2. Definir um atalho para o .exe do Cmder e enviar para o local de preferência;
 3. Ao abrir o Cmder, `Ctrl + T` e criar um novo console como `{bash::mintty as Admin}` para entrar como um editor Unix. Para não ficar fazendo isso toda vez, realizar as seguintes alterações:
    * <kbd>Settings</kbd> > <kbd>Startup</kbd> > Check "Specified named task" > Choose <kbd>{bash::mintty as Admin}</kbd> > <kbd>Save Settings</kbd>
 
-#### Keyboard Shortcuts
+#### 1.1.1 Keyboard Shortcuts
 
 <kbd>Ctrl</kbd>+<kbd>L</kbd> - Limpar a tela do terminal
 
@@ -38,7 +40,7 @@ Uma outra opção de utilização do Git, é pelo aplicativo terceiro [Cmder][3]
 
 <kbd>Shift</kbd>+<kbd>Ins</kbd> - Colar
 
-#### Comandos para o vi
+#### 1.1.2 Comandos para o vi
 
 <kbd>I</kbd> - Editar a janela
 
@@ -48,7 +50,7 @@ Uma outra opção de utilização do Git, é pelo aplicativo terceiro [Cmder][3]
 
 Para mais comandos relacionados ao editor vi, verificar esta página de [*Basic vi Commands*][4].
 
-## Primeiros Passos
+## 2 Primeiros Passos
 Primeiramente, é necessário configurar o espaço do Git em seu computador, adicionando Nome e Email. Para isso, abra o terminal Unix (de sua preferência) e digíte:
 
 ```git
@@ -71,17 +73,31 @@ ls
 Ao inicializar o Git (1), é criada uma pasta oculta com o nome .git, sendo possível enxergá-la com uma opção -a para o código dir (2) ou utilizar o (3). Também é criada uma branch (que vem com o nome *default* `master`). Se no caso a branch padrão do GitHub estiver com outro nome, basta altrar no próprio GitHub ou alterar a do Git local com os seguintes comandos:
 
 ```git
+git branch
 git branch --list
 git branch -m [ANTIGO] [NOVO]
 git branch -a
 ```
 
-A diferença entre o comando (1) e (3) é que o primeiro lista somente as *branchs* locais, já o segundo lista tanto as locais quanto remotas.
+A diferença entre o comando (2) e (4) é que o primeiro lista somente as *branchs* locais, já o segundo lista tanto as locais quanto remotas. 
 
-## Comunicação com remotos (GitHub, GitBucket, GitLab)
+Para exluir uma branch:
+
+```
+git branch -d [BRANCH]
+git branch -D [BRANCH]
+```
+
+Utilizar (1) para apagar somente a branch se você já tiver feito merge ou enviado as alterações para seu repositório remoto, evitando perda de código, ou (2), para ignorar o estado da sua branch, forçando a sua remoção. Caso queira deletar algum repositório criado localmente pelo `git init`:
+
+```git
+rm -rf .git
+```
+
+## 3 Comunicação com remotos (GitHub, GitBucket, GitLab)
 Para realizar a comunicação entre o Git local e aplicações remotas é necessária uma configuração de segurança através de SSH. É possível também comunicar local com remoto sem o SSH, entretanto, toda vez que precisar fazer um *push* no remoto, solicitará a senha para do usuário, verificando se o repositório em questão é seu.
 
-### Criando chave SSH
+### 3.1 Criando chave SSH
 O SSH (*Secure Shell* ou *Secure Socket Shell*) é um protocolo que permite a conexão com servidores remotos, de forma criptografada e mais segura, usando um par de chaves (RSA, DSA...). Há duas principais formas de criarmos essa chave: utiliazando um software terceiro - PuTTY, ou criando por linha de comando.
 
 Primeiramente, deve-se criar uma pasta do **%UserProfile%** denominada **.ssh**, na qual guardará todas as chaves do usuário. É recomendado apenas uma de cada. Para verificar se você já tem alguma chave cadastrada, dê o seguinte comando em seu Git Bash:
@@ -92,7 +108,7 @@ ls -al ~/.ssh
 
 Também é possível criar uma chave de segurança de hardware para que cada vez que utilizar uma máquina diferente, não precise gerar outras chaves. Entretanto, é necessário ter o hardware para este tipo de chave.
 
-#### PuTTY
+#### 3.1.1 PuTTY
 1. Fazer o download do [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html), ou o programa completo, ou apenas o puttygen.exe
 2. Ao entrar no PuTTY Key Generator, realizar os seguintes passos:
    * <kbd>Generate</kbd> > Mexer o mouse pela tela, pois a geração ocorre de acordo com esses movimentos > Colocar a senha e confirmar a senha > <kbd>Save public key</kbd> (com o nome `id_rsa.pub`) > <kbd>Save private key</kbd> (com o nome `id_rsa`)
@@ -100,7 +116,7 @@ Também é possível criar uma chave de segurança de hardware para que cada vez
      * Essas duas chaves devem estar dentro da pasta **.ssh** criada anteriormente;
      * Pode ser que as chaves criadas pelo PuTTYgen não seja reconhecida pelas aplicações remotas como GitHub, BitBucket. Assim, é necessária conversão da mesma para OpenSSH (no próprio programa).
 
-#### Linha de comando
+#### 3.1.2 Linha de comando
 
 Cole o texto abaixo, substituindo o endereço de e-mail pelo seu GitHub.
 
@@ -131,7 +147,7 @@ eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_ed25519
 ```
 
-### Cruzando chave SSH
+### 3.2 Cruzando chave SSH
 Após criada a chave SSH, é necessário avisar para a sua conta do GitHub qual é o usuário (chave SSH) que ele pode confiar edição. Para isso, vá até sua conta no GitHub e siga os seguintes passos:
 * <kbd>Settings</kbd> > <kbd>SSH and GPG keys</kbd> > <kbd>New SSH key</kbd> > Coloca o título de preferência e cole todo o conteúdo da chave pública gerada no campo key
 
@@ -168,7 +184,7 @@ alias gs='git status'
 
 Este arquivo deve ser colocado na pasta raiz do usuário (**%UserProfile%**) e rodado uma única vez para que crie os outros arquivos necessários.
 
-### Configuração com Proxy
+### 3.3 Configuração com Proxy
 Caso o seu repositório local esteja em uma máquina na rede com proxy ou firewall e aconteça alguns problemas, é necessário configurar o git para aquele proxy, login e usuário, com os comando abaixo:
 
 ```
@@ -202,7 +218,7 @@ OpenSSH_6.9p1, LibreSSL 2.1.8
 logged in as user.
 ```
 
-## Comandos básicos
+## 4 Comandos Básicos
 Ao criar o seu repositório local de trabalho e iniciar o seu Git (como visto na seção [Primeiros Passos](#primeiros-passos)), inicia-se os trabalhos neste repositório e os comandos básicos para manuseio do mesmo são:
 
 ```
@@ -254,7 +270,7 @@ git commit -c ORIG_HEAD
 
 A diferença entre a opção hard e soft é que se utilizar o hard, os commits posteriores ao do retorno serão perdidos, diferentemento do soft, que manterá todos. (1) e (2) apenas retornam um commit. Caso queira retornar mais, trocar o 1 para tanto de commits anteriores, ou faça a alteração pelo SHA RASH (3). Se o commit foi enviado para o repositório remoto, a opção (4) deve ser realizada. Assim, ao refazer as alterações, um novo `git add` deve ser feito e a mensagem de commit pode ser trocada com (4).
 
-### Clonando Repositórios
+### 4.1 Clonando Repositórios
 
 É possível não apenas clonar em uma URL remota, mas nos arquivos locais como:
 
@@ -269,11 +285,25 @@ cd [DIR]
 git clone [URL]
 ```
 
-## Comandos Intermediários e Avançados
+## 5 Comandos Intermediários e Avançados
 
+Esta seção necessita necessáriamente da configuração préviamente realizada nas seções [1](#1-instalação-e-configuração), [2](#2-primeiros-passos) e [3](#3-comunicação-com-remotos-github-gitbucket-gitlab).
 
-## Mensagens de Erro
-### Alterações Não Versionadas
+### 5.1 Enviando Branch para Remoto
+
+Para enviar as alterações (commits) realizados localmente, é necessário "empurrar" com os comandos:
+
+```
+git push
+git push -u origin [BRANCH]
+```
+
+Caso não exista nenhum repositório remoto com o nome da branch indicada, será preciso enviar o comando `git push --set-upstream origin [BRANCH]`. Para simplificar, a opção `-u` substitui este comando (2).
+
+### 5.2 
+
+## 6 Mensagens de Erro
+### 6.1 Alterações Não Versionadas
 A mensagem de erro abaixa é dada sempre quando o usuário quer trocar de uma branch para a outra, mas tem alterações em arquivos da branch atual que mão foram "commitadas".
 
 ```error
@@ -287,7 +317,7 @@ Para resolvê-lo, realizar algum dos passos a seguir:
 2. Colocar as mudanças em stash utilizando o `git stash`
 3. Excluir as modificações com `git reset --hard`
 
-## Minhas Aliases
+## 7 Minhas Aliases
 | Alias |     Git Command     |                                                    Description                                                    |
 | ----- | :-----------------: | :---------------------------------------------------------------------------------------------------------------: |
 | gs    | `git status` | Verificar status do Git |
