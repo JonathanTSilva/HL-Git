@@ -17,7 +17,7 @@ Passo a passo que adoto na minha utilização do git.
     - [4.1 Clonando Repositórios](#41-clonando-repositórios)
   - [5 Comandos Intermediários e Avançados](#5-comandos-intermediários-e-avançados)
     - [5.1 Enviando Branch para Remoto](#51-enviando-branch-para-remoto)
-    - [5.2](#52)
+    - [5.2 Atualizando Branch de Remoto](#52-atualizando-branch-de-remoto)
   - [6 Mensagens de Erro](#6-mensagens-de-erro)
     - [6.1 Alterações Não Versionadas](#61-alterações-não-versionadas)
   - [7 Minhas Aliases](#7-minhas-aliases)
@@ -300,7 +300,7 @@ git push -u origin [BRANCH]
 
 Caso não exista nenhum repositório remoto com o nome da branch indicada, será preciso enviar o comando `git push --set-upstream origin [BRANCH]`. Para simplificar, a opção `-u` substitui este comando (2).
 
-### 5.2 
+### 5.2 Atualizando Branch de Remoto
 
 ## 6 Mensagens de Erro
 ### 6.1 Alterações Não Versionadas
