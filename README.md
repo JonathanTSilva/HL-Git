@@ -301,6 +301,13 @@ git push -u origin [BRANCH]
 Caso não exista nenhum repositório remoto com o nome da branch indicada, será preciso enviar o comando `git push --set-upstream origin [BRANCH]`. Para simplificar, a opção `-u` substitui este comando (2).
 
 ### 5.2 Atualizando Branch de Remoto
+Em um cenário real, seriam duas pessoas trabalhando no mesmo respositório remoto, e consequentemente, com dois locais em diferentes estados. Caso o primeiro não tenha feito o `checkout` neste repositório, não será mostrado no comando `branch`. Mas mesmo que ele faça em alguma branch já criada pelo segundo, esta só ira aparecer no seu repositório local se tiver trazido o remoto pelo código:
+
+```
+git pull
+```
+
+Ainda assim, mesmo com o comando (1), se não for feito o checkout, não será mostrado as novas branchs no `git branch`. Para verificar quais são as novas, utilizar a opção `-a` do (COLOCAR NÚMERO CORRETO E ATUALIZADO DO RESPECTIVO CÓDIGO)
 
 ## 6 Mensagens de Erro
 ### 6.1 Alterações Não Versionadas
