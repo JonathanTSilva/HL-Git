@@ -18,6 +18,7 @@ Passo a passo que adoto na minha utilização do git.
   - [5 Comandos Intermediários e Avançados](#5-comandos-intermediários-e-avançados)
     - [5.1 Enviando Branch para Remoto](#51-enviando-branch-para-remoto)
     - [5.2 Atualizando Branch de Remoto](#52-atualizando-branch-de-remoto)
+    - [5.3 Deletando Branch do Remoto](#53-deletando-branch-do-remoto)
   - [6 Mensagens de Erro](#6-mensagens-de-erro)
     - [6.1 Alterações Não Versionadas](#61-alterações-não-versionadas)
   - [7 Minhas Aliases](#7-minhas-aliases)
@@ -81,14 +82,16 @@ Ao inicializar o Git (5), é criada uma pasta oculta com o nome .git, sendo poss
 
 A diferença entre o comando (8.1/8.2) e (8.4) é que o primeiro lista somente as *branchs* locais, já o segundo lista tanto as locais quanto remotas. 
 
-Para exluir uma branch:
+Para exluir uma branch local:
 
 ```
 (8.5) λ git branch -d [BRANCH]
 (8.6) λ git branch -D [BRANCH]
 ```
 
-Utilizar (8.5) para apagar somente a branch se você já tiver feito merge ou enviado as alterações para seu repositório remoto, evitando perda de código, ou (8.6), para ignorar o estado da sua branch, forçando a sua remoção. Caso queira deletar algum repositório criado localmente pelo `git init`:
+Utilizar (8.5) para apagar somente a branch se você já tiver feito merge ou enviado as alterações para seu repositório remoto, evitando perda de código, ou (8.6), para ignorar o estado da sua branch, forçando a sua remoção. Vale ressaltar que não é possível realizar esta alteração se estiver `checkado` na branch. Mas se por acaso se arrependa da remoção indevida da branch, basta trazê-la de novo ao local por `git checkout [BRANCH]`.
+
+Caso queira deletar por completo algum repositório criado localmente pelo `git init`:
 
 ```
 (9) λ rm -rf .git
@@ -254,7 +257,7 @@ Para retornar a commits anteriores, usar o comando abaixo, sendo que não é nec
 (21.1) λ git reset --hard
 ```
 
-Para retornar ao HEAD, utilizar o `git checkout [BRANCH]`. Há parâmetros que podem ser passados com o `checkout` como `-b`, que já cria e muda de branch de uma forma direta. No (20.2), é desfeito toda alteração do arquivo em questão e também, quando deletado algum, é possível recuperá-lo através deste programa. Mas note que se muitos arquivos forem modificados (excluídos), fica inviável refazer as alterações com este comando um po um. Assim, o (21) força o reset para o último commit. Se for apenas `git reset` é mostrado as opções de reset para escolha.
+Para retornar ao HEAD, utilizar o `git checkout [BRANCH]`. Há parâmetros que podem ser passados com o `checkout` como `-b`, que já cria e muda de branch de uma forma direta. No (20.2), é desfeito toda alteração do arquivo em questão e também, quando deletado algum, é possível recuperá-lo através deste programa. Mas note que se muitos arquivos forem modificados (excluídos), fica inviável refazer as alterações com este comando um po um. Assim, o (21.1) força o reset para o último commit. Se for apenas `git reset` é mostrado as opções de reset para escolha.
 
 Caso opte por [retornar para um commit][5], há a opção de reset:
 
@@ -300,13 +303,24 @@ Para enviar as alterações (commits) realizados localmente, é necessário "emp
 Caso não exista nenhum repositório remoto com o nome da branch indicada, será preciso enviar o comando `git push --set-upstream origin [BRANCH]`. Para simplificar, a opção `-u` substitui este comando (27.2).
 
 ### 5.2 Atualizando Branch de Remoto
+
 Em um cenário real, seriam duas pessoas trabalhando no mesmo respositório remoto, e consequentemente, com dois locais em diferentes estados. Caso o primeiro não tenha feito o `checkout` neste repositório, não será mostrado no comando `branch`. Mas mesmo que ele faça em alguma branch já criada pelo segundo, esta só ira aparecer no seu repositório local se tiver trazido o remoto pelo código:
 
 ```
 (28) λ git pull
 ```
 
-Ainda assim, mesmo com o comando (28), se não for feito o checkout, não será mostrado as novas branchs no `git branch`. Para verificar quais são as novas, utilizar a opção `-a` do (COLOCAR NÚMERO CORRETO E ATUALIZADO DO RESPECTIVO CÓDIGO)
+Ainda assim, mesmo com o comando (28), se não for feito o checkout, não será mostrado as novas branchs no `git branch`. Para verificar quais são as novas, utilizar a opção dada em (8.4).
+
+### 5.3 Deletando Branch do Remoto
+
+Os comandos para remoção da branch local podem ser revisados em (8.5) e (8.6). No entanto, para remover uma beanch de um servidor, é necessário o seguinte comando:
+
+```
+(29) λ git push --delete origin [BRANCH]
+```
+
+Tome muito cuidado com este comando caso trabalhe em grupo, pois pode ser que alguém esteja editando está branch e perderá o backup do servidor. **ALINHE COM TODOS OS INTEGRANTES DO SEU TIME!**. Para confirmar que deu certo, abrir o GitHub e ver que a branch sumiu.
 
 ## 6 Mensagens de Erro
 ### 6.1 Alterações Não Versionadas
