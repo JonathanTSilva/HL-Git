@@ -20,6 +20,8 @@ Passo a passo que adoto na minha utilização do git.
     - [5.2 Atualizando Branch de Remoto](#52-atualizando-branch-de-remoto)
     - [5.3 Deletando Branch do Remoto](#53-deletando-branch-do-remoto)
     - [5.4 Renomeando uma Branch](#54-renomeando-uma-branch)
+    - [5.5 Mesclando Alterações](#55-mesclando-alterações)
+    - [5.6 Resolvendo Conflitos](#56-resolvendo-conflitos)
   - [6 Mensagens de Erro](#6-mensagens-de-erro)
     - [6.1 Alterações Não Versionadas](#61-alterações-não-versionadas)
   - [7 Minhas Aliases](#7-minhas-aliases)
@@ -328,8 +330,8 @@ Tome muito cuidado com este comando caso trabalhe em grupo, pois pode ser que al
 O comando para renomear uma branch local, basta seguir as intruções abaixo:
 
 ```
-(30.1) git branch -m [nomeANTIGO] [nomeNOVO]
-(30.2) git branch -m [nomeNOVO]
+(30.1) λ git branch -m [nomeANTIGO] [nomeNOVO]
+(30.2) λ git branch -m [nomeNOVO]
 ```
 
 Adicionar a opção `-m` ao comando branch para realizar a mudança e em seguida, digitar o nome antigo da branch, seguido do novo, caso não esteja na branch de alteração, ou apenas o novo nome se estiver.
@@ -342,6 +344,20 @@ Não é possível renomear uma branch do servidor estando localmente. Para tal r
 4. `git push -u origin [nomeNOVO]` - para mandar para servidor a branch com novo nome.
    
 Mas <span style="color:red">**ATENÇÂO:**</span>: para fazer este tipo de alteração, **ALINHE COM TODOS OS INTEGRANTES DO SEU TIME!**
+
+### 5.5 Mesclando Alterações
+
+Incorpora as alterações dos commits citados (desde o momento em que os seus históricos divergirem do ramo atual) para dentro do ramo atual. Este comando é utilizado pelo `git pull` para incorporar as alterações vindas de outro repositório e pode ser utilizado manualmente para mesclar as alterações de uma branch para outra. 
+
+```
+(31) λ git merge [BRANCH]
+```
+
+O Git merge traz as alterações já com um commit de `Merged`. Caso não queria este commit, basta utilizar a opção `--no-commit`. Uma observação importante é que o comando só realiza o commit se não existir conflitos, entretanto, se houver, é necessário tratá-los manualmente para a finalização do merge (ver subseção [5.6](#5.6-resolvendo-conflitos)).
+
+Lembre-se que o merge carrega sempre o conceito de **TRAZER AS ALTERAÇÔES PARA A BRANCH ATUAL**.
+
+### 5.6 Resolvendo Conflitos
 
 ## 6 Mensagens de Erro
 ### 6.1 Alterações Não Versionadas
