@@ -19,6 +19,7 @@ Passo a passo que adoto na minha utilização do git.
     - [5.1 Enviando Branch para Remoto](#51-enviando-branch-para-remoto)
     - [5.2 Atualizando Branch de Remoto](#52-atualizando-branch-de-remoto)
     - [5.3 Deletando Branch do Remoto](#53-deletando-branch-do-remoto)
+    - [5.4 Renomeando uma Branch](#54-renomeando-uma-branch)
   - [6 Mensagens de Erro](#6-mensagens-de-erro)
     - [6.1 Alterações Não Versionadas](#61-alterações-não-versionadas)
   - [7 Minhas Aliases](#7-minhas-aliases)
@@ -320,7 +321,27 @@ Os comandos para remoção da branch local podem ser revisados em (8.5) e (8.6).
 (29) λ git push --delete origin [BRANCH]
 ```
 
-Tome muito cuidado com este comando caso trabalhe em grupo, pois pode ser que alguém esteja editando está branch e perderá o backup do servidor. **ALINHE COM TODOS OS INTEGRANTES DO SEU TIME!**. Para confirmar que deu certo, abrir o GitHub e ver que a branch sumiu.
+Tome muito cuidado com este comando caso trabalhe em grupo, pois pode ser que alguém esteja editando está branch e perderá o backup do servidor. <span style="color:red">**ATENÇÂO:**</span> **ALINHE COM TODOS OS INTEGRANTES DO SEU TIME!**. Para confirmar que deu certo, abrir o GitHub e ver que a branch sumiu.
+
+### 5.4 Renomeando uma Branch
+
+O comando para renomear uma branch local, basta seguir as intruções abaixo:
+
+```
+(30.1) git branch -m [nomeANTIGO] [nomeNOVO]
+(30.2) git branch -m [nomeNOVO]
+```
+
+Adicionar a opção `-m` ao comando branch para realizar a mudança e em seguida, digitar o nome antigo da branch, seguido do novo, caso não esteja na branch de alteração, ou apenas o novo nome se estiver.
+
+Não é possível renomear uma branch do servidor estando localmente. Para tal realização, há um caminho específico:
+
+1. `git pull` - para trazer as útlimas alterações do meu código remoto;
+2. `git branch -m [nomeNOVO]` - para alterar o nome localmente;
+3. `git push --delete origin [nomeANTIGO]` - apagar a antiga do servidor;
+4. `git push -u origin [nomeNOVO]` - para mandar para servidor a branch com novo nome.
+   
+Mas <span style="color:red">**ATENÇÂO:**</span>: para fazer este tipo de alteração, **ALINHE COM TODOS OS INTEGRANTES DO SEU TIME!**
 
 ## 6 Mensagens de Erro
 ### 6.1 Alterações Não Versionadas
