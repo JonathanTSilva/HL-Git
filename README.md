@@ -3,9 +3,10 @@ Passo a passo que adoto na minha utilização do git.
 
 - [Meu CheatSheet de Git](#meu-cheatsheet-de-git)
   - [1 Instalação e Configuração](#1-instalação-e-configuração)
-    - [1.1 Cmder](#11-cmder)
-      - [1.1.1 Keyboard Shortcuts](#111-keyboard-shortcuts)
-      - [1.1.2 Comandos para o vi](#112-comandos-para-o-vi)
+    - [1.1 Visual Studio Code](#11-visual-studio-code)
+    - [1.2 Cmder](#12-cmder)
+      - [1.2.1 Keyboard Shortcuts](#121-keyboard-shortcuts)
+      - [1.2.2 Comandos para o vi](#122-comandos-para-o-vi)
   - [2 Primeiros Passos](#2-primeiros-passos)
   - [3 Comunicação com remotos (GitHub, GitBucket, GitLab)](#3-comunicação-com-remotos-github-gitbucket-gitlab)
     - [3.1 Criando chave SSH](#31-criando-chave-ssh)
@@ -27,16 +28,57 @@ Passo a passo que adoto na minha utilização do git.
   - [7 Minhas Aliases](#7-minhas-aliases)
 
 ## 1 Instalação e Configuração
-O download do Git pode ser feito pelo seguinte [LINK][1], e toda a instalação pode ser feita pelas opções *default* do instalador. Ou, no caso de um cliente Linux (Debian/Ubuntu), utilizar: `apt-get install git` (ver mais opções na [página de Linux do Git][2])
+O download do Git pode ser feito pelo seguinte [LINK][1], e toda a instalação pode ser feita pelas opções *default* do instalador. Ou, no caso de um cliente Linux (Debian/Ubuntu), utilizar: `apt-get install git` (ver mais opções na [página de Linux do Git][2]). Vale ressaltar um ponto importante na instalação do Git que é a opção de "Adding Git-Bash to the new Windows Terminal"; este novo terminal do windows agrupa as ferramentas e shells de linha de comando, como prompt de comando, PowerShell, WSL e GitBash, caso marque a opção na instalção do Git. O download pode ser feito na Microsoft Store ou pelo seguinte [link][8].
 
-### 1.1 Cmder
+Fica a dica de uma aplicação desenvolvida para uma melhor visualização de como funciona o Git, ou até mesmo, uma ferramenta para criar imagens para didática do Git: [Git-School][10].
+
+[!][11]
+
+### 1.1 Visual Studio Code
+O VSCode é o editor de código-fonte mais utilizado do mundo. Uma de suas principais vantagens frente à outros editores é a utilização de extensões desenvolvidas pela comunidade, que inclui suporte para depuração, controle de versionamento Git incorporado (*Source Control*), realce de sintaxe, complementação inteligente de código, snippets e refatoração de código.. Neste tópico serão abordadas as melhores extensões para utilizar o Git com o VSCode da melhor forma e aproveitando os melhores recursos que o editor tem a oferecer.
+
+Um detalhe a acrescentar para este tópico a possibilidade de uma pasta `.vcode/` que contenha as informações específicas para esta integração, como um arquivo `extensions.json` que carrega as extensões recomendadas para uma melhor utilização de um determinado *workspace* (repositório):
+
+```json
+{
+    "recommendations": [
+        "ms-ceintl.vscode-language-pack-pt-br"
+    ]
+}
+```
+
+Para mais dicas de instalação, teclas de atalho, plugins e integrações, ver material de apoio [1][9].
+
+**Source Control**
+
+O Visual Studio Code integrou o gerenciamento de controle de origem (SCM) e inclui suporte Git pronto para uso. Muitos outros provedores de controle de origem estão disponíveis por meio de extensões no VS Code Marketplace.
+
+É esta função nativa que habilita os seguintes marcadores de estado dos arquivos:
+* **A** - Added (Este é um arquivo novo que foi adicionado ao seu repositório)
+* **M** - Modified (Um arquivo existente que foi alterado)
+* **D** - Deleted (Um arquivo foi excluido)
+* **U** - Untracked (O arquivo é novo ou foi alterado, mas ainda não foi adicionado ao repositório)
+* **C** - Conflict (Há um conflito no arquivo)
+* **R** - Renamed (O arquivo foi renomeado)
+* **S** - Submodule (No repositório, existe outro subrepositório)
+
+**Git Lens**
+
+**Git History**
+
+**Git Graph**
+
+**Git Blame**
+
+
+### 1.2 Cmder
 Uma outra opção de utilização do Git, é pelo aplicativo terceiro [Cmder][3]. Nele o git já vem instalado e basta realizar os seguintes passos para completar a configuração:
 1. Ao fazer o download do arquivo .zip, extrair todo o conteúdo dentro da pasta **.cmder** no **%UserProfile%**;
 2. Definir um atalho para o .exe do Cmder e enviar para o local de preferência;
 3. Ao abrir o Cmder, `Ctrl + T` e criar um novo console como `{bash::mintty as Admin}` para entrar como um editor Unix. Para não ficar fazendo isso toda vez, realizar as seguintes alterações:
    * <kbd>Settings</kbd> > <kbd>Startup</kbd> > Check "Specified named task" > Choose <kbd>{bash::mintty as Admin}</kbd> > <kbd>Save Settings</kbd>
 
-#### 1.1.1 Keyboard Shortcuts
+#### 1.2.1 Keyboard Shortcuts
 
 <kbd>Ctrl</kbd>+<kbd>L</kbd> - Limpar a tela do terminal
 
@@ -44,7 +86,7 @@ Uma outra opção de utilização do Git, é pelo aplicativo terceiro [Cmder][3]
 
 <kbd>Shift</kbd>+<kbd>Ins</kbd> - Colar
 
-#### 1.1.2 Comandos para o vi
+#### 1.2.2 Comandos para o vi
 
 <kbd>I</kbd> - Editar a janela
 
@@ -353,7 +395,7 @@ Incorpora as alterações dos commits citados (desde o momento em que os seus hi
 (31) λ git merge [BRANCH]
 ```
 
-O Git merge traz as alterações já com um commit de `Merged`. Caso não queria este commit, basta utilizar a opção `--no-commit`. Uma observação importante é que o comando só realiza o commit se não existir conflitos, entretanto, se houver, é necessário tratá-los manualmente para a finalização do merge (ver subseção [5.6](#5.6-resolvendo-conflitos)).
+O Git merge traz as alterações já com um commit de `Merged`. Caso não queria este commit, basta utilizar a opção `--no-commit`. Uma observação importante é que o comando só realiza o commit se não existir conflitos, entretanto, se houver, é necessário tratá-los manualmente para a finalização do merge (ver subseção [5.6](#56-resolvendo-conflitos)).
 
 Lembre-se que o merge carrega sempre o conceito de **TRAZER AS ALTERAÇÔES PARA A BRANCH ATUAL**.
 
@@ -416,6 +458,9 @@ Para resolvê-lo, realizar algum dos passos a seguir:
 [5]: https://stackoverflow.com/questions/927358/how-do-i-undo-the-most-recent-local-commits-in-git
 [6]: https://www.notion.so/jonathansmar/Comunicar-Git-e-BitBucket-d528f973813047a7a8db45d0dccf570b#7e19b5d9b12f4c5ab6055de146ceff9e
 [7]: https://rdmd.readme.io/docs/code-blocks
+[8]: https://www.microsoft.com/pt-br/p/windows-terminal/9n0dx20hk701#activetab=pivot:overviewtab
+[9]: https://www.alura.com.br/artigos/visualstudio-code-instalacao-teclas-de-atalho-plugins-e-integracoes
+[10]: https://git-school.github.io/visualizing-git/#free-remote
 
 <!-- ARQUIVOS -->
 
