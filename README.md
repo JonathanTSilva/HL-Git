@@ -32,7 +32,7 @@ O download do Git pode ser feito pelo seguinte [LINK][1], e toda a instalação 
 
 Fica a dica de uma aplicação desenvolvida para uma melhor visualização de como funciona o Git, ou até mesmo, uma ferramenta para criar imagens para didática do Git: [Git-School][10].
 
-[!][11]
+![git-school][git-school]
 
 ### 1.1 Visual Studio Code
 O VSCode é o editor de código-fonte mais utilizado do mundo. Uma de suas principais vantagens frente à outros editores é a utilização de extensões desenvolvidas pela comunidade, que inclui suporte para depuração, controle de versionamento Git incorporado (*Source Control*), realce de sintaxe, complementação inteligente de código, snippets e refatoração de código.. Neste tópico serão abordadas as melhores extensões para utilizar o Git com o VSCode da melhor forma e aproveitando os melhores recursos que o editor tem a oferecer.
@@ -464,3 +464,5 @@ Para resolvê-lo, realizar algum dos passos a seguir:
 
 <!-- ARQUIVOS -->
 
+<!-- IMAGENS -->
+[git-school]: https://kancane.nl/images/git-remote-6.png
