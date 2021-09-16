@@ -365,7 +365,7 @@ Os comandos para remoção da branch local podem ser revisados em (8.5) e (8.6).
 (29) λ git push --delete origin [BRANCH]
 ```
 
-Tome muito cuidado com este comando caso trabalhe em grupo, pois pode ser que alguém esteja editando está branch e perderá o backup do servidor. <span style="color:red">**ATENÇÂO:**</span> **ALINHE COM TODOS OS INTEGRANTES DO SEU TIME!**. Para confirmar que deu certo, abrir o GitHub e ver que a branch sumiu.
+Tome muito cuidado com este comando caso trabalhe em grupo, pois pode ser que alguém esteja editando está branch e perderá o backup do servidor. **ATENÇÂO: ALINHE COM TODOS OS INTEGRANTES DO SEU TIME!**. Para confirmar que deu certo, abrir o GitHub e ver que a branch sumiu.
 
 ### 5.4 Renomeando uma Branch
 
@@ -385,7 +385,7 @@ Não é possível renomear uma branch do servidor estando localmente. Para tal r
 3. `git push --delete origin [nomeANTIGO]` - apagar a antiga do servidor;
 4. `git push -u origin [nomeNOVO]` - para mandar para servidor a branch com novo nome.
    
-Mas <span style="color:red">**ATENÇÂO:**</span>: para fazer este tipo de alteração, **ALINHE COM TODOS OS INTEGRANTES DO SEU TIME!**
+Mas **ATENÇÂO:** para fazer este tipo de alteração, **ALINHE COM TODOS OS INTEGRANTES DO SEU TIME!**
 
 ### 5.5 Mesclando Alterações
 
