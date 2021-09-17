@@ -23,6 +23,7 @@ Passo a passo que adoto na minha utilização do git.
     - [5.4 Renomeando uma Branch](#54-renomeando-uma-branch)
     - [5.5 Mesclando Alterações](#55-mesclando-alterações)
     - [5.6 Resolvendo Conflitos](#56-resolvendo-conflitos)
+      - [5.6.1 kdiff3](#561-kdiff3)
   - [6 Mensagens de Erro](#6-mensagens-de-erro)
     - [6.1 Alterações Não Versionadas](#61-alterações-não-versionadas)
   - [7 Minhas Aliases](#7-minhas-aliases)
@@ -69,7 +70,6 @@ O Visual Studio Code integrou o gerenciamento de controle de origem (SCM) e incl
 **Git Graph**
 
 **Git Blame**
-
 
 ### 1.2 Cmder
 Uma outra opção de utilização do Git, é pelo aplicativo terceiro [Cmder][3]. Nele o git já vem instalado e basta realizar os seguintes passos para completar a configuração:
@@ -401,6 +401,47 @@ Lembre-se que o merge carrega sempre o conceito de **TRAZER AS ALTERAÇÔES PARA
 
 ### 5.6 Resolvendo Conflitos
 
+Os conflitos acontecem quando em um mesmo arquivo, há alterações na mesma linha. Ou então quando algum desenvolvedor exclui arquivos enquanto outra pessoa faz alterações. Nesses casos, o Git não pode determinar qual está correto, sendo necessária uma resolução manual por parte do desenvolvedor que conduz o merge; o resto da equipe não fica ciente deles. O Git apenas marca os arquivos em conflito e interrompe o processo de merge. 
+
+Geralmente o Git apresenta um primeiro aviso, sempre forçando o developer a trazer as alterações do servidor:
+
+```
+! [rejected]           main -> main (fetch first)
+error: failed to push some refs to '[REMOTO]'
+hint: updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+```
+
+Entretanto, ao tentar dar o `git pull`, é dada a mensagem de conflito:
+
+```
+...
+CONFLICT (content): Merge conflict in [ARQUIVO]
+Automatic merge failed; fix conflicts and then commit the result.
+```
+
+Assim, basta abrir o editor de texto de sua preferência e decidir o que fazer com as mudanças e commitá-las para fechar o commit (no final deve ter 2 commits na frente do servidor, um do merge e o outro da alteração).
+
+‼ **DICA** - Sempre quando for começar uma alteração no código, SEMPRE realizar um `git pull`, para evitar conflitos deste tipo.
+
+#### 5.6.1 [kdiff3][11]
+
+Há uma ferramenta gráfica que auxilia a resolução dos conflitos, chamada kdiff3 (software antigo - última release em 2014, mas leve e muito funcional). Ao realizar a instalação padrão do software, ir para o Git Bash e inicializar:
+
+```
+(31.1) λ git config --global --add merge.tool kdiff3
+(31.2) λ git config --global --add mergetool.kdiff3.path "[DIR]"
+(31.3) λ git config --global --add mergetool.kdiff3.trustExitCode false
+(32) λ git mergetool
+```
+
+O arquivo .gitconfig será editado com os comandos. Para listar os comandos atuais do arquivo, basta adicionar a opção list: `git config --global --list`. Com o código (31.1) é passadi para o arquivo qual a ferramenta externa de merge será utilizada. O (31.2) configura o local que o software kdiff3 foi instalado, geralmente: "C:/Program Files/KDiff3/kdiff3.exe". Por fim, quando tiver um ambiente em conflito, utilizar (32) para que seja resolvido pelo kdiff3.
+
+![kdiff3][kdiff3]
+
 ## 6 Mensagens de Erro
 ### 6.1 Alterações Não Versionadas
 A mensagem de erro abaixa é dada sempre quando o usuário quer trocar de uma branch para a outra, mas tem alterações em arquivos da branch atual que mão foram "commitadas".
@@ -461,8 +502,12 @@ Para resolvê-lo, realizar algum dos passos a seguir:
 [8]: https://www.microsoft.com/pt-br/p/windows-terminal/9n0dx20hk701#activetab=pivot:overviewtab
 [9]: https://www.alura.com.br/artigos/visualstudio-code-instalacao-teclas-de-atalho-plugins-e-integracoes
 [10]: https://git-school.github.io/visualizing-git/#free-remote
+[11]: http://kdiff3.sourceforge.net/
 
 <!-- ARQUIVOS -->
 
 <!-- IMAGENS -->
 [git-school]: https://kancane.nl/images/git-remote-6.png
+[kdiff3]: https://cdn.kde.org/screenshots/kdiff3/diffscreen_two_way.png
+
+<!-- COMENTÁRIOS -->
