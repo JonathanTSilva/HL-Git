@@ -385,7 +385,7 @@ Não é possível renomear uma branch do servidor estando localmente. Para tal r
 3. `git push --delete origin [nomeANTIGO]` - apagar a antiga do servidor;
 4. `git push -u origin [nomeNOVO]` - para mandar para servidor a branch com novo nome.
    
-Mas ** ‼ ATENÇÂO:** para fazer este tipo de alteração, **ALINHE COM TODOS OS INTEGRANTES DO SEU TIME!**
+Mas **‼ ATENÇÂO:** para fazer este tipo de alteração, **ALINHE COM TODOS OS INTEGRANTES DO SEU TIME!**
 
 ### 5.5 Mesclando Alterações
 
