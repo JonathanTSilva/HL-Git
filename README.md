@@ -385,7 +385,7 @@ Não é possível renomear uma branch do servidor estando localmente. Para tal r
 3. `git push --delete origin [nomeANTIGO]` - apagar a antiga do servidor;
 4. `git push -u origin [nomeNOVO]` - para mandar para servidor a branch com novo nome.
    
-Mas **ATENÇÂO:** para fazer este tipo de alteração, **ALINHE COM TODOS OS INTEGRANTES DO SEU TIME!**
+Mas ** ‼ ATENÇÂO:** para fazer este tipo de alteração, **ALINHE COM TODOS OS INTEGRANTES DO SEU TIME!**
 
 ### 5.5 Mesclando Alterações
 
@@ -425,7 +425,7 @@ Automatic merge failed; fix conflicts and then commit the result.
 
 Assim, basta abrir o editor de texto de sua preferência e decidir o que fazer com as mudanças e commitá-las para fechar o commit (no final deve ter 2 commits na frente do servidor, um do merge e o outro da alteração).
 
-‼ **DICA** - Sempre quando for começar uma alteração no código, SEMPRE realizar um `git pull`, para evitar conflitos deste tipo.
+❕ **DICA** - Sempre quando for começar uma alteração no código, SEMPRE realizar um `git pull`, para evitar conflitos deste tipo.
 
 #### 5.6.1 [kdiff3][11]
 
