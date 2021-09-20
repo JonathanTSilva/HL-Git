@@ -24,9 +24,11 @@ Passo a passo que adoto na minha utilização do git.
     - [5.5 Mesclando Alterações](#55-mesclando-alterações)
     - [5.6 Resolvendo Conflitos](#56-resolvendo-conflitos)
       - [5.6.1 kdiff3](#561-kdiff3)
-  - [6 Mensagens de Erro](#6-mensagens-de-erro)
+  - [6 Mensagens de Erro e Workarounds](#6-mensagens-de-erro-e-workarounds)
     - [6.1 Alterações Não Versionadas](#61-alterações-não-versionadas)
-  - [7 Minhas Aliases](#7-minhas-aliases)
+    - [6.2 Desfazendo commits](#62-desfazendo-commits)
+  - [7 Gitflow](#7-gitflow)
+  - [8 Minhas Aliases](#8-minhas-aliases)
 
 ## 1 Instalação e Configuração
 O download do Git pode ser feito pelo seguinte [LINK][1], e toda a instalação pode ser feita pelas opções *default* do instalador. Ou, no caso de um cliente Linux (Debian/Ubuntu), utilizar: `apt-get install git` (ver mais opções na [página de Linux do Git][2]). Vale ressaltar um ponto importante na instalação do Git que é a opção de "Adding Git-Bash to the new Windows Terminal"; este novo terminal do windows agrupa as ferramentas e shells de linha de comando, como prompt de comando, PowerShell, WSL e GitBash, caso marque a opção na instalção do Git. O download pode ser feito na Microsoft Store ou pelo seguinte [link][8].
@@ -442,7 +444,7 @@ O arquivo .gitconfig será editado com os comandos. Para listar os comandos atua
 
 ![kdiff3][kdiff3]
 
-## 6 Mensagens de Erro
+## 6 Mensagens de Erro e Workarounds
 ### 6.1 Alterações Não Versionadas
 A mensagem de erro abaixa é dada sempre quando o usuário quer trocar de uma branch para a outra, mas tem alterações em arquivos da branch atual que mão foram "commitadas".
 
@@ -457,7 +459,31 @@ Para resolvê-lo, realizar algum dos passos a seguir:
 2. Colocar as mudanças em stash utilizando o `git stash`
 3. Excluir as modificações com `git reset --hard`
 
-## 7 Minhas Aliases
+### 6.2 Desfazendo commits
+
+Quando realizar algum commit errado e quiser alterar mensagem, arquivos e qualquer alteração realizada naquele commit, seguir os passos a seguir:
+
+1. `git commit -m "Something terribly misguided"`
+2. `git reset HEAD~`
+3. Editar os arquivos necessários
+4. `git add .`
+5. `git commit -c ORIG_HEAD`
+
+O comando em (1) é responsável por refazer um commit. Isso irá desfazer seu último commit enquanto deixa sua árvore de trabalho (o estado de seus arquivos no disco) intocada. É preciso adicioná-los novamente antes de confirmá-los.
+
+No item (5) é confirmado as alterações, reutilizando a mensagem de confirmação antiga. `reset` copia o antigo cabeçalho para `.git/ORIG_HEAD`; O commit com `-c ORIG_HEAD` irá abrir um editor, que inicialmente contém a mensagem de log do commit antigo e permite que você o edite. Se não precisar editar a mensagem, pode usar a opção `-C`.
+
+**Alternativamente, para editar o commit anterior (ou apenas sua mensagem)**, `commit --amend` irá adicionar mudanças dentro do índice atual ao commit anterior.
+
+**Para remover (não reverter) um commit que foi enviado para o servidor**, é necessário reescrever o histórico com `git push origin master --force`.
+
+Estes dois POSTs no StackOverflow aborda maneiras diferentes de realizar o Undo & Redo de um commit: [How do I undo the most recent local commits in Git?] e [How can I move HEAD back to a previous location? (Detached head) & Undo commits]
+
+O segundo link mostra o `git reflog`, que você pode usar para determinar o SHA-1 para o commit ao qual deseja reverter. Depois de obter esse valor, use a sequência de comandos conforme explicado acima.
+
+## 7 Gitflow
+
+## 8 Minhas Aliases
 | Alias |     Git Command     |                                                    Description                                                    |
 | ----- | :-----------------: | :---------------------------------------------------------------------------------------------------------------: |
 | gs    | `git status` | Verificar status do Git |
@@ -503,6 +529,9 @@ Para resolvê-lo, realizar algum dos passos a seguir:
 [9]: https://www.alura.com.br/artigos/visualstudio-code-instalacao-teclas-de-atalho-plugins-e-integracoes
 [10]: https://git-school.github.io/visualizing-git/#free-remote
 [11]: http://kdiff3.sourceforge.net/
+[12]: https://stackoverflow.com/questions/927358/how-do-i-undo-the-most-recent-local-commits-in-git
+[13]: https://stackoverflow.com/questions/34519665/how-can-i-move-head-back-to-a-previous-location-detached-head-undo-commits/34519716#34519716
+
 
 <!-- ARQUIVOS -->
 
