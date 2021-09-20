@@ -24,6 +24,7 @@ Passo a passo que adoto na minha utilização do git.
     - [5.5 Mesclando Alterações](#55-mesclando-alterações)
     - [5.6 Resolvendo Conflitos](#56-resolvendo-conflitos)
       - [5.6.1 kdiff3](#561-kdiff3)
+    - [5.7 Pull Request](#57-pull-request)
   - [6 Mensagens de Erro e Workarounds](#6-mensagens-de-erro-e-workarounds)
     - [6.1 Alterações Não Versionadas](#61-alterações-não-versionadas)
     - [6.2 Desfazendo commits](#62-desfazendo-commits)
@@ -279,6 +280,8 @@ Ao criar o seu repositório local de trabalho e iniciar o seu Git (como visto na
 
 Quando é realizada alguma alteração nos arquivos, ao dar o (15), será mostrado todos aqueles arquivos que estão diferentes do Git local. Atenção às cores: quando estiverem vermelhos é porque não foi passado para o Git quais arquivos devem ser *staged* (fica na *Staging Area*). Caso queria adicionar todos os arquivos (16), adicionar `git add --all` ou `git add .` ou `git add -A`. Uma outra observação válida é sobre adicionar outra submensagem ao commit (17) com uma outra opção `-m "MSG"` resultando em `git commit -m "[MSG1]" -m "[MSG2]"`. O `git commit` (apenas) abre o ambiente vi de edição para que essas mensagens sejam editadas lá (verificar subsubseção [Comandos para VI](#comandos-para-o-vi)).
 
+❕ **Dica**: Para juntar (16) e (17) em uma única linha, utilizar o comando `git commit -a -m "[MSG]"` ou até `git commit -am "[MSG]"`.
+
 Para verificar alterações no repositório local, segue os códigos:
 ```
 (18.1) λ git diff
@@ -427,7 +430,7 @@ Automatic merge failed; fix conflicts and then commit the result.
 
 Assim, basta abrir o editor de texto de sua preferência e decidir o que fazer com as mudanças e commitá-las para fechar o commit (no final deve ter 2 commits na frente do servidor, um do merge e o outro da alteração).
 
-❕ **DICA** - Sempre quando for começar uma alteração no código, SEMPRE realizar um `git pull`, para evitar conflitos deste tipo.
+❕ **DICA**: Sempre quando for começar uma alteração no código, SEMPRE realizar um `git pull`, para evitar conflitos deste tipo.
 
 #### 5.6.1 [kdiff3][11]
 
@@ -443,6 +446,11 @@ Há uma ferramenta gráfica que auxilia a resolução dos conflitos, chamada kdi
 O arquivo .gitconfig será editado com os comandos. Para listar os comandos atuais do arquivo, basta adicionar a opção list: `git config --global --list`. Com o código (31.1) é passadi para o arquivo qual a ferramenta externa de merge será utilizada. O (31.2) configura o local que o software kdiff3 foi instalado, geralmente: "C:/Program Files/KDiff3/kdiff3.exe". Por fim, quando tiver um ambiente em conflito, utilizar (32) para que seja resolvido pelo kdiff3.
 
 ![kdiff3][kdiff3]
+
+### 5.7 Pull Request
+O pull request, é o pedido para que o repositório original, ou uma branch do repositório original, faça a ação de pull (puxar) as atualizações do repositório fork ou de um branch do próprio repositório. Depois que uma pull request é aberta, você pode discutir e revisar as possíveis alterações com colaboradores e adicionar commits de acompanhamento antes que as alterações sofram merge no branch base.
+
+Este pedido é realizado no servidor (GitHub, GitLab, BitBucket) e feito de uma maneira visual. No GitHub pode ser feito rascunhos de pull requests em repositório público.
 
 ## 6 Mensagens de Erro e Workarounds
 ### 6.1 Alterações Não Versionadas
