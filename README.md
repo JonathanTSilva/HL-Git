@@ -27,9 +27,10 @@ Passo a passo que adoto na minha utilização do git.
     - [5.7 Pull Request](#57-pull-request)
     - [5.8 Criando e Listando Tags](#58-criando-e-listando-tags)
       - [5.8.1 *Semantic Versioning*](#581-semantic-versioning)
-  - [6 Mensagens de Erro e Workarounds](#6-mensagens-de-erro-e-workarounds)
+  - [6 Mensagens de Erro, Workarounds e Dicas](#6-mensagens-de-erro-workarounds-e-dicas)
     - [6.1 Alterações Não Versionadas](#61-alterações-não-versionadas)
     - [6.2 Desfazendo commits](#62-desfazendo-commits)
+    - [6.3 Padronizando commits](#63-padronizando-commits)
   - [7 Gitflow](#7-gitflow)
   - [8 Minhas Aliases](#8-minhas-aliases)
 
@@ -458,9 +459,23 @@ Este pedido é realizado no servidor (GitHub, GitLab, BitBucket) e feito de uma 
 Como a maioria dos VCSs, o Git tem a capacidade de marcar pontos específicos no histórico de um repositório como sendo importantes. Normalmente, as pessoas usar essa funcionalidade para pontos de liberação de marca ( v1.0, v2.0e assim por diante).
 
 ```
-(33) λ git tag
+(33.1) λ git tag -a [NOME] -m "[MSG]"
+(33.1) λ git tag -a [NOME] [HASH] -m "[MSG]"
+(34.1) λ git tag
+(34.1) λ git tag -l "[e.g. v1.2]"
+(35) λ git show [NOME]
 ```
 
+Para criar a sua Tag (da branch que estiver), utilizar o primeiro código alterando os campos [NOME] e [MSG]. Já o (33.2) é utilizado para quando você esqueceu de marcar uma Tag em algum commit e está fazendo isso posteriormente. O   (34.1) lista as tags em ordem alfabética; a ordem em que são exibidos não tem importância real. Para realizar uma busca mais filtrada (por padrões), utilizar a opção `-l` ou `--list` seguida do padrão requerido como em (34.2), que listará todas as Tags que apresentam o padrão v1.2 (e.g. v1.2.4-rc0). Caso queira ver os dados da tag junto com o commit que foi marcado, utilizar (35). 
+
+Para excluir determinada Tag, seguir os procedimentos:
+
+```
+(36) λ git tag -d [NOME]
+(37) λ git push origin --delete [NOME]
+```
+
+No qual (36) realiza a exclusão da Tag local, e (37) exclui a tag do servidor remoto.
 
 #### 5.8.1 *Semantic Versioning*
 No mundo de gerenciamento de software existe algo terrível conhecido como inferno das dependências (“dependency hell”). Quanto mais o sistema cresce, e mais pacotes são adicionados a ele, maior será a possibilidade de, um dia, você encontrar-se neste poço de desespero.
@@ -493,7 +508,7 @@ Existem algumas convenções ou princípios sobre isso. Por exemplo, se seu paco
 
 Já, deixar explícito o número da *build* é interessante, talvez, apenas em tempo de *build n’release*, pois é comum uma mesma versão de *Patch* ter várias tentativas de *release* até sua publicação.
 
-## 6 Mensagens de Erro e Workarounds
+## 6 Mensagens de Erro, Workarounds e Dicas
 ### 6.1 Alterações Não Versionadas
 A mensagem de erro abaixa é dada sempre quando o usuário quer trocar de uma branch para a outra, mas tem alterações em arquivos da branch atual que mão foram "commitadas".
 
@@ -529,6 +544,9 @@ No item (5) é confirmado as alterações, reutilizando a mensagem de confirmaç
 Estes dois POSTs no StackOverflow aborda maneiras diferentes de realizar o Undo & Redo de um commit: [How do I undo the most recent local commits in Git?] e [How can I move HEAD back to a previous location? (Detached head) & Undo commits]
 
 O segundo link mostra o `git reflog`, que você pode usar para determinar o SHA-1 para o commit ao qual deseja reverter. Depois de obter esse valor, use a sequência de comandos conforme explicado acima.
+
+### 6.3 Padronizando commits
+Commitzen
 
 ## 7 Gitflow
 
