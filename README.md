@@ -25,6 +25,8 @@ Passo a passo que adoto na minha utilização do git.
     - [5.6 Resolvendo Conflitos](#56-resolvendo-conflitos)
       - [5.6.1 kdiff3](#561-kdiff3)
     - [5.7 Pull Request](#57-pull-request)
+    - [5.8 Criando e Listando Tags](#58-criando-e-listando-tags)
+      - [5.8.1 *Semantic Versioning*](#581-semantic-versioning)
   - [6 Mensagens de Erro e Workarounds](#6-mensagens-de-erro-e-workarounds)
     - [6.1 Alterações Não Versionadas](#61-alterações-não-versionadas)
     - [6.2 Desfazendo commits](#62-desfazendo-commits)
@@ -452,6 +454,45 @@ O pull request, é o pedido para que o repositório original, ou uma branch do r
 
 Este pedido é realizado no servidor (GitHub, GitLab, BitBucket) e feito de uma maneira visual. No GitHub pode ser feito rascunhos de pull requests em repositório público.
 
+### 5.8 Criando e Listando Tags
+Como a maioria dos VCSs, o Git tem a capacidade de marcar pontos específicos no histórico de um repositório como sendo importantes. Normalmente, as pessoas usar essa funcionalidade para pontos de liberação de marca ( v1.0, v2.0e assim por diante).
+
+```
+(33) λ git tag
+```
+
+
+#### 5.8.1 *Semantic Versioning*
+No mundo de gerenciamento de software existe algo terrível conhecido como inferno das dependências (“dependency hell”). Quanto mais o sistema cresce, e mais pacotes são adicionados a ele, maior será a possibilidade de, um dia, você encontrar-se neste poço de desespero.
+
+Em sistemas com muitas dependências, lançar novos pacotes de versões pode se tornar rapidamente um pesadelo. Se as especificações das dependências são muito amarradas você corre o risco de um bloqueio de versão (A falta de capacidade de atualizar um pacote sem ter de liberar novas versões de cada pacote dependente). Se as dependências são vagamente especificadas, você irá inevitavelmente ser mordido pela ‘promiscuidade da versão’ (assumindo compatibilidade com futuras versões mais do que é razoável). O inferno das dependências é onde você está quando um bloqueio de versão e/ou promiscuidade de versão te impede de seguir em frente com seu projeto de maneira fácil e segura.
+
+Como uma solução para este problema proponho um conjunto simples de regras e requisitos que ditam como os números das versões são atribuídos e incrementados.
+
+É isso que o **SemVer** faz, regula e traz todas as interpretações para um ponto comum. O Semver faz a seguinte interpretação:
+
+```
+major.minor.patch
+```
+
+Onde:
+
+* **Major**: quando fizer mudanças incompatíveis na API;
+* **Minor**: quando adicionar funcionalidades mantendo compatibilidade;
+* **Patch**: ou Correção, quando corrigir falhas mantendo compatibilidade
+
+**Rótulos adicionais** para *pre-release*, rc (*release candidate*) e *build* estão disponíveis como extensão, ficando da seguinte maneira:
+
+* Pré-release: 0.0.1-alpha, 2.0.0-beta, 2.0.0-rc1
+* Build: 1.0.3+12345, onde 12345 é o número da build
+* Ambos: 2.0.1-alpha+12344
+
+O rótulo de *pre-release* é importante para informar ao consumidor de seu pacote que ele ainda é um trabalho em progresso – *work in progress* – portanto ainda é uma versão instável e está sob constante modificação.
+
+Existem algumas convenções ou princípios sobre isso. Por exemplo, se seu pacote estiver marcado como um *rc – release candidate*, ou seja, um candidato a ser um produto final – não mais irá sofrer grandes alterações, apenas correções, até que esteja maduro suficiente para ser lançado como uma versão final.
+
+Já, deixar explícito o número da *build* é interessante, talvez, apenas em tempo de *build n’release*, pois é comum uma mesma versão de *Patch* ter várias tentativas de *release* até sua publicação.
+
 ## 6 Mensagens de Erro e Workarounds
 ### 6.1 Alterações Não Versionadas
 A mensagem de erro abaixa é dada sempre quando o usuário quer trocar de uma branch para a outra, mas tem alterações em arquivos da branch atual que mão foram "commitadas".
@@ -490,6 +531,7 @@ Estes dois POSTs no StackOverflow aborda maneiras diferentes de realizar o Undo 
 O segundo link mostra o `git reflog`, que você pode usar para determinar o SHA-1 para o commit ao qual deseja reverter. Depois de obter esse valor, use a sequência de comandos conforme explicado acima.
 
 ## 7 Gitflow
+
 
 ## 8 Minhas Aliases
 | Alias |     Git Command     |                                                    Description                                                    |
