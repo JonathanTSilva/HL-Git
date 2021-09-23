@@ -27,6 +27,7 @@ Passo a passo que adoto na minha utilização do git.
     - [5.7 Pull Request](#57-pull-request)
     - [5.8 Criando e Listando Tags](#58-criando-e-listando-tags)
       - [5.8.1 *Semantic Versioning*](#581-semantic-versioning)
+    - [5.9](#59)
   - [6 Mensagens de Erro, Workarounds e Dicas](#6-mensagens-de-erro-workarounds-e-dicas)
     - [6.1 Alterações Não Versionadas](#61-alterações-não-versionadas)
     - [6.2 Desfazendo commits](#62-desfazendo-commits)
@@ -460,13 +461,24 @@ Como a maioria dos VCSs, o Git tem a capacidade de marcar pontos específicos no
 
 ```
 (33.1) λ git tag -a [NOME] -m "[MSG]"
-(33.1) λ git tag -a [NOME] [HASH] -m "[MSG]"
+(33.2) λ git tag -a [NOME] [HASH] -m "[MSG]"
 (34.1) λ git tag
-(34.1) λ git tag -l "[e.g. v1.2]"
+(34.2) λ git tag -l "[e.g. v1.2]"
 (35) λ git show [NOME]
 ```
 
 Para criar a sua Tag (da branch que estiver), utilizar o primeiro código alterando os campos [NOME] e [MSG]. Já o (33.2) é utilizado para quando você esqueceu de marcar uma Tag em algum commit e está fazendo isso posteriormente. O   (34.1) lista as tags em ordem alfabética; a ordem em que são exibidos não tem importância real. Para realizar uma busca mais filtrada (por padrões), utilizar a opção `-l` ou `--list` seguida do padrão requerido como em (34.2), que listará todas as Tags que apresentam o padrão v1.2 (e.g. v1.2.4-rc0). Caso queira ver os dados da tag junto com o commit que foi marcado, utilizar (35). 
+
+As Tags seguem o mesmo padrão de todos os outros elementos envolvendo Git para quando necessitar a utilização de uma, basta usar o comando `git checkout [NOME]` para que seja feita a alteração para determinada Tag. Entretanto, uma mensagem é dada com algumas dicas:
+
+```
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again
+```
 
 Para excluir determinada Tag, seguir os procedimentos:
 
@@ -475,7 +487,7 @@ Para excluir determinada Tag, seguir os procedimentos:
 (37) λ git push origin --delete [NOME]
 ```
 
-No qual (36) realiza a exclusão da Tag local, e (37) exclui a tag do servidor remoto.
+No qual, (36) realiza a exclusão da Tag local, e (37) exclui a Tag do servidor remoto.
 
 #### 5.8.1 *Semantic Versioning*
 No mundo de gerenciamento de software existe algo terrível conhecido como inferno das dependências (“dependency hell”). Quanto mais o sistema cresce, e mais pacotes são adicionados a ele, maior será a possibilidade de, um dia, você encontrar-se neste poço de desespero.
@@ -507,6 +519,8 @@ O rótulo de *pre-release* é importante para informar ao consumidor de seu paco
 Existem algumas convenções ou princípios sobre isso. Por exemplo, se seu pacote estiver marcado como um *rc – release candidate*, ou seja, um candidato a ser um produto final – não mais irá sofrer grandes alterações, apenas correções, até que esteja maduro suficiente para ser lançado como uma versão final.
 
 Já, deixar explícito o número da *build* é interessante, talvez, apenas em tempo de *build n’release*, pois é comum uma mesma versão de *Patch* ter várias tentativas de *release* até sua publicação.
+
+### 5.9 
 
 ## 6 Mensagens de Erro, Workarounds e Dicas
 ### 6.1 Alterações Não Versionadas
