@@ -29,8 +29,8 @@ Passo a passo que adoto na minha utilização do git.
     - [5.8 Criando e Listando Tags](#58-criando-e-listando-tags)
       - [5.8.1 *Semantic Versioning*](#581-semantic-versioning)
     - [5.9 Stash](#59-stash)
-    - [CherryPick](#cherrypick)
-    - [Rebase](#rebase)
+    - [5.10 CherryPick](#510-cherrypick)
+    - [5.11 Rebase](#511-rebase)
   - [6 Mensagens de Erro, Workarounds e Dicas](#6-mensagens-de-erro-workarounds-e-dicas)
     - [6.1 Alterações Não Versionadas](#61-alterações-não-versionadas)
     - [6.2 Desfazendo commits](#62-desfazendo-commits)
@@ -488,7 +488,7 @@ Como a maioria dos VCSs, o Git tem a capacidade de marcar pontos específicos no
 
 Para criar a sua Tag (da branch que estiver), utilizar o primeiro código alterando os campos [NOME] e [MSG]. Já o (33.2) é utilizado para quando você esqueceu de marcar uma Tag em algum commit e está fazendo isso posteriormente. O   (34.1) lista as tags em ordem alfabética; a ordem em que são exibidos não tem importância real. Para realizar uma busca mais filtrada (por padrões), utilizar a opção `-l` ou `--list` seguida do padrão requerido como em (34.2), que listará todas as Tags que apresentam o padrão v1.2 (e.g. v1.2.4-rc0). Caso queira ver os dados da tag junto com o commit que foi marcado, utilizar (35).
 
-As Tags seguem o mesmo padrão de todos os outros elementos envolvendo Git para quando necessitar a utilização de uma, basta usar o comando `git checkout [NOME]` para que seja feita a alteração para determinada Tag. Entretanto, uma mensagem é dada com algumas dicas:
+As Tags seguem o mesmo padrão de todos os outros elementos envolvendo Git para quando necessitar a utilização de uma, basta usar o comando `git checkout [NOMEtag]` para que seja feita a alteração para determinada Tag. Entretanto, uma mensagem é dada com algumas dicas:
 
 ```cmd
 You are in 'detached HEAD' state. You can look around, make experimental
@@ -542,9 +542,33 @@ Já, deixar explícito o número da *build* é interessante, talvez, apenas em t
 
 ### 5.9 Stash
 
-### CherryPick
+O comando `git stash` arquiva (ou faz o *stash*) de alterações que você fez na cópia de trabalho durante um determinado período, para que você possa trabalhar em outra coisa, depois voltar e fazer a reaplicação mais tarde. O *stashing* é útil quando você precisa alternar com rapidez o contexto e trabalhar em outra coisa, mas está no meio da alteração de código e não está pronto para fazer commit.
 
-### Rebase
+Para fácil entendimento, imagine o seguinte ambiente: **dev1** está desenvolvendo na *branch B* do projeto e já realizou diversas modificações. o **dev2** pede pra que ele confira uma configuração feita na *branch B*. Ao tentar alterar de *branch* (20), é dado o seguinte erro:
+
+```error
+error: Your local changes to the following files would be overwritten by checkout:
+        index.html
+Please commit your changes or stash them before you switch branches.
+Aborting
+```
+
+Para isso, commitar as mudanças ou revertê-las (21.1) funcionaria. Entretanto, não quero nenhuma das opções. Assim, utilizar stash para criar uma pilha com essas, reverter, mudar de branch e logo quando voltar para a mesma, puxar do stash aquelas mudanças.
+
+```
+(38.1) λ git stash
+(38.2) λ git stash list
+(38.3) λ git stash save "[MSG]"
+(38.4) λ git stash apply
+(38.5) λ git stash pop
+(38.6) λ git stash drop
+```
+
+Para salvar o stash com um nome desejado, utilizar (38.3). Para aplicar a o primeiro estado que está no topo da pilha (mais recente), aplicar utilizando (38.4) ou (38.5). A diferença entre os dois é que o primeiro, mantém o stash do topo na pilha (sendo necessária posterior exclusão com (38.6)), já o segundo, remove-o assim que dado o comando. Tanto para (38.4), (38.5) e (38.6) é possível realizar os comandos para stashs que estão abaixo do topo da pilha, acrescentando o nome do stash, como `stash@{3}`.
+
+### 5.10 CherryPick
+
+### 5.11 Rebase
 
 ## 6 Mensagens de Erro, Workarounds e Dicas
 
@@ -552,7 +576,7 @@ Já, deixar explícito o número da *build* é interessante, talvez, apenas em t
 
 A mensagem de erro abaixa é dada sempre quando o usuário quer trocar de uma branch para a outra, mas tem alterações em arquivos da branch atual que mão foram "commitadas".
 
-```cmd
+```error
 error: Your local changes to the following files would be overwritten by checkout:
   index.html
 Please commit your changes or stash them before you switch branches.
