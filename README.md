@@ -562,9 +562,13 @@ Para isso, commitar as mudanças ou revertê-las (21.1) funcionaria. Entretanto,
 (38.4) λ git stash apply
 (38.5) λ git stash pop
 (38.6) λ git stash drop
+(38.7) λ git stash show
+(38.8) λ git stash clear
 ```
 
-Para salvar o stash com um nome desejado, utilizar (38.3). Para aplicar a o primeiro estado que está no topo da pilha (mais recente), aplicar utilizando (38.4) ou (38.5). A diferença entre os dois é que o primeiro, mantém o stash do topo na pilha (sendo necessária posterior exclusão com (38.6)), já o segundo, remove-o assim que dado o comando. Tanto para (38.4), (38.5) e (38.6) é possível realizar os comandos para stashs que estão abaixo do topo da pilha, acrescentando o nome do stash, como `stash@{3}`.
+Para salvar o stash com um nome desejado, utilizar (38.3). Para aplicar a o primeiro estado que está no topo da pilha (mais recente), aplicar utilizando (38.4) ou (38.5). A diferença entre os dois é que o primeiro, mantém o stash do topo na pilha (sendo necessária posterior exclusão com (38.6)), já o segundo, remove-o assim que dado o comando. Tanto para (38.4), (38.5) e (38.6) é possível realizar os comandos para stash que estão abaixo do topo da pilha, acrescentando o nome do stash, como `stash@{3}`.
+
+Para visualizar comparações de stash, utilizar (38.7). Acrescentando a opção `-p` ou `--patch` tem-se as alterações completas realizadas naquele stash. Use (38.8) para excluir todos os itens da pilha.
 
 ### 5.10 CherryPick
 
