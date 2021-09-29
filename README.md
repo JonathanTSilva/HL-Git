@@ -602,11 +602,11 @@ Quando realizar algum commit errado e quiser alterar mensagem, arquivos e qualqu
 4. `git add .`
 5. `git commit -c ORIG_HEAD`
 
-O comando em (1) é responsável por refazer um commit. Isso irá desfazer seu último commit enquanto deixa sua árvore de trabalho (o estado de seus arquivos no disco) intocada. É preciso adicioná-los novamente antes de confirmá-los.
+O comando em (2) é responsável por refazer um commit. Isso irá desfazer seu último commit enquanto deixa sua *branch* de trabalho (o estado de seus arquivos no disco) intocada. É preciso adicioná-los novamente antes de confirmá-los. Caso queira retornar para outro commit em específico, colocar na frente do `HEAD~` o valor de commits que devem ser retornados.
 
 No item (5) é confirmado as alterações, reutilizando a mensagem de confirmação antiga. `reset` copia o antigo cabeçalho para `.git/ORIG_HEAD`; O commit com `-c ORIG_HEAD` irá abrir um editor, que inicialmente contém a mensagem de log do commit antigo e permite que você o edite. Se não precisar editar a mensagem, pode usar a opção `-C`.
 
-**Alternativamente, para editar o commit anterior (ou apenas sua mensagem)**, `commit --amend` irá adicionar mudanças dentro do índice atual ao commit anterior.
+**Alternativamente, para editar o commit anterior (ou apenas sua mensagem)**, `git commit --amend` irá adicionar mudanças dentro do índice atual ao commit anterior. Ocorre quando você acabou de alterar alguma coisa e adicioná-la na *staging*, entretanto, esta alteração deveria estar em um commit anteriormente feito por você e que não foi enviado para o servidor. 
 
 **Para remover (não reverter) um commit que foi enviado para o servidor**, é necessário reescrever o histórico com `git push origin master --force`.
 
