@@ -378,12 +378,13 @@ Caso não exista nenhum repositório remoto com o nome da branch indicada, será
 Em um cenário real, seriam duas pessoas trabalhando no mesmo repositório remoto, e consequentemente, com dois locais em diferentes estados. Caso o primeiro não tenha feito o `checkout` neste repositório, não será mostrado no comando `branch`. Mas mesmo que ele faça em alguma branch já criada pelo segundo, esta só ira aparecer no seu repositório local se tiver trazido o remoto pelo código:
 
 ```cmd
-(28) λ git pull
+(28.1) λ git pull
+(28.2) λ git fetch
 ```
 
-Ainda assim, mesmo com o comando (28), se não for feito o checkout, não será mostrado as novas branchs no `git branch`. Para verificar quais são as novas, utilizar a opção dada em (8.4).
+Ainda assim, mesmo com o comando (28.1), se não for feito o checkout, não será mostrado as novas branchs no `git branch`. Para verificar quais são as novas, utilizar a opção dada em (8.4).
 
-Como uma outra alternativa mais segura para o (28), há o comando `git fetch`, que baixa commits, arquivos e referências de um repositório remoto para seu repositório local, mas não obriga a realização de um merge das mudanças em seu repositório. O Git isola o conteúdo buscado do conteúdo local existente e não tem efeito algum no trabalho local de desenvolvimento. O conteúdo buscado tem de ser explicitamente verificado, usando o comando `git checkout`. Isso faz com que a busca seja uma forma segura de analisar commits antes de serem integrados ao repositório local. Portanto, se comparado com `git pull`, o *fetch* é a versão segura, vai baixar as atualização mas não aplicá-las ao trabalho do repositório local necessitando um git merge para finalizar a atualização.
+Como uma outra alternativa mais segura para o (28.1), há o (28.2), que baixa commits, arquivos e referências de um repositório remoto para seu repositório local, mas não obriga a realização de um merge das mudanças em seu repositório. O Git isola o conteúdo buscado do conteúdo local existente e não tem efeito algum no trabalho local de desenvolvimento. O conteúdo buscado tem de ser explicitamente verificado, usando o comando `git checkout`. Isso faz com que a busca seja uma forma segura de analisar commits antes de serem integrados ao repositório local. Portanto, se comparado com `git pull`, o *fetch* é a versão segura, irá baixar as atualização mas não as aplicará ao trabalho do repositório local, necessitando de um `git merge` para finalizar a atualização.
 
 ### 5.3 Deletando Branch do Remoto
 
@@ -482,7 +483,7 @@ Como a maioria dos VCSs, o Git tem a capacidade de marcar pontos específicos no
 
 ```cmd
 (33.1) λ git tag -a [NOME] -m "[MSG]"
-(33.2) λ git tag -a [NOME] [HASH] -m "[MSG]"
+(33.2) λ git tag -a [NOME] [nºSHA] -m "[MSG]"
 (34.1) λ git tag
 (34.2) λ git tag -l "[e.g. v1.2]"
 (35) λ git show [NOME]
@@ -557,7 +558,7 @@ Aborting
 
 Para isso, commitar as mudanças ou revertê-las (21.1) funcionaria. Entretanto, não quero nenhuma das opções. Assim, utilizar stash para criar uma pilha com essas, reverter, mudar de branch e logo quando voltar para a mesma, puxar do stash aquelas mudanças.
 
-```
+```cmd
 (38.1) λ git stash
 (38.2) λ git stash list
 (38.3) λ git stash save "[MSG]"
@@ -573,6 +574,18 @@ Para salvar o stash com um nome desejado, utilizar (38.3). Para aplicar a o prim
 Para visualizar comparações de stash, utilizar (38.7). Acrescentando a opção `-p` ou `--patch` tem-se as alterações completas realizadas naquele stash. Use (38.8) para excluir todos os itens da pilha.
 
 ### 5.10 CherryPick
+
+O `cherry pick` é um comando poderoso do Git que permite ao usuário selecionar commits específicos para trazer ao branch desejado. Antes de dar o comando, certifique-se de que está na branch que queira trazer o commit.
+
+```cmd
+(39.1) λ git cherry-pick [nºSHA]
+(39.2) λ git cherry-pick [A]^..[B]
+(39.3) λ git cherry-pick [A]..[B]
+```
+
+Apesar de ser um comando simples e muito bom de ser utilizado, não é recomendada sua utilização pelas boas práticas do Git, cuidado para não sair duplicando commits na sua linha do tempo, use com moderação. Sempre opte por utilizar os recursos do **Git-flow**, como criar um **Hot-fix** para seu problema. Veremos com mais detalhes nas seções futuras. 
+
+Para copiar um intervalo de commits, usar a sintaxe (39.2) para copiar inclusive o `[A]` ou (39.3) para ignorar o `[A]`.
 
 ### 5.11 Rebase
 
@@ -608,11 +621,11 @@ O comando em (2) é responsável por refazer um commit. Isso irá desfazer seu �
 
 No item (5) é confirmado as alterações, reutilizando a mensagem de confirmação antiga. `reset` copia o antigo cabeçalho para `.git/ORIG_HEAD`; O commit com `-c ORIG_HEAD` irá abrir um editor, que inicialmente contém a mensagem de log do commit antigo e permite que você o edite. Se não precisar editar a mensagem, pode usar a opção `-C`.
 
-**Alternativamente, para editar o commit anterior (ou apenas sua mensagem)**, `git commit --amend` irá adicionar mudanças dentro do índice atual ao commit anterior. Ocorre quando você acabou de alterar alguma coisa e adicioná-la na *staging*, entretanto, esta alteração deveria estar em um commit anteriormente feito por você e que não foi enviado para o servidor. 
+**Alternativamente, para editar o commit anterior (ou apenas sua mensagem)**, `git commit --amend` irá adicionar mudanças dentro do índice atual ao commit anterior, podendo adicionar a opção `-m [MSG]`, para não editar pelo VIM. Ocorre quando você acabou de alterar alguma coisa e adicioná-la na *staging*, entretanto, esta alteração deveria estar em um commit anteriormente feito por você e que não foi enviado para o servidor.
 
 **Para remover (não reverter) um commit que foi enviado para o servidor**, é necessário reescrever o histórico com `git push origin master --force`.
 
-Estes dois POSTs no StackOverflow aborda maneiras diferentes de realizar o Undo & Redo de um commit: [How do I undo the most recent local commits in Git?] e [How can I move HEAD back to a previous location? (Detached head) & Undo commits]
+Estes dois POSTs no StackOverflow aborda maneiras diferentes de realizar o Undo & Redo de um commit: [How do I undo the most recent local commits in Git?][12] e [How can I move HEAD back to a previous location? (Detached head) & Undo commits][13].
 
 O segundo link mostra o `git reflog`, que você pode usar para determinar o SHA-1 para o commit ao qual deseja reverter. Depois de obter esse valor, use a sequência de comandos conforme explicado acima.
 
