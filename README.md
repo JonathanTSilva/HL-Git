@@ -19,7 +19,7 @@ Passo a passo que adoto na minha utilização do git.
     - [4.1 Clonando Repositórios](#41-clonando-repositórios)
   - [5 Comandos Intermediários e Avançados](#5-comandos-intermediários-e-avançados)
     - [5.1 Enviando Branch para Remoto](#51-enviando-branch-para-remoto)
-    - [5.2 Atualizando Branch de Remoto](#52-atualizando-branch-de-remoto)
+    - [5.2 Atualizando Branch Local com o Remoto](#52-atualizando-branch-local-com-o-remoto)
     - [5.3 Deletando Branch do Remoto](#53-deletando-branch-do-remoto)
     - [5.4 Renomeando uma Branch](#54-renomeando-uma-branch)
     - [5.5 Mesclando Alterações](#55-mesclando-alterações)
@@ -373,7 +373,7 @@ Para enviar as alterações (commits) realizados localmente, é necessário "emp
 
 Caso não exista nenhum repositório remoto com o nome da branch indicada, será preciso enviar o comando `git push --set-upstream origin [BRANCH]`. Para simplificar, a opção `-u` substitui este comando (27.2).
 
-### 5.2 Atualizando Branch de Remoto
+### 5.2 Atualizando Branch Local com o Remoto
 
 Em um cenário real, seriam duas pessoas trabalhando no mesmo repositório remoto, e consequentemente, com dois locais em diferentes estados. Caso o primeiro não tenha feito o `checkout` neste repositório, não será mostrado no comando `branch`. Mas mesmo que ele faça em alguma branch já criada pelo segundo, esta só ira aparecer no seu repositório local se tiver trazido o remoto pelo código:
 
@@ -382,6 +382,8 @@ Em um cenário real, seriam duas pessoas trabalhando no mesmo repositório remot
 ```
 
 Ainda assim, mesmo com o comando (28), se não for feito o checkout, não será mostrado as novas branchs no `git branch`. Para verificar quais são as novas, utilizar a opção dada em (8.4).
+
+Como uma outra alternativa mais segura para o (28), há o comando `git fetch`, que baixa commits, arquivos e referências de um repositório remoto para seu repositório local, mas não obriga a realização de um merge das mudanças em seu repositório. O Git isola o conteúdo buscado do conteúdo local existente e não tem efeito algum no trabalho local de desenvolvimento. O conteúdo buscado tem de ser explicitamente verificado, usando o comando `git checkout`. Isso faz com que a busca seja uma forma segura de analisar commits antes de serem integrados ao repositório local. Portanto, se comparado com `git pull`, o *fetch* é a versão segura, vai baixar as atualização mas não aplicá-las ao trabalho do repositório local necessitando um git merge para finalizar a atualização.
 
 ### 5.3 Deletando Branch do Remoto
 
