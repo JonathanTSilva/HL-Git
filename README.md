@@ -33,8 +33,8 @@ Passo a passo que adoto na minha utilização do git.
     - [5.11 Rebase](#511-rebase)
   - [6 Mensagens de Erro, Workarounds e Dicas](#6-mensagens-de-erro-workarounds-e-dicas)
     - [6.1 Alterações Não Versionadas](#61-alterações-não-versionadas)
-    - [6.2 Desfazendo commits](#62-desfazendo-commits)
-    - [6.3 Padronizando commits](#63-padronizando-commits)
+    - [6.2 Desfazendo Commits](#62-desfazendo-commits)
+    - [6.3 Padronizando Commits](#63-padronizando-commits)
   - [7 Gitflow](#7-gitflow)
   - [8 Minhas Aliases](#8-minhas-aliases)
 
@@ -583,11 +583,107 @@ O `cherry pick` é um comando poderoso do Git que permite ao usuário selecionar
 (39.3) λ git cherry-pick [A]..[B]
 ```
 
-Apesar de ser um comando simples e muito bom de ser utilizado, não é recomendada sua utilização pelas boas práticas do Git, cuidado para não sair duplicando commits na sua linha do tempo, use com moderação. Sempre opte por utilizar os recursos do **Git-flow**, como criar um **Hot-fix** para seu problema. Veremos com mais detalhes nas seções futuras. 
+Apesar de ser um comando simples e muito bom de ser utilizado, não é recomendada sua utilização pelas boas práticas do Git, cuidado para não sair duplicando commits na sua linha do tempo, use com moderação. Sempre opte por utilizar os recursos do **Git-flow**, como criar um **Hot-fix** para seu problema. Veremos com mais detalhes nas seções futuras.
 
 Para copiar um intervalo de commits, usar a sintaxe (39.2) para copiar inclusive o `[A]` ou (39.3) para ignorar o `[A]`.
 
 ### 5.11 Rebase
+
+Rebase é um dos dois utilitários do Git que se especializam em integrar alterações da ramificação para outra. O outro utilitário de integração de alterações é o `git merge`. A mesclagem (merge) é uma alteração de registro de avanço. Como outra opção, o rebase tem recursos poderosos para reescrever o histórico. O rebase tem 2 modos principais: os modos "manual" e "interativo". Será tratado os diferentes modos de rebase com mais informações ainda nessa seção, apresentando uma aplicação real *step-by-step*.
+
+Tendo o cenário a seguir, da *branch* **master** com 3 commits (A, B e C):
+
+```cmd
+A<---B<---C
+          |
+          |
+       |Master|
+          |
+         HEAD
+```
+
+Após fazer o commit C, é criado uma nova *branch* com o nome **design** a partir da master:
+
+```cmd
+        HEAD
+          |
+       |design|
+          |
+          |
+A<---B<---C
+          |
+          |
+       |Master|
+```
+
+Realizado um novo commit (D) no *branch* **design**:
+
+```cmd
+                  HEAD
+                    |
+                |design|
+                    |
+                    |
+                .---D
+               /
+A<---B<---C<--´
+          |
+          |
+       |Master|
+```
+
+Ao retornar para a *branch* **master**, tem-se o HEAD na seguinte posição
+
+```cmd
+                |design|
+                    |
+                    |
+                .---D
+               /
+A<---B<---C<--´
+          |
+          |
+       |Master|
+          |
+         HEAD
+```
+
+Um novo commit (E) é realizado na **master**, apresentando a seguinte bifurcação:
+
+```cmd
+                |design|
+                    |
+                    |
+                .---D
+               /
+A<---B<---C<--´-----E
+                    |
+                    |
+                |Master|
+                    |
+                   HEAD
+```
+
+Nessa hora, o rebase da **master** na **design** é feito com os comandos: `git checkout design` && `git rebase master`
+
+```cmd
+                |design|
+                    |
+                    |
+                .---D<----E
+               /          |
+A<---B<---C<--´           |
+                       |Master|
+```
+
+Com o rebase, os commits a mais da master (E) vão para o topo da branch **design**.
+
+Assim, ao final do exemplo de rebase, os commits ficaram:
+
+**master:** A, B, C, D, E <br>
+**design:** A, B, C, D
+
+O rebase é muito utilizado para quando você quiser ter um cenário linear do seu projeto, trazendo tudo das *branchs* para um só uma. Mas há alguns pontos que necessitam destaque: segurança e rastreabilidade. O problema é que o rebase altera o histórico, assim como outros comandos do git (como os que levam o atributo --hard). Por isto ele é recomendado apenas em casos bem específicos. O Git não tem a premissa de proteger a qualquer custo o histórico de alterações mas de, por padrão, preservar isto.
 
 ## 6 Mensagens de Erro, Workarounds e Dicas
 
@@ -607,7 +703,7 @@ Para resolvê-lo, realizar algum dos passos a seguir:
 2. Colocar as mudanças em stash utilizando o `git stash`
 3. Excluir as modificações com `git reset --hard`
 
-### 6.2 Desfazendo commits
+### 6.2 Desfazendo Commits
 
 Quando realizar algum commit errado e quiser alterar mensagem, arquivos e qualquer alteração realizada naquele commit, seguir os passos a seguir:
 
@@ -629,7 +725,7 @@ Estes dois POSTs no StackOverflow aborda maneiras diferentes de realizar o Undo 
 
 O segundo link mostra o `git reflog`, que você pode usar para determinar o SHA-1 para o commit ao qual deseja reverter. Depois de obter esse valor, use a sequência de comandos conforme explicado acima.
 
-### 6.3 Padronizando commits
+### 6.3 Padronizando Commits
 
 Commitzen
 
