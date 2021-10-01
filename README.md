@@ -729,7 +729,16 @@ O segundo link mostra o `git reflog`, que você pode usar para determinar o SHA-
 
 Commitzen
 
-## 7 Gitflow
+## 7 GitFlow
+
+É um fluxo de trabalho para o Git criado para facilitar o processo de desenvolvimento com uma série de comandos novos. O nome por trás desse modelo é Vincent Driessen que, em 2010, escreveu em seu blog pessoal a maneira que ele pensou ser a mais simples de se trabalhar com o Git em larga escala.
+
+Mesmo sendo um método que auxilia o nosso trabalho devemos ter algumas ressalvas diante de como é aplicado: se usado de maneira inadequada, o Git Flow pode se tornar bastante ineficiente e gerar uma experiência não muito agradável.
+
+Além disso, existe um repositório no GitHub onde podemos ver o código aberto do modelo criado. O código em si é feito todo em Shell e o commit mais recente foi de 2012.
+
+![GitFlow](git-flow)
+
 
 ## 8 Minhas Aliases
 
@@ -783,5 +792,6 @@ Commitzen
 <!-- IMAGENS -->
 [git-school]: https://kancane.nl/images/git-remote-6.png
 [kdiff3]: https://cdn.kde.org/screenshots/kdiff3/diffscreen_two_way.png
+[git-flow]: https://user-images.githubusercontent.com/58694273/135694279-55ae02a5-917a-4822-9c96-57f652f1dc17.png
 
 <!-- COMENTÁRIOS -->
