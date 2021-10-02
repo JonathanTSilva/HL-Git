@@ -24,7 +24,6 @@ Passo a passo que adoto na minha utilização do git.
     - [5.4 Renomeando uma Branch](#54-renomeando-uma-branch)
     - [5.5 Mesclando Alterações](#55-mesclando-alterações)
     - [5.6 Resolvendo Conflitos](#56-resolvendo-conflitos)
-      - [5.6.1 kdiff3](#561-kdiff3)
     - [5.7 Pull Request](#57-pull-request)
     - [5.8 Criando e Listando Tags](#58-criando-e-listando-tags)
       - [5.8.1 *Semantic Versioning*](#581-semantic-versioning)
@@ -39,7 +38,11 @@ Passo a passo que adoto na minha utilização do git.
     - [7.1 Gitflow](#71-gitflow)
     - [7.2 Alias](#72-alias)
       - [7.2.1 Minhas Aliases](#721-minhas-aliases)
-  - [7.3 Grep](#73-grep)
+    - [7.3 Grep](#73-grep)
+  - [8 Ferramentas Gráficas](#8-ferramentas-gráficas)
+    - [8.1 kdiff3](#81-kdiff3)
+      - [8.2 Sourcetree](#82-sourcetree)
+      - [8.3 GitKraken](#83-gitkraken)
 
 ## 1 Instalação e Configuração
 
@@ -459,20 +462,8 @@ Assim, basta abrir o editor de texto de sua preferência e decidir o que fazer c
 
 ❕ **DICA**: Sempre quando for começar uma alteração no código, SEMPRE realizar um `git pull`, para evitar conflitos deste tipo.
 
-#### 5.6.1 [kdiff3][11]
 
-Há uma ferramenta gráfica que auxilia a resolução dos conflitos, chamada kdiff3 (software antigo - última release em 2014, mas leve e muito funcional). Ao realizar a instalação padrão do software, ir para o Git Bash e inicializar:
-
-```cmd
-(31.1) λ git config --global --add merge.tool kdiff3
-(31.2) λ git config --global --add mergetool.kdiff3.path "[DIR]"
-(31.3) λ git config --global --add mergetool.kdiff3.trustExitCode false
-(32) λ git mergetool
-```
-
-O arquivo .gitconfig será editado com os comandos. Para listar os comandos atuais do arquivo, basta adicionar a opção list: `git config --global --list`. Com o código (31.1) é passado para o arquivo qual a ferramenta externa de merge será utilizada. O (31.2) configura o local que o software kdiff3 foi instalado, geralmente: "C:/Program Files/KDiff3/kdiff3.exe". Por fim, quando tiver um ambiente em conflito, utilizar (32) para que seja resolvido pelo kdiff3.
-
-![kdiff3][kdiff3]
+Há uma ferramenta gráfica que auxilia a resolução dos conflitos, chamada kdiff3 (vide [8.1] - software antigo - última release em 2014, mas leve e muito funcional).
 
 ### 5.7 Pull Request
 
@@ -782,7 +773,7 @@ Na tabela abaixo, estão apresentadas as aliases criadas pelo autor:
 | gfff  | `git flow feature finish` |  |
 | gffp  | `git flow feature publish` |  |
 
-## 7.3 Grep
+### 7.3 Grep
 
 O comando grep atua como um filtro para as pesquisas de branchs e tags do meu projeto. Procura padrões especificados nos arquivos rastreados na árvore de trabalho, *blobs* registrados no arquivo de índice ou *blobs* em determinados objetos de árvore.
 
@@ -802,6 +793,29 @@ Exemplo da utilização de `grep`:
 > v1.4.1
 ```
 
+## 8 Ferramentas Gráficas
+
+Nesta seção veremos as ferramentas gráficas mais famosas para apoio na utilização do Git (exceto extensões e editores).
+
+### 8.1 [kdiff3][11]
+
+Ao realizar a instalação padrão do software, ir para o Git Bash e inicializar:
+
+```cmd
+(31.1) λ git config --global --add merge.tool kdiff3
+(31.2) λ git config --global --add mergetool.kdiff3.path "[DIR]"
+(31.3) λ git config --global --add mergetool.kdiff3.trustExitCode false
+(32) λ git mergetool
+```
+
+O arquivo .gitconfig será editado com os comandos. Para listar os comandos atuais do arquivo, basta adicionar a opção list: `git config --global --list`. Com o código (31.1) é passado para o arquivo qual a ferramenta externa de merge será utilizada. O (31.2) configura o local que o software kdiff3 foi instalado, geralmente: "C:/Program Files/KDiff3/kdiff3.exe". Por fim, quando tiver um ambiente em conflito, utilizar (32) para que seja resolvido pelo kdiff3.
+
+![kdiff3][kdiff3]
+
+#### 8.2 [Sourcetree][14]
+
+#### 8.3 [GitKraken][15]
+
 <!-- Markdown's Links -->
 <!-- SITES -->
 [1]: https://git-scm.com/
@@ -817,6 +831,8 @@ Exemplo da utilização de `grep`:
 [11]: http://kdiff3.sourceforge.net/
 [12]: https://stackoverflow.com/questions/927358/how-do-i-undo-the-most-recent-local-commits-in-git
 [13]: https://stackoverflow.com/questions/34519665/how-can-i-move-head-back-to-a-previous-location-detached-head-undo-commits/34519716#34519716
+[14]: https://www.sourcetreeapp.com/
+[15]: https://www.gitkraken.com/
 
 <!-- ARQUIVOS -->
 
