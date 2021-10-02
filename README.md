@@ -462,7 +462,6 @@ Assim, basta abrir o editor de texto de sua preferência e decidir o que fazer c
 
 ❕ **DICA**: Sempre quando for começar uma alteração no código, SEMPRE realizar um `git pull`, para evitar conflitos deste tipo.
 
-
 Há uma ferramenta gráfica que auxilia a resolução dos conflitos, chamada kdiff3 (vide [8.1] - software antigo - última release em 2014, mas leve e muito funcional).
 
 ### 5.7 Pull Request
@@ -723,18 +722,35 @@ O segundo link mostra o `git reflog`, que você pode usar para determinar o SHA-
 
 Commitzen
 
-
 ## 7 Utilidades
 
 ### 7.1 Gitflow
 
-É um fluxo de trabalho para o Git criado para facilitar o processo de desenvolvimento com uma série de comandos novos. O nome por trás desse modelo é Vincent Driessen que, em 2010, escreveu em seu blog pessoal a maneira que ele pensou ser a mais simples de se trabalhar com o Git em larga escala.
+É um fluxo de trabalho para o Git criado para facilitar o processo de desenvolvimento com uma série de comandos novos. O nome por trás desse modelo é *Vincent Driessen* que, em 2010, escreveu em seu blog pessoal a maneira que ele pensou ser a mais simples de se trabalhar com o Git em larga escala.
 
 Mesmo sendo um método que auxilia o nosso trabalho devemos ter algumas ressalvas diante de como é aplicado: se usado de maneira inadequada, o Git Flow pode se tornar bastante ineficiente e gerar uma experiência não muito agradável.
 
 Além disso, existe um repositório no GitHub onde podemos ver o código aberto do modelo criado. O código em si é feito todo em Shell e o commit mais recente foi de 2012.
 
 ![GitFlow][git-flow]
+
+Basicamente, a estruturação se define em:
+
+**feature**: Todos os recursos / novas funções / principais refatorações são feitas em branches de recursos, que se ramificam e são mesclados de volta ao branch **develop** (geralmente após algum tipo de revisão por pares).
+
+**release**: Quando recursos suficientes se acumulam ou o próximo período de lançamento se aproxima, um novo ramo de lançamento é ramificado de desenvolvimento, que é exclusivamente dedicado a testes / correção de bugs e qualquer limpeza necessária (por exemplo, alterar alguns nomes de caminho, diferentes valores padrão para instrumentação, etc.).
+
+**hotfix**: Se um grande problema for encontrado após o lançamento, a correção é desenvolvida em uma ramificação de hotfix, que é ramificada do master. Esses são os únicos ramos que irão se ramificar do master.
+
+**bugfix**:
+
+**Nota**: Qualquer confirmação no master é uma confirmação de mesclagem (de uma versão ou branch de hotfix) e representa uma nova versão enviada ao cliente.
+
+Esteja ciente de que este modelo se destina principalmente a:
+
+1. grandes projetos de software que seguem;
+2. versão de lançamento clássico, e;
+3. têm uma equipe de QA separada. Muitos repositórios populares no GitHub seguem um modelo mais simples.
 
 ### 7.2 Alias
 
