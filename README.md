@@ -742,8 +742,6 @@ Basicamente, a estruturação se define em:
 
 **hotfix**: Se um grande problema for encontrado após o lançamento, a correção é desenvolvida em uma ramificação de hotfix, que é ramificada do master. Esses são os únicos ramos que irão se ramificar do master.
 
-**bugfix**:
-
 **Nota**: Qualquer confirmação no master é uma confirmação de mesclagem (de uma versão ou branch de hotfix) e representa uma nova versão enviada ao cliente.
 
 Esteja ciente de que este modelo se destina principalmente a:
@@ -830,6 +828,15 @@ O arquivo .gitconfig será editado com os comandos. Para listar os comandos atua
 
 #### 8.2 [Sourcetree][14]
 
+Sourcetree simplifica como você interage com seus repositórios Git para que você possa se concentrar na codificação. Visualize e gerencie seus repositórios por meio da GUI Git simples do Sourcetree.
+
+* Simples para iniciantes: diga adeus à linha de comando - simplifique o controle de versão distribuída com um cliente Git e deixe todos atualizados rapidamente.
+* Poderoso para especialistas: perfeito para tornar os usuários avançados ainda mais produtivos. Revise changesets, stash, escolha a dedo entre branches e muito mais.
+* Visualize seu código: ver realmente é acreditar. Obtenha informações sobre qualquer filial ou submeta com um único clique.
+* Git e Hg em seu desktop: uma GUI com todos os recursos que oferece um processo de desenvolvimento eficiente e consistente pronto para uso. Funciona com Git e Mercurial.
+
+![sourcetree][sourcetree]
+
 #### 8.3 [GitKraken][15]
 
 <!-- Markdown's Links -->
@@ -856,5 +863,6 @@ O arquivo .gitconfig será editado com os comandos. Para listar os comandos atua
 [git-school]: https://kancane.nl/images/git-remote-6.png
 [kdiff3]: https://cdn.kde.org/screenshots/kdiff3/diffscreen_two_way.png
 [git-flow]: https://user-images.githubusercontent.com/58694273/135694279-55ae02a5-917a-4822-9c96-57f652f1dc17.png
+[sourcetree]: https://wac-cdn.atlassian.com/dam/jcr:580c367b-c240-453d-aa18-c7ced44324f9/hero-mac-screenshot.png?cdnVersion=1830
 
 <!-- COMENTÁRIOS -->
