@@ -35,8 +35,11 @@ Passo a passo que adoto na minha utilização do git.
     - [6.1 Alterações Não Versionadas](#61-alterações-não-versionadas)
     - [6.2 Desfazendo Commits](#62-desfazendo-commits)
     - [6.3 Padronizando Commits](#63-padronizando-commits)
-  - [7 Gitflow](#7-gitflow)
-  - [8 Minhas Aliases](#8-minhas-aliases)
+  - [7 Utilidades](#7-utilidades)
+    - [7.1 Gitflow](#71-gitflow)
+    - [7.2 Alias](#72-alias)
+      - [7.2.1 Minhas Aliases](#721-minhas-aliases)
+  - [7.3 Grep](#73-grep)
 
 ## 1 Instalação e Configuração
 
@@ -729,7 +732,10 @@ O segundo link mostra o `git reflog`, que você pode usar para determinar o SHA-
 
 Commitzen
 
-## 7 GitFlow
+
+## 7 Utilidades
+
+### 7.1 Gitflow
 
 É um fluxo de trabalho para o Git criado para facilitar o processo de desenvolvimento com uma série de comandos novos. O nome por trás desse modelo é Vincent Driessen que, em 2010, escreveu em seu blog pessoal a maneira que ele pensou ser a mais simples de se trabalhar com o Git em larga escala.
 
@@ -737,10 +743,29 @@ Mesmo sendo um método que auxilia o nosso trabalho devemos ter algumas ressalva
 
 Além disso, existe um repositório no GitHub onde podemos ver o código aberto do modelo criado. O código em si é feito todo em Shell e o commit mais recente foi de 2012.
 
-![GitFlow](git-flow)
+![GitFlow][git-flow]
 
+### 7.2 Alias
 
-## 8 Minhas Aliases
+O Git não infere automaticamente o seu comando se você digitá-lo parcialmente. Se você não quiser digitar todo o texto de cada um dos comandos do Git, pode facilmente configurar um alias para cada comando usando git config. Aqui estão alguns exemplos que você pode querer configurar:
+
+(40.1) λ git config --global alias.co checkout
+(40.2) λ git config --global alias.br branch
+(40.3) λ git config --global alias.ci commit
+(40.4) λ git config --global alias.st status
+
+Isso significa que, por exemplo, em vez de digitar `git commit`, você só precisa digitar `git ci`. Conforme você usa o Git, provavelmente também usará outros comandos com frequência; não hesite em criar novos apelidos.
+
+Entretanto, há uma outra forma mais fácil e visualmente mais intuitiva de criar suas aliases para o Git, basta adicioná-las no código `.bashrc` citado na subseção [3.2](#32-cruzando-chave-ssh):
+
+```bash
+# Aliases
+alias ci='git commit'
+```
+
+#### 7.2.1 Minhas Aliases
+
+Na tabela abaixo, estão apresentadas as aliases criadas pelo autor:
 
 | Alias |     Git Command     |                                                    Description                                                    |
 | ----- | :-----------------: | :---------------------------------------------------------------------------------------------------------------: |
@@ -757,19 +782,25 @@ Além disso, existe um repositório no GitHub onde podemos ver o código aberto 
 | gfff  | `git flow feature finish` |  |
 | gffp  | `git flow feature publish` |  |
 
-<!-- Markdown's Links
-* gfp - git fetch --purse -> para ter certeza se está tudo ok, combinado remoto com local, se não, deleta no local o que não estiver no github;
-* gs - git status;
-* git branch - para verificar quais as branchs do meu projeto; geralmente sempre a develop e a main (excluir com 'git branch -d NOME_DA_BRANCH' caso haja alguma desnecessária);
-* git pull - para ver se tem algo a trazer do github;
-* gffs estilos_login - começando agora uma nova branch de feature;
-* git diff - para ver as alterações feitas - ANTES DO GIT ADD
-* git add .
-* git commit -m 'message' -m 'optional, better description'
-* Alteração antes de produzir uma release
-* gfp - comando para dar uma atualizada no git
-* git pull origin main --allow-unrelated-histories - é o comando para quando há erro no push
-* -->
+## 7.3 Grep
+
+O comando grep atua como um filtro para as pesquisas de branchs e tags do meu projeto. Procura padrões especificados nos arquivos rastreados na árvore de trabalho, *blobs* registrados no arquivo de índice ou *blobs* em determinados objetos de árvore.
+
+Exemplo da utilização de `grep`:
+
+```cmd
+(41.1) λ git branch | grep R1
+> R1-TASK1
+> R1-TASK2
+> R1-TASK3
+```
+
+```cmd
+(41.2) λ git tag | grep 1
+> v1
+> v1.2
+> v1.4.1
+```
 
 <!-- Markdown's Links -->
 <!-- SITES -->
