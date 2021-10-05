@@ -3,48 +3,48 @@
 Passo a passo que adoto na minha utilização do git.
 
 - [Meu CheatSheet de Git](#meu-cheatsheet-de-git)
-  - [1 Instalação e Configuração](#1-instalação-e-configuração)
-    - [1.1 Visual Studio Code](#11-visual-studio-code)
-    - [1.2 Cmder](#12-cmder)
-      - [1.2.1 Keyboard Shortcuts](#121-keyboard-shortcuts)
-      - [1.2.2 Comandos para o vi](#122-comandos-para-o-vi)
+  - [1. Instalação e Configuração](#1-instalação-e-configuração)
+    - [1.1. Visual Studio Code](#11-visual-studio-code)
+    - [1.2. Cmder](#12-cmder)
+      - [1.2.1. Keyboard Shortcuts](#121-keyboard-shortcuts)
+      - [1.2.2. Comandos para o vi](#122-comandos-para-o-vi)
   - [2 Primeiros Passos](#2-primeiros-passos)
-  - [3 Comunicação com remotos (GitHub, BitBucket, GitLab)](#3-comunicação-com-remotos-github-bitbucket-gitlab)
-    - [3.1 Criando chave SSH](#31-criando-chave-ssh)
-      - [3.1.1 PuTTY](#311-putty)
-      - [3.1.2 Linha de comando](#312-linha-de-comando)
-    - [3.2 Cruzando chave SSH](#32-cruzando-chave-ssh)
-    - [3.3 Configuração com Proxy](#33-configuração-com-proxy)
-  - [4 Comandos Básicos](#4-comandos-básicos)
-    - [4.1 Clonando Repositórios](#41-clonando-repositórios)
-  - [5 Comandos Intermediários e Avançados](#5-comandos-intermediários-e-avançados)
-    - [5.1 Enviando Branch para Remoto](#51-enviando-branch-para-remoto)
-    - [5.2 Atualizando Branch Local com o Remoto](#52-atualizando-branch-local-com-o-remoto)
-    - [5.3 Deletando Branch do Remoto](#53-deletando-branch-do-remoto)
-    - [5.4 Renomeando uma Branch](#54-renomeando-uma-branch)
-    - [5.5 Mesclando Alterações](#55-mesclando-alterações)
-    - [5.6 Resolvendo Conflitos](#56-resolvendo-conflitos)
-    - [5.7 Pull Request](#57-pull-request)
-    - [5.8 Criando e Listando Tags](#58-criando-e-listando-tags)
-      - [5.8.1 *Semantic Versioning*](#581-semantic-versioning)
-    - [5.9 Stash](#59-stash)
-    - [5.10 CherryPick](#510-cherrypick)
-    - [5.11 Rebase](#511-rebase)
-  - [6 Mensagens de Erro, Workarounds e Dicas](#6-mensagens-de-erro-workarounds-e-dicas)
-    - [6.1 Alterações Não Versionadas](#61-alterações-não-versionadas)
-    - [6.2 Desfazendo Commits](#62-desfazendo-commits)
-    - [6.3 Padronizando Commits](#63-padronizando-commits)
-  - [7 Utilidades](#7-utilidades)
-    - [7.1 Gitflow](#71-gitflow)
-    - [7.2 Alias](#72-alias)
-      - [7.2.1 Minhas Aliases](#721-minhas-aliases)
-    - [7.3 Grep](#73-grep)
-  - [8 Ferramentas Gráficas](#8-ferramentas-gráficas)
-    - [8.1 kdiff3](#81-kdiff3)
-      - [8.2 Sourcetree](#82-sourcetree)
-      - [8.3 GitKraken](#83-gitkraken)
+  - [3. Comunicação com remotos (GitHub, BitBucket, GitLab)](#3-comunicação-com-remotos-github-bitbucket-gitlab)
+    - [3.1. Criando chave SSH](#31-criando-chave-ssh)
+      - [3.1.1. PuTTY](#311-putty)
+      - [3.1.2. Linha de comando](#312-linha-de-comando)
+    - [3.2. Cruzando chave SSH](#32-cruzando-chave-ssh)
+    - [3.3. Configuração com Proxy](#33-configuração-com-proxy)
+  - [4. Comandos Básicos](#4-comandos-básicos)
+    - [4.1. Clonando Repositórios](#41-clonando-repositórios)
+  - [5. Comandos Intermediários e Avançados](#5-comandos-intermediários-e-avançados)
+    - [5.1. Enviando Branch para Remoto](#51-enviando-branch-para-remoto)
+    - [5.2. Atualizando Branch Local com o Remoto](#52-atualizando-branch-local-com-o-remoto)
+    - [5.3. Deletando Branch do Remoto](#53-deletando-branch-do-remoto)
+    - [5.4. Renomeando uma Branch](#54-renomeando-uma-branch)
+    - [5.5. Mesclando Alterações](#55-mesclando-alterações)
+    - [5.6. Resolvendo Conflitos](#56-resolvendo-conflitos)
+    - [5.7. Pull Request](#57-pull-request)
+    - [5.8. Criando e Listando Tags](#58-criando-e-listando-tags)
+      - [5.8.1. *Semantic Versioning*](#581-semantic-versioning)
+    - [5.9. Stash](#59-stash)
+    - [5.10. CherryPick](#510-cherrypick)
+    - [5.11. Rebase](#511-rebase)
+  - [6. Mensagens de Erro, Workarounds e Dicas](#6-mensagens-de-erro-workarounds-e-dicas)
+    - [6.1. Alterações Não Versionadas](#61-alterações-não-versionadas)
+    - [6.2. Desfazendo Commits](#62-desfazendo-commits)
+    - [6.3. Padronizando Commits](#63-padronizando-commits)
+  - [7. Utilidades](#7-utilidades)
+    - [7.1. GitFlow](#71-gitflow)
+    - [7.2. Alias](#72-alias)
+      - [7.2.1. Minhas Aliases](#721-minhas-aliases)
+    - [7.3. Grep](#73-grep)
+  - [8. Ferramentas Gráficas](#8-ferramentas-gráficas)
+    - [8.1. kdiff3](#81-kdiff3)
+      - [8.2. Sourcetree](#82-sourcetree)
+      - [8.3. GitKraken](#83-gitkraken)
 
-## 1 Instalação e Configuração
+## 1. Instalação e Configuração
 
 O download do Git pode ser feito pelo seguinte [LINK][1], e toda a instalação pode ser feita pelas opções *default* do instalador. Ou, no caso de um cliente Linux (Debian/Ubuntu), utilizar: `apt-get install git` (ver mais opções na [página de Linux do Git][2]). Vale ressaltar um ponto importante na instalação do Git que é a opção de "Adding Git-Bash to the new Windows Terminal"; este novo terminal do windows agrupa as ferramentas e shells de linha de comando, como prompt de comando, PowerShell, WSL e GitBash, caso marque a opção na instalação do Git. O download pode ser feito na Microsoft Store ou pelo seguinte [link][8].
 
@@ -52,7 +52,7 @@ Fica a dica de uma aplicação desenvolvida para uma melhor visualização de co
 
 ![git-school][git-school]
 
-### 1.1 Visual Studio Code
+### 1.1. Visual Studio Code
 
 O VSCode é o editor de código-fonte mais utilizado do mundo. Uma de suas principais vantagens frente à outros editores é a utilização de extensões desenvolvidas pela comunidade, que inclui suporte para depuração, controle de versionamento Git incorporado (*Source Control*), realce de sintaxe, complementação inteligente de código, snippets e refatoração de código.. Neste tópico serão abordadas as melhores extensões para utilizar o Git com o VSCode da melhor forma e aproveitando os melhores recursos que o editor tem a oferecer.
 
@@ -90,7 +90,7 @@ Ver git log, histórico de arquivos, comparar branches ou commits
 **Git Graph** <br>
 Visualize um gráfico Git de seu repositório e execute facilmente ações Git a partir do gráfico. Configurável para ter a aparência que você deseja!
 
-### 1.2 Cmder
+### 1.2. Cmder
 
 Uma outra opção de utilização do Git, é pelo aplicativo terceiro [Cmder][3]. Nele o git já vem instalado e basta realizar os seguintes passos para completar a configuração:
 
@@ -99,7 +99,7 @@ Uma outra opção de utilização do Git, é pelo aplicativo terceiro [Cmder][3]
 3. Ao abrir o Cmder, `Ctrl + T` e criar um novo console como `{bash::mintty as Admin}` para entrar como um editor Unix. Para não ficar fazendo isso toda vez, realizar as seguintes alterações:
    - <kbd>Settings</kbd> > <kbd>Startup</kbd> > Check "Specified named task" > Choose <kbd>{bash::mintty as Admin}</kbd> > <kbd>Save Settings</kbd>
 
-#### 1.2.1 Keyboard Shortcuts
+#### 1.2.1. Keyboard Shortcuts
 
 <kbd>Ctrl</kbd>+<kbd>L</kbd> - Limpar a tela do terminal
 
@@ -107,7 +107,7 @@ Uma outra opção de utilização do Git, é pelo aplicativo terceiro [Cmder][3]
 
 <kbd>Shift</kbd>+<kbd>Ins</kbd> - Colar
 
-#### 1.2.2 Comandos para o vi
+#### 1.2.2. Comandos para o vi
 
 <kbd>I</kbd> - Editar a janela
 
@@ -164,11 +164,11 @@ Caso queira deletar por completo algum repositório criado localmente pelo `git 
 (9) λ rm -rf .git
 ```
 
-## 3 Comunicação com remotos (GitHub, BitBucket, GitLab)
+## 3. Comunicação com remotos (GitHub, BitBucket, GitLab)
 
 Para realizar a comunicação entre o Git local e aplicações remotas é necessária uma configuração de segurança através de SSH. É possível também comunicar local com remoto sem o SSH, entretanto, toda vez que precisar fazer um *push* no remoto, solicitará a senha para do usuário, verificando se o repositório em questão é seu.
 
-### 3.1 Criando chave SSH
+### 3.1. Criando chave SSH
 
 O SSH (*Secure Shell* ou *Secure Socket Shell*) é um protocolo que permite a conexão com servidores remotos, de forma criptografada e mais segura, usando um par de chaves (RSA, DSA...). Há duas principais formas de criarmos essa chave: utiliazando um software terceiro - PuTTY, ou criando por linha de comando.
 
@@ -180,7 +180,7 @@ Primeiramente, deve-se criar uma pasta do **%UserProfile%** denominada **.ssh**,
 
 Também é possível criar uma chave de segurança de hardware para que cada vez que utilizar uma máquina diferente, não precise gerar outras chaves. Entretanto, é necessário ter o hardware para este tipo de chave.
 
-#### 3.1.1 PuTTY
+#### 3.1.1. PuTTY
 
 1. Fazer o download do [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html), ou o programa completo, ou apenas o puttygen.exe
 2. Ao entrar no PuTTY Key Generator, realizar os seguintes passos:
@@ -189,7 +189,7 @@ Também é possível criar uma chave de segurança de hardware para que cada vez
      - Essas duas chaves devem estar dentro da pasta **.ssh** criada anteriormente;
      - Pode ser que as chaves criadas pelo PuTTYgen não seja reconhecida pelas aplicações remotas como GitHub, BitBucket. Assim, é necessária conversão da mesma para OpenSSH (no próprio programa).
 
-#### 3.1.2 Linha de comando
+#### 3.1.2. Linha de comando
 
 Cole o texto abaixo, substituindo o endereço de e-mail pelo seu GitHub.
 
@@ -220,7 +220,7 @@ No próximo tópico, será mostrado um código .bash que adiciona a chave criada
 (13) λ ssh-add ~/.ssh/id_ed25519
 ```
 
-### 3.2 Cruzando chave SSH
+### 3.2. Cruzando chave SSH
 
 Após criada a chave SSH, é necessário avisar para a sua conta do GitHub qual é o usuário (chave SSH) que ele pode confiar edição. Para isso, vá até sua conta no GitHub e siga os seguintes passos:
 
@@ -259,7 +259,7 @@ alias gs='git status'
 
 Este arquivo deve ser colocado na pasta raiz do usuário (**%UserProfile%**) e rodado uma única vez para que crie os outros arquivos necessários.
 
-### 3.3 Configuração com Proxy
+### 3.3. Configuração com Proxy
 
 Caso o seu repositório local esteja em uma máquina na rede com proxy ou firewall e aconteça alguns problemas, é necessário configurar o git para aquele proxy, login e usuário, com os comando abaixo:
 
@@ -294,7 +294,7 @@ OpenSSH_6.9p1, LibreSSL 2.1.8
 logged in as user.
 ```
 
-## 4 Comandos Básicos
+## 4. Comandos Básicos
 
 Ao criar o seu repositório local de trabalho e iniciar o seu Git (como visto na seção [Primeiros Passos](#primeiros-passos)), inicia-se os trabalhos neste repositório e os comandos básicos para manuseio do mesmo são:
 
@@ -349,7 +349,7 @@ Caso opte por [retornar para um commit][5], há a opção de reset:
 
 A diferença entre a opção hard e soft é que se utilizar o hard, os commits posteriores ao do retorno serão perdidos, diferentemente do soft, que manterá todos. (21.2) e (21.3) apenas retornam um commit. Caso queira retornar mais, trocar o 1 para tanto de commits anteriores, ou faça a alteração pelo SHA RASH (21.4). Se o commit foi enviado para o repositório remoto, a opção (22) deve ser realizada. Assim, ao refazer as alterações, um novo `git add` deve ser feito e a mensagem de commit pode ser trocada com (24).
 
-### 4.1 Clonando Repositórios
+### 4.1. Clonando Repositórios
 
 É possível não apenas clonar em uma URL remota, mas nos arquivos locais como:
 
@@ -364,11 +364,11 @@ Mas o mais utilizado é para clonar repositórios do GitHub:
 (25.2) λ git clone [URL]
 ```
 
-## 5 Comandos Intermediários e Avançados
+## 5. Comandos Intermediários e Avançados
 
 Esta seção necessita necessariamente da configuração previamente realizada nas seções [1](#1-instalação-e-configuração), [2](#2-primeiros-passos) e [3](#3-comunicação-com-remotos-github-bitbucket-gitlab).
 
-### 5.1 Enviando Branch para Remoto
+### 5.1. Enviando Branch para Remoto
 
 Para enviar as alterações (commits) realizados localmente, é necessário "empurrar" com os comandos:
 
@@ -379,7 +379,7 @@ Para enviar as alterações (commits) realizados localmente, é necessário "emp
 
 Caso não exista nenhum repositório remoto com o nome da branch indicada, será preciso enviar o comando `git push --set-upstream origin [BRANCH]`. Para simplificar, a opção `-u` substitui este comando (27.2).
 
-### 5.2 Atualizando Branch Local com o Remoto
+### 5.2. Atualizando Branch Local com o Remoto
 
 Em um cenário real, seriam duas pessoas trabalhando no mesmo repositório remoto, e consequentemente, com dois locais em diferentes estados. Caso o primeiro não tenha feito o `checkout` neste repositório, não será mostrado no comando `branch`. Mas mesmo que ele faça em alguma branch já criada pelo segundo, esta só ira aparecer no seu repositório local se tiver trazido o remoto pelo código:
 
@@ -392,7 +392,7 @@ Ainda assim, mesmo com o comando (28.1), se não for feito o checkout, não ser�
 
 Como uma outra alternativa mais segura para o (28.1), há o (28.2), que baixa commits, arquivos e referências de um repositório remoto para seu repositório local, mas não obriga a realização de um merge das mudanças em seu repositório. O Git isola o conteúdo buscado do conteúdo local existente e não tem efeito algum no trabalho local de desenvolvimento. O conteúdo buscado tem de ser explicitamente verificado, usando o comando `git checkout`. Isso faz com que a busca seja uma forma segura de analisar commits antes de serem integrados ao repositório local. Portanto, se comparado com `git pull`, o *fetch* é a versão segura, irá baixar as atualização mas não as aplicará ao trabalho do repositório local, necessitando de um `git merge` para finalizar a atualização.
 
-### 5.3 Deletando Branch do Remoto
+### 5.3. Deletando Branch do Remoto
 
 Os comandos para remoção da branch local podem ser revisados em (8.5) e (8.6). No entanto, para remover uma beanch de um servidor, é necessário o seguinte comando:
 
@@ -402,7 +402,7 @@ Os comandos para remoção da branch local podem ser revisados em (8.5) e (8.6).
 
 Tome muito cuidado com este comando caso trabalhe em grupo, pois pode ser que alguém esteja editando está branch e perderá o backup do servidor. **ATENÇÃO: ALINHE COM TODOS OS INTEGRANTES DO SEU TIME!**. Para confirmar que deu certo, abrir o GitHub e ver que a branch sumiu.
 
-### 5.4 Renomeando uma Branch
+### 5.4. Renomeando uma Branch
 
 O comando para renomear uma branch local, basta seguir as intruções abaixo:
 
@@ -422,7 +422,7 @@ Não é possível renomear uma branch do servidor estando localmente. Para tal r
 
 Mas **‼ ATENÇÃO:** para fazer este tipo de alteração, **ALINHE COM TODOS OS INTEGRANTES DO SEU TIME!**
 
-### 5.5 Mesclando Alterações
+### 5.5. Mesclando Alterações
 
 Incorpora as alterações dos commits citados (desde o momento em que os seus históricos divergirem do ramo atual) para dentro do ramo atual. Este comando é utilizado pelo `git pull` para incorporar as alterações vindas de outro repositório e pode ser utilizado manualmente para mesclar as alterações de uma branch para outra.
 
@@ -434,7 +434,7 @@ O Git merge traz as alterações já com um commit de `Merged`. Caso não queria
 
 Lembre-se que o merge carrega sempre o conceito de **TRAZER AS ALTERAÇÕES PARA A BRANCH ATUAL**.
 
-### 5.6 Resolvendo Conflitos
+### 5.6. Resolvendo Conflitos
 
 Os conflitos acontecem quando em um mesmo arquivo, há alterações na mesma linha. Ou então quando algum desenvolvedor exclui arquivos enquanto outra pessoa faz alterações. Nesses casos, o Git não pode determinar qual está correto, sendo necessária uma resolução manual por parte do desenvolvedor que conduz o merge; o resto da equipe não fica ciente deles. O Git apenas marca os arquivos em conflito e interrompe o processo de merge.
 
@@ -464,13 +464,13 @@ Assim, basta abrir o editor de texto de sua preferência e decidir o que fazer c
 
 Há uma ferramenta gráfica que auxilia a resolução dos conflitos, chamada kdiff3 (vide [8.1] - software antigo - última release em 2014, mas leve e muito funcional).
 
-### 5.7 Pull Request
+### 5.7. Pull Request
 
 O pull request, é o pedido para que o repositório original, ou uma branch do repositório original, faça a ação de pull (puxar) as atualizações do repositório fork ou de um branch do próprio repositório. Depois que uma pull request é aberta, você pode discutir e revisar as possíveis alterações com colaboradores e adicionar commits de acompanhamento antes que as alterações sofram merge no branch base.
 
 Este pedido é realizado no servidor (GitHub, GitLab, BitBucket) e feito de uma maneira visual. No GitHub pode ser feito rascunhos de pull requests em repositório público.
 
-### 5.8 Criando e Listando Tags
+### 5.8. Criando e Listando Tags
 
 Como a maioria dos VCSs, o Git tem a capacidade de marcar pontos específicos no histórico de um repositório como sendo importantes. Normalmente, as pessoas usar essa funcionalidade para pontos de liberação de marca ( v1.0, v2.0e assim por diante).
 
@@ -504,7 +504,7 @@ Para excluir determinada Tag, seguir os procedimentos:
 
 No qual, (36) realiza a exclusão da Tag local, e (37) exclui a Tag do servidor remoto.
 
-#### 5.8.1 *Semantic Versioning*
+#### 5.8.1. *Semantic Versioning*
 
 No mundo de gerenciamento de software existe algo terrível conhecido como inferno das dependências (“dependency hell”). Quanto mais o sistema cresce, e mais pacotes são adicionados a ele, maior será a possibilidade de, um dia, você encontrar-se neste poço de desespero.
 
@@ -536,7 +536,7 @@ Existem algumas convenções ou princípios sobre isso. Por exemplo, se seu paco
 
 Já, deixar explícito o número da *build* é interessante, talvez, apenas em tempo de *build n’release*, pois é comum uma mesma versão de *Patch* ter várias tentativas de *release* até sua publicação.
 
-### 5.9 Stash
+### 5.9. Stash
 
 O comando `git stash` arquiva (ou faz o *stash*) de alterações que você fez na cópia de trabalho durante um determinado período, para que você possa trabalhar em outra coisa, depois voltar e fazer a reaplicação mais tarde. O *stashing* é útil quando você precisa alternar com rapidez o contexto e trabalhar em outra coisa, mas está no meio da alteração de código e não está pronto para fazer commit.
 
@@ -566,7 +566,7 @@ Para salvar o stash com um nome desejado, utilizar (38.3). Para aplicar a o prim
 
 Para visualizar comparações de stash, utilizar (38.7). Acrescentando a opção `-p` ou `--patch` tem-se as alterações completas realizadas naquele stash. Use (38.8) para excluir todos os itens da pilha.
 
-### 5.10 CherryPick
+### 5.10. CherryPick
 
 O `cherry pick` é um comando poderoso do Git que permite ao usuário selecionar commits específicos para trazer ao branch desejado. Antes de dar o comando, certifique-se de que está na branch que queira trazer o commit.
 
@@ -580,7 +580,7 @@ Apesar de ser um comando simples e muito bom de ser utilizado, não é recomenda
 
 Para copiar um intervalo de commits, usar a sintaxe (39.2) para copiar inclusive o `[A]` ou (39.3) para ignorar o `[A]`.
 
-### 5.11 Rebase
+### 5.11. Rebase
 
 Rebase é um dos dois utilitários do Git que se especializam em integrar alterações da ramificação para outra. O outro utilitário de integração de alterações é o `git merge`. A mesclagem (merge) é uma alteração de registro de avanço. Como outra opção, o rebase tem recursos poderosos para reescrever o histórico. O rebase tem 2 modos principais: os modos "manual" e "interativo". Será tratado os diferentes modos de rebase com mais informações ainda nessa seção, apresentando uma aplicação real *step-by-step*.
 
@@ -678,9 +678,9 @@ Assim, ao final do exemplo de rebase, os commits ficaram:
 
 O rebase é muito utilizado para quando você quiser ter um cenário linear do seu projeto, trazendo tudo das *branchs* para um só uma. Mas há alguns pontos que necessitam destaque: segurança e rastreabilidade. O problema é que o rebase altera o histórico, assim como outros comandos do git (como os que levam o atributo --hard). Por isto ele é recomendado apenas em casos bem específicos. O Git não tem a premissa de proteger a qualquer custo o histórico de alterações mas de, por padrão, preservar isto.
 
-## 6 Mensagens de Erro, Workarounds e Dicas
+## 6. Mensagens de Erro, Workarounds e Dicas
 
-### 6.1 Alterações Não Versionadas
+### 6.1. Alterações Não Versionadas
 
 A mensagem de erro abaixa é dada sempre quando o usuário quer trocar de uma branch para a outra, mas tem alterações em arquivos da branch atual que mão foram "commitadas".
 
@@ -696,7 +696,7 @@ Para resolvê-lo, realizar algum dos passos a seguir:
 2. Colocar as mudanças em stash utilizando o `git stash`
 3. Excluir as modificações com `git reset --hard`
 
-### 6.2 Desfazendo Commits
+### 6.2. Desfazendo Commits
 
 Quando realizar algum commit errado e quiser alterar mensagem, arquivos e qualquer alteração realizada naquele commit, seguir os passos a seguir:
 
@@ -718,13 +718,13 @@ Estes dois POSTs no StackOverflow aborda maneiras diferentes de realizar o Undo 
 
 O segundo link mostra o `git reflog`, que você pode usar para determinar o SHA-1 para o commit ao qual deseja reverter. Depois de obter esse valor, use a sequência de comandos conforme explicado acima.
 
-### 6.3 Padronizando Commits
+### 6.3. Padronizando Commits
 
 Commitzen
 
-## 7 Utilidades
+## 7. Utilidades
 
-### 7.1 Gitflow
+### 7.1. GitFlow
 
 É um fluxo de trabalho para o Git criado para facilitar o processo de desenvolvimento com uma série de comandos novos. O nome por trás desse modelo é *Vincent Driessen* que, em 2010, escreveu em seu blog pessoal a maneira que ele pensou ser a mais simples de se trabalhar com o Git em larga escala.
 
@@ -750,7 +750,7 @@ Esteja ciente de que este modelo se destina principalmente a:
 2. versão de lançamento clássico, e;
 3. têm uma equipe de QA separada. Muitos repositórios populares no GitHub seguem um modelo mais simples.
 
-### 7.2 Alias
+### 7.2. Alias
 
 O Git não infere automaticamente o seu comando se você digitá-lo parcialmente. Se você não quiser digitar todo o texto de cada um dos comandos do Git, pode facilmente configurar um alias para cada comando usando git config. Aqui estão alguns exemplos que você pode querer configurar:
 
@@ -768,7 +768,7 @@ Entretanto, há uma outra forma mais fácil e visualmente mais intuitiva de cria
 alias ci='git commit'
 ```
 
-#### 7.2.1 Minhas Aliases
+#### 7.2.1. Minhas Aliases
 
 Na tabela abaixo, estão apresentadas as aliases criadas pelo autor:
 
@@ -787,7 +787,7 @@ Na tabela abaixo, estão apresentadas as aliases criadas pelo autor:
 | gfff  | `git flow feature finish` |  |
 | gffp  | `git flow feature publish` |  |
 
-### 7.3 Grep
+### 7.3. Grep
 
 O comando grep atua como um filtro para as pesquisas de branchs e tags do meu projeto. Procura padrões especificados nos arquivos rastreados na árvore de trabalho, *blobs* registrados no arquivo de índice ou *blobs* em determinados objetos de árvore.
 
@@ -807,11 +807,11 @@ Exemplo da utilização de `grep`:
 > v1.4.1
 ```
 
-## 8 Ferramentas Gráficas
+## 8. Ferramentas Gráficas
 
 Nesta seção veremos as ferramentas gráficas mais famosas para apoio na utilização do Git (exceto extensões e editores).
 
-### 8.1 [kdiff3][11]
+### 8.1. [kdiff3][11]
 
 Ao realizar a instalação padrão do software, ir para o Git Bash e inicializar:
 
@@ -826,18 +826,32 @@ O arquivo .gitconfig será editado com os comandos. Para listar os comandos atua
 
 ![kdiff3][kdiff3]
 
-#### 8.2 [Sourcetree][14]
+#### 8.2. [Sourcetree][14]
 
-Sourcetree simplifica como você interage com seus repositórios Git para que você possa se concentrar na codificação. Visualize e gerencie seus repositórios por meio da GUI Git simples do Sourcetree.
+Sourcetree simplifica como você interage com seus repositórios Git para que você possa se concentrar na codificação. Visualize e gerencie seus repositórios por meio da GUI Git simples do Sourcetree. É da Atlassian, portanto, integração total com Jira, Confluence, BitBucket, entre outros.
 
-* Simples para iniciantes: diga adeus à linha de comando - simplifique o controle de versão distribuída com um cliente Git e deixe todos atualizados rapidamente.
-* Poderoso para especialistas: perfeito para tornar os usuários avançados ainda mais produtivos. Revise changesets, stash, escolha a dedo entre branches e muito mais.
-* Visualize seu código: ver realmente é acreditar. Obtenha informações sobre qualquer filial ou submeta com um único clique.
-* Git e Hg em seu desktop: uma GUI com todos os recursos que oferece um processo de desenvolvimento eficiente e consistente pronto para uso. Funciona com Git e Mercurial.
+- Simples para iniciantes: diga adeus à linha de comando - simplifique o controle de versão distribuída com um cliente Git e deixe todos atualizados rapidamente.
+- Poderoso para especialistas: perfeito para tornar os usuários avançados ainda mais produtivos. Revise changesets, stash, escolha a dedo entre branches e muito mais.
+- Visualize seu código: ver realmente é acreditar. Obtenha informações sobre qualquer filial ou submeta com um único clique.
+- Git e Hg em seu desktop: uma GUI com todos os recursos que oferece um processo de desenvolvimento eficiente e consistente pronto para uso. Funciona com Git e Mercurial.
 
 ![sourcetree][sourcetree]
 
-#### 8.3 [GitKraken][15]
+#### 8.3. [GitKraken][15]
+
+GitKraken é uma nova interface gráfica para git. Eu sou um grande fã do git na linha de comando e, mesmo que eu tenha usado diferentes GUIs no passado, eu sempre volto para o console.
+
+A propósito, GitKraken parece promissor graças a um conjunto de características interessantes. Vamos dar uma olhada nas quais que mais me impressionaram depois de uma primeira usada.
+
+Esta é provavelmente a melhor característica no momento, uma visão gráfica muito bem feita da sua rede git que lhe permite entender qual é o status atual do seu repositório em termos de commits e branches. Cada ponto no gráfico representa um commit e é interativo. Ao selecionar um deles, você pode ver todas as mudanças aplicadas desse commit, quem fez o push, a descrição do commit e, mais importante, se você clicar no botão direito sobre ele você pode executar imediatamente uma série de ações que não são tão triviais na linha de comando:
+
+- cherry-pick;
+- criar um branch a partir de um commit específico;
+- criar uma nova tag apontando para aquele commit;
+- reset master para aquele commit;
+- editar a mensagem do commit.
+
+![gitkraken][gitkraken]
 
 <!-- Markdown's Links -->
 <!-- SITES -->
@@ -864,5 +878,6 @@ Sourcetree simplifica como você interage com seus repositórios Git para que vo
 [kdiff3]: https://cdn.kde.org/screenshots/kdiff3/diffscreen_two_way.png
 [git-flow]: https://user-images.githubusercontent.com/58694273/135694279-55ae02a5-917a-4822-9c96-57f652f1dc17.png
 [sourcetree]: https://wac-cdn.atlassian.com/dam/jcr:580c367b-c240-453d-aa18-c7ced44324f9/hero-mac-screenshot.png?cdnVersion=1830
+[gitkraken]: https://1v5ymx3zt3y73fq5gy23rtnc-wpengine.netdna-ssl.com/wp-content/uploads/2021/03/gk-product-2.png
 
 <!-- COMENTÁRIOS -->
