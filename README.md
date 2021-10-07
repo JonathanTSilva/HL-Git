@@ -117,6 +117,9 @@ Uma outra opção de utilização do Git, é pelo aplicativo terceiro [Cmder][3]
 
 Para mais comandos relacionados ao editor vi, verificar esta página de [*Basic vi Commands*][4].
 
+<!-- Back to Top -->
+<a href="#meu-cheatsheet-de-git"><img width="40px" src="https://icons.veryicon.com/png/o/internet--web/property-2/back-to-top-1.png" align="right" /></a>
+
 ## 2 Primeiros Passos
 
 Primeiramente, é necessário configurar o espaço do Git em seu computador, adicionando Nome e Email. Para isso, abra o terminal Unix (de sua preferência) e digite:
@@ -163,6 +166,9 @@ Caso queira deletar por completo algum repositório criado localmente pelo `git 
 ```cmd
 (9) λ rm -rf .git
 ```
+
+<!-- Back to Top -->
+<a href="#meu-cheatsheet-de-git"><img width="40px" src="https://icons.veryicon.com/png/o/internet--web/property-2/back-to-top-1.png" align="right" /></a>
 
 ## 3. Comunicação com remotos (GitHub, BitBucket, GitLab)
 
@@ -294,6 +300,9 @@ OpenSSH_6.9p1, LibreSSL 2.1.8
 logged in as user.
 ```
 
+<!-- Back to Top -->
+<a href="#meu-cheatsheet-de-git"><img width="40px" src="https://icons.veryicon.com/png/o/internet--web/property-2/back-to-top-1.png" align="right" /></a>
+
 ## 4. Comandos Básicos
 
 Ao criar o seu repositório local de trabalho e iniciar o seu Git (como visto na seção [Primeiros Passos](#primeiros-passos)), inicia-se os trabalhos neste repositório e os comandos básicos para manuseio do mesmo são:
@@ -363,6 +372,9 @@ Mas o mais utilizado é para clonar repositórios do GitHub:
 (26) λ cd [DIR]
 (25.2) λ git clone [URL]
 ```
+
+<!-- Back to Top -->
+<a href="#meu-cheatsheet-de-git"><img width="40px" src="https://icons.veryicon.com/png/o/internet--web/property-2/back-to-top-1.png" align="right" /></a>
 
 ## 5. Comandos Intermediários e Avançados
 
@@ -678,6 +690,9 @@ Assim, ao final do exemplo de rebase, os commits ficaram:
 
 O rebase é muito utilizado para quando você quiser ter um cenário linear do seu projeto, trazendo tudo das *branchs* para um só uma. Mas há alguns pontos que necessitam destaque: segurança e rastreabilidade. O problema é que o rebase altera o histórico, assim como outros comandos do git (como os que levam o atributo --hard). Por isto ele é recomendado apenas em casos bem específicos. O Git não tem a premissa de proteger a qualquer custo o histórico de alterações mas de, por padrão, preservar isto.
 
+<!-- Back to Top -->
+<a href="#meu-cheatsheet-de-git"><img width="40px" src="https://icons.veryicon.com/png/o/internet--web/property-2/back-to-top-1.png" align="right" /></a>
+
 ## 6. Mensagens de Erro, Workarounds e Dicas
 
 ### 6.1. Alterações Não Versionadas
@@ -721,6 +736,9 @@ O segundo link mostra o `git reflog`, que você pode usar para determinar o SHA-
 ### 6.3. Padronizando Commits
 
 Commitzen
+
+<!-- Back to Top -->
+<a href="#meu-cheatsheet-de-git"><img width="40px" src="https://icons.veryicon.com/png/o/internet--web/property-2/back-to-top-1.png" align="right" /></a>
 
 ## 7. Utilidades
 
@@ -807,7 +825,10 @@ Exemplo da utilização de `grep`:
 > v1.4.1
 ```
 
-## 8. Ferramentas Gráficas
+<!-- Back to Top -->
+<a href="#meu-cheatsheet-de-git"><img width="40px" src="https://icons.veryicon.com/png/o/internet--web/property-2/back-to-top-1.png" align="right" /></a>
+
+## 8. Ferramentas Gráficas 
 
 Nesta seção veremos as ferramentas gráficas mais famosas para apoio na utilização do Git (exceto extensões e editores).
 
