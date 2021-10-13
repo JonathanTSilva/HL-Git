@@ -1,5 +1,5 @@
 <!-- Simple logo -->
-<a href="#meu-cheatsheet-de-git"><img width="500px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-gtjD0wp0QJuTGvA0pjHgFYgWPmzb92tu-w&usqp=CAU" align="right" /></a>
+<a href="#meu-cheatsheet-de-git"><img width="400px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-gtjD0wp0QJuTGvA0pjHgFYgWPmzb92tu-w&usqp=CAU" align="right" /></a>
 
 # Meu CheatSheet de Git
 
