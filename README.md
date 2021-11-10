@@ -1,5 +1,5 @@
 <!-- Simple logo -->
-<a href="#meu-cheatsheet-de-git"><img width="400px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-gtjD0wp0QJuTGvA0pjHgFYgWPmzb92tu-w&usqp=CAU" align="right" /></a>
+<a href="#meu-cheatsheet-de-git"><img width="400px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Docker_%28container_engine%29_logo.svg/2560px-Docker_%28container_engine%29_logo.svg.png" align="right" /></a>
 
 # Meu CheatSheet de Git
 
