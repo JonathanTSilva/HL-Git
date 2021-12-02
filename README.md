@@ -3,7 +3,7 @@
 
 # Meu guia de Git
 
-Passo a passo que adoto na minha utilização do git.
+🛠 Passo a passo que adoto na minha utilização do git.
 
 - [Meu CheatSheet de Git](#meu-cheatsheet-de-git)
   - [1. Instalação e Configuração](#1-instalação-e-configuração)
