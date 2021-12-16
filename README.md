@@ -11,7 +11,7 @@
     - [1.2. Cmder](#12-cmder)
       - [1.2.1. Keyboard Shortcuts](#121-keyboard-shortcuts)
       - [1.2.2. Comandos para o vi](#122-comandos-para-o-vi)
-  - [2 Primeiros Passos](#2-primeiros-passos)
+  - [2. Primeiros Passos](#2-primeiros-passos)
   - [3. Comunicação com remotos (GitHub, BitBucket, GitLab)](#3-comunicação-com-remotos-github-bitbucket-gitlab)
     - [3.1. Criando chave SSH](#31-criando-chave-ssh)
       - [3.1.1. PuTTY](#311-putty)
@@ -123,7 +123,7 @@ Para mais comandos relacionados ao editor vi, verificar esta página de [*Basic 
 <!-- Back to Top -->
 <a href="#meu-cheatsheet-de-git"><img width="40px" src="https://icons.veryicon.com/png/o/internet--web/property-2/back-to-top-1.png" align="right" /></a>
 
-## 2 Primeiros Passos
+## 2. Primeiros Passos
 
 Primeiramente, é necessário configurar o espaço do Git em seu computador, adicionando Nome e Email. Para isso, abra o terminal Unix (de sua preferência) e digite:
 
