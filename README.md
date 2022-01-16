@@ -744,7 +744,7 @@ O segundo link mostra o `git reflog`, que você pode usar para determinar o SHA-
 
 ### 6.3. Padronizando Commits
 
-Commitzen
+Para maiores informações envolvendo a padronização de commits, acesse a documentação [Padronização de commits - Jonathan T. Silva][16].
 
 <!-- Back to Top -->
 <a href="#meu-cheatsheet-de-git"><img width="40px" src="https://icons.veryicon.com/png/o/internet--web/property-2/back-to-top-1.png" align="right" /></a>
@@ -900,6 +900,7 @@ Esta é provavelmente a melhor característica no momento, uma visão gráfica m
 [13]: https://stackoverflow.com/questions/34519665/how-can-i-move-head-back-to-a-previous-location-detached-head-undo-commits/34519716#34519716
 [14]: https://www.sourcetreeapp.com/
 [15]: https://www.gitkraken.com/
+[16]: https://github.com/JonathanTSilva/TP-Standardization/blob/main/Articles/Padroniza%C3%A7%C3%A3o%20de%20commits.md
 
 <!-- ARQUIVOS -->
 
