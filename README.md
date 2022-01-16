@@ -144,13 +144,19 @@ Ao iniciar um projeto, deve-se mostrar para o Git que esta pasta é um repositó
 (7) λ ls
 ```
 
+Para adicionar um repositório remoto à uma pasta já existente localmente, linkar o remoto com (8):
+
+```cmd
+(8) λ git remote add origin [LINKSSH]
+```
+
 Ao inicializar o Git (5), é criada uma pasta oculta com o nome .git, sendo possível enxergá-la com uma opção -a para o código dir (6) ou utilizar o (7). Também é criada uma branch (que vem com o nome *default* `master`). Se no caso a branch padrão do GitHub estiver com outro nome, basta alterar no próprio GitHub ou alterar a do Git local com os seguintes comandos:
 
 ```cmd
-(8.1) λ git branch
-(8.2) λ git branch --list
-(8.3) λ git branch -m [ANTIGO] [NOVO]
-(8.4) λ git branch -a
+(9.1) λ git branch
+(9.2) λ git branch --list
+(9.3) λ git branch -m [ANTIGO] [NOVO]
+(9.4) λ git branch -a
 ```
 
 A diferença entre o comando (8.1/8.2) e (8.4) é que o primeiro lista somente as *branchs* locais, já o segundo lista tanto as locais quanto remotas.
@@ -158,8 +164,8 @@ A diferença entre o comando (8.1/8.2) e (8.4) é que o primeiro lista somente a
 Para excluir uma branch local:
 
 ```cmd
-(8.5) λ git branch -d [BRANCH]
-(8.6) λ git branch -D [BRANCH]
+(9.5) λ git branch -d [BRANCH]
+(9.6) λ git branch -D [BRANCH]
 ```
 
 Utilizar (8.5) para apagar somente a branch se você já tiver feito merge ou enviado as alterações para seu repositório remoto, evitando perda de código, ou (8.6), para ignorar o estado da sua branch, forçando a sua remoção. Vale ressaltar que não é possível realizar esta alteração se estiver `checkout` na branch. Mas se por acaso se arrependa da remoção indevida da branch, basta trazê-la de novo ao local por `git checkout [BRANCH]`.
@@ -167,7 +173,7 @@ Utilizar (8.5) para apagar somente a branch se você já tiver feito merge ou en
 Caso queira deletar por completo algum repositório criado localmente pelo `git init`:
 
 ```cmd
-(9) λ rm -rf .git
+(10) λ rm -rf .git
 ```
 
 <!-- Back to Top -->
@@ -184,7 +190,7 @@ O SSH (*Secure Shell* ou *Secure Socket Shell*) é um protocolo que permite a co
 Primeiramente, deve-se criar uma pasta do **%UserProfile%** denominada **.ssh**, na qual guardará todas as chaves do usuário. É recomendado apenas uma de cada. Para verificar se você já tem alguma chave cadastrada, dê o seguinte comando em seu Git Bash:
 
 ```cmd
-(10) λ ls -al ~/.ssh
+(11) λ ls -al ~/.ssh
 ```
 
 Também é possível criar uma chave de segurança de hardware para que cada vez que utilizar uma máquina diferente, não precise gerar outras chaves. Entretanto, é necessário ter o hardware para este tipo de chave.
@@ -203,20 +209,20 @@ Também é possível criar uma chave de segurança de hardware para que cada vez
 Cole o texto abaixo, substituindo o endereço de e-mail pelo seu GitHub.
 
 ```cmd
-(11.1) λ ssh-keygen -t rsa -b 2048 -C "[EMAIL]"
+(12.1) λ ssh-keygen -t rsa -b 2048 -C "[EMAIL]"
 ```
 
 Você pode optar por outro algoritmo como o Ed25519:
 
 ```cmd
-(11.2) λ ssh-keygen -t ed25519 -C "your_email@example.com"
+(12.2) λ ssh-keygen -t ed25519 -C "your_email@example.com"
 ```
 
 Caso queira simplificar, apenas o comando abaixo realizará o trabalho:
 
 ```cmd
-(11.3) λ ssh-keygen
-(11.4) λ ssh-keygen -t rsa
+(12.3) λ ssh-keygen
+(12.4) λ ssh-keygen -t rsa
 ```
 
 Esses comandos criaram uma nova chave SSH, usando o e-mail fornecido como uma etiqueta. Quando aparecer a solicitação "Enter a file in which to save the key" (Insira um arquivo no qual salvar a chave), pressione Enter. O local padrão do arquivo será aceito. Em seguida, digite uma frase secreta segura para essa senha gerada.
@@ -224,9 +230,9 @@ Esses comandos criaram uma nova chave SSH, usando o e-mail fornecido como uma et
 No próximo tópico, será mostrado um código .bash que adiciona a chave criada ao `ssh-agent`, mas caso queira inseri-la manualmente, seguir os códigos abaixo:
 
 ```cmd
-(12) λ eval "$(ssh-agent -s)"
+(13) λ eval "$(ssh-agent -s)"
 > Agent pid 59566
-(13) λ ssh-add ~/.ssh/id_ed25519
+(14) λ ssh-add ~/.ssh/id_ed25519
 ```
 
 ### 3.2. Cruzando chave SSH
@@ -273,7 +279,7 @@ Este arquivo deve ser colocado na pasta raiz do usuário (**%UserProfile%**) e r
 Caso o seu repositório local esteja em uma máquina na rede com proxy ou firewall e aconteça alguns problemas, é necessário configurar o git para aquele proxy, login e usuário, com os comando abaixo:
 
 ```cmd
-(14) λ git config --global http.proxy http://proxyuser:proxypwd@proxy.server.com:8080
+(15) λ git config --global http.proxy http://proxyuser:proxypwd@proxy.server.com:8080
 ```
 
 É necessário alterar `proxyuser` para o seu usuário do proxy, `proxypwd` para a senha do usuário, `proxy.server.com` para o server e `8080` para a porta configurada.
@@ -311,9 +317,9 @@ logged in as user.
 Ao criar o seu repositório local de trabalho e iniciar o seu Git (como visto na seção [Primeiros Passos](#primeiros-passos)), inicia-se os trabalhos neste repositório e os comandos básicos para manuseio do mesmo são:
 
 ```cmd
-(15) λ git status
-(16) λ git add [ARQUIVO]
-(17) λ git commit -m "[MSG]"
+(16) λ git status
+(17) λ git add [ARQUIVO]
+(18) λ git commit -m "[MSG]"
 ```
 
 Quando é realizada alguma alteração nos arquivos, ao dar o (15), será mostrado todos aqueles arquivos que estão diferentes do Git local. Atenção às cores: quando estiverem vermelhos é porque não foi passado para o Git quais arquivos devem ser *staged* (fica na *Staging Area*). Caso queria adicionar todos os arquivos (16), adicionar `git add --all` ou `git add .` ou `git add -A`. Uma outra observação válida é sobre adicionar outra sub-mensagem ao commit (17) com uma outra opção `-m "MSG"` resultando em `git commit -m "[MSG1]" -m "[MSG2]"`. O `git commit` (apenas) abre o ambiente vi de edição para que essas mensagens sejam editadas lá (verificar sub-sub-seção [Comandos para VI](#comandos-para-o-vi)).
@@ -323,9 +329,9 @@ Quando é realizada alguma alteração nos arquivos, ao dar o (15), será mostra
 Para verificar alterações no repositório local, segue os códigos:
 
 ```cmd
-(18.1) λ git diff
-(18.2) λ git diff --cached
-(18.3) λ git diff --staged
+(19.1) λ git diff
+(19.2) λ git diff --cached
+(19.3) λ git diff --staged
 ```
 
 O (18.1) mostra a diferença que ocorreu entre o meu repositório de trabalho e as alterações do último commit. No (18.2) e (18.3), as diferenças da área de preparação (*Staging Area*) são apresentadas. Caso goste de todas as alterações mostradas nessas diferenças, mandar para staged com o `git add`.
@@ -333,7 +339,7 @@ O (18.1) mostra a diferença que ocorreu entre o meu repositório de trabalho e 
 Já para listar o histórico de alterações, tem-se o comando:
 
 ```cmd
-(19) λ git log
+(20) λ git log
 ```
 
 No (19), as modificações são listadas sempre da mais recente (topo) para mais antiga e cada uma carrega um número **SHA** (algoritmo que consegue gerar um número único) para fácil rastreio do commit e cada um carrega o Nome, Email, Data e Mensagem de Commit. Note-se também nesta etapa o conceito **HEAD**. **HEAD** é um ponteiro que aponta sempre para última modificação de uma branch. Há variações do `git log` que estão disponíveis no arquivo [CRIAR ARQUIVO COM TODOS OS COMANDOS] [Minhas Aliases](#minhas-aliases).
@@ -341,9 +347,9 @@ No (19), as modificações são listadas sempre da mais recente (topo) para mais
 Para retornar a commits anteriores, usar o comando abaixo, sendo que não é necessário copiar o número SHA inteiro do commit, apenas os 5/6 primeiros dígitos já bastam.
 
 ```cmd
-(20.1) λ git checkout [nºSHA]
-(20.2) λ git checkout [nomeARQUIVO.txt]
-(21.1) λ git reset --hard
+(21.1) λ git checkout [nºSHA]
+(21.2) λ git checkout [nomeARQUIVO.txt]
+(22.1) λ git reset --hard
 ```
 
 Para retornar ao HEAD, utilizar o `git checkout [BRANCH]`. Há parâmetros que podem ser passados com o `checkout` como `-b`, que já cria e muda de branch de uma forma direta. No (20.2), é desfeito toda alteração do arquivo em questão e também, quando deletado algum, é possível recuperá-lo através deste programa. Mas note que se muitos arquivos forem modificados (excluídos), fica inviável refazer as alterações com este comando um po um. Assim, o (21.1) força o reset para o último commit. Se for apenas `git reset` é mostrado as opções de reset para escolha.
@@ -351,12 +357,12 @@ Para retornar ao HEAD, utilizar o `git checkout [BRANCH]`. Há parâmetros que p
 Caso opte por [retornar para um commit][5], há a opção de reset:
 
 ```cmd
-(21.2) λ git reset --hard HEAD~1
-(21.3) λ git reset --soft HEAD~1
-(21.4) λ git reset --hard [nºSHA]
-(22) λ git push origin HEAD --force
-(23) λ git add .
-(24) λ git commit -c ORIG_HEAD
+(22.2) λ git reset --hard HEAD~1
+(22.3) λ git reset --soft HEAD~1
+(22.4) λ git reset --hard [nºSHA]
+(23) λ git push origin HEAD --force
+(24) λ git add .
+(25) λ git commit -c ORIG_HEAD
 ```
 
 A diferença entre a opção hard e soft é que se utilizar o hard, os commits posteriores ao do retorno serão perdidos, diferentemente do soft, que manterá todos. (21.2) e (21.3) apenas retornam um commit. Caso queira retornar mais, trocar o 1 para tanto de commits anteriores, ou faça a alteração pelo SHA RASH (21.4). Se o commit foi enviado para o repositório remoto, a opção (22) deve ser realizada. Assim, ao refazer as alterações, um novo `git add` deve ser feito e a mensagem de commit pode ser trocada com (24).
@@ -366,14 +372,14 @@ A diferença entre a opção hard e soft é que se utilizar o hard, os commits p
 É possível não apenas clonar em uma URL remota, mas nos arquivos locais como:
 
 ```cmd
-(25.1) λ git clone [OLD.DIRECTORY] [NEW.DIRECTORY]
+(26.1) λ git clone [OLD.DIRECTORY] [NEW.DIRECTORY]
 ```
 
 Mas o mais utilizado é para clonar repositórios do GitHub:
 
 ```cmd
-(26) λ cd [DIR]
-(25.2) λ git clone [URL]
+(27) λ cd [DIR]
+(26.2) λ git clone [URL]
 ```
 
 <!-- Back to Top -->
@@ -388,8 +394,8 @@ Esta seção necessita necessariamente da configuração previamente realizada n
 Para enviar as alterações (commits) realizados localmente, é necessário "empurrar" com os comandos:
 
 ```cmd
-(27.1) λ git push
-(27.2) λ git push -u origin [BRANCH]
+(28.1) λ git push
+(28.2) λ git push -u origin [BRANCH]
 ```
 
 Caso não exista nenhum repositório remoto com o nome da branch indicada, será preciso enviar o comando `git push --set-upstream origin [BRANCH]`. Para simplificar, a opção `-u` substitui este comando (27.2).
@@ -399,8 +405,8 @@ Caso não exista nenhum repositório remoto com o nome da branch indicada, será
 Em um cenário real, seriam duas pessoas trabalhando no mesmo repositório remoto, e consequentemente, com dois locais em diferentes estados. Caso o primeiro não tenha feito o `checkout` neste repositório, não será mostrado no comando `branch`. Mas mesmo que ele faça em alguma branch já criada pelo segundo, esta só ira aparecer no seu repositório local se tiver trazido o remoto pelo código:
 
 ```cmd
-(28.1) λ git pull
-(28.2) λ git fetch
+(29.1) λ git pull
+(29.2) λ git fetch
 ```
 
 Ainda assim, mesmo com o comando (28.1), se não for feito o checkout, não será mostrado as novas branchs no `git branch`. Para verificar quais são as novas, utilizar a opção dada em (8.4).
@@ -412,7 +418,7 @@ Como uma outra alternativa mais segura para o (28.1), há o (28.2), que baixa co
 Os comandos para remoção da branch local podem ser revisados em (8.5) e (8.6). No entanto, para remover uma beanch de um servidor, é necessário o seguinte comando:
 
 ```cmd
-(29) λ git push --delete origin [BRANCH]
+(30) λ git push --delete origin [BRANCH]
 ```
 
 Tome muito cuidado com este comando caso trabalhe em grupo, pois pode ser que alguém esteja editando está branch e perderá o backup do servidor. **ATENÇÃO: ALINHE COM TODOS OS INTEGRANTES DO SEU TIME!**. Para confirmar que deu certo, abrir o GitHub e ver que a branch sumiu.
@@ -422,8 +428,8 @@ Tome muito cuidado com este comando caso trabalhe em grupo, pois pode ser que al
 O comando para renomear uma branch local, basta seguir as intruções abaixo:
 
 ```cmd
-(30.1) λ git branch -m [nomeANTIGO] [nomeNOVO]
-(30.2) λ git branch -m [nomeNOVO]
+(31.1) λ git branch -m [nomeANTIGO] [nomeNOVO]
+(31.2) λ git branch -m [nomeNOVO]
 ```
 
 Adicionar a opção `-m` ao comando branch para realizar a mudança e em seguida, digitar o nome antigo da branch, seguido do novo, caso não esteja na branch de alteração, ou apenas o novo nome se estiver.
@@ -442,7 +448,7 @@ Mas **‼ ATENÇÃO:** para fazer este tipo de alteração, **ALINHE COM TODOS O
 Incorpora as alterações dos commits citados (desde o momento em que os seus históricos divergirem do ramo atual) para dentro do ramo atual. Este comando é utilizado pelo `git pull` para incorporar as alterações vindas de outro repositório e pode ser utilizado manualmente para mesclar as alterações de uma branch para outra.
 
 ```cmd
-(31) λ git merge [BRANCH]
+(32) λ git merge [BRANCH]
 ```
 
 O Git merge traz as alterações já com um commit de `Merged`. Caso não queria este commit, basta utilizar a opção `--no-commit`. Uma observação importante é que o comando só realiza o commit se não existir conflitos, entretanto, se houver, é necessário tratá-los manualmente para a finalização do merge (ver subseção [5.6](#56-resolvendo-conflitos)).
