@@ -232,7 +232,26 @@ No próximo tópico, será mostrado um código .bash que adiciona a chave criada
 ```cmd
 (13) λ eval "$(ssh-agent -s)"
 > Agent pid 59566
-(14) λ ssh-add ~/.ssh/id_ed25519
+(14.1) λ ssh-add -l
+(14.2) λ ssh-add ~/.ssh/[KEY]
+```
+
+O comando (14.1) listará as chaves privadas atuais disponíveis.
+
+O `ssh-agent` retorna comandos para definir certas variáveis de ambiente no shell. Os comandos de saída por padrão são compatíveis com `/bin/sh` e `/bin/bash`. Para gerar comandos para o C-shell (`/bin/csh` ou `/bin/tcsh`), adicione a opção `-c`.
+
+A maneira mais fácil de verificar é ver o valor da variável de ambiente `SSH_AGENT_SOCK`. Se estiver definido, o agente está presumidamente rodando. Isso pode ser verificado com:
+
+```cmd
+echo $SSH_AGENT_SOCK
+```
+
+Além disso, para permitir logins baseados em chave para servidores, a autenticação de chave pública deve ser habilitada no servidor. No **OpenSSH**, já está habilitado por padrão e é controlado pela opção **PubkeyAuthentication** em `sshd_config`.
+
+Caso decida sair do agente, entre com o comando:
+
+```cmd
+kill $SSH_AGENT_PID
 ```
 
 ### 3.2. Cruzando chave SSH
@@ -273,6 +292,9 @@ alias gs='git status'
 ```
 
 Este arquivo deve ser colocado na pasta raiz do usuário (**%UserProfile%**) e rodado uma única vez para que crie os outros arquivos necessários.
+
+Na maioria dos sistemas Linux, o `ssh-agent` é configurado e executado ao início do sistema automaticamente, e nenhumam ação adicional é necessária para sua utilização. No entanto, uma chave SSH ainda deve ser criada pelo usuário (vide [3.1 - Criando chave SSH](#31-criando-chave-ssh)). Se o `ssh-agent` não iniciar automaticamente no login, realizar os passos apresentados em [3.1.2. - Criando chave SSH](#31-criando-chave-ssh):
+
 
 ### 3.3. Configuração com Proxy
 
