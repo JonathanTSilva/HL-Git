@@ -134,7 +134,7 @@ Primeiramente, é necessário configurar o espaço do Git em seu computador, adi
 (4) λ git config --list
 ```
 
-Nos comandos acima, podemos verificar a versão instalada do git (1), configurar o nome (2) e email (3) e em seguida, verificar se os dados foram cadastrados corretamente.
+Nos comandos acima, podemos verificar a versão instalada do git (1), configurar o nome (2) e email (3) e em seguida, verificar se os dados foram cadastrados corretamente. Para que o GitHub (ou semelhantes) reconheça suas contribuições para o projeto, é necessário que este email (especificado em (2)) em seu Git local esteja também cadastrado remotamente no GitHub (especificamente na aba de `Emails` em `Configurações`).
 
 Ao iniciar um projeto, deve-se mostrar para o Git que esta pasta é um repositório local:
 
