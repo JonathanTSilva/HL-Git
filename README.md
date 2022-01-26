@@ -404,6 +404,15 @@ Mas o mais utilizado é para clonar repositórios do GitHub:
 (26.2) λ git clone [URL]
 ```
 
+Entretanto, quando é realizado um clone, geralmente todo o repositório é incluído. Isso significa que não é obtido apenas os arquivos, mas todas as revisões de todos os arquivos já confirmados, além do histórico de cada confirmação. E se o seu repositório possuir muitos ativos, isso incluirá um longo histórico. O principal problema é que isso criará um gargalo nos pipelines de Integração Contínua (CI).
+
+Para contornar esse problema, é possível realizar um clone superficial (chamado Git Shallow Clone) que baixa apenas os commits mais recentes. Portanto, se o seu projeto tiver anos de história ou um histórico de milhares de commits, poderá selecionar uma profundidade específica (_depth_) para extrair (26.3). Também pode ser utilizado para acessar uma única branch (26.4).
+
+```cmd
+(26.3) λ git clone --depth [NUMERO] [URL]
+(26.4) λ git clone [URL] --branch [NOME] --single-branch [PASTA]
+```
+
 <!-- Back to Top -->
 <a href="#meu-cheatsheet-de-git"><img width="40px" src="https://icons.veryicon.com/png/o/internet--web/property-2/back-to-top-1.png" align="right" /></a>
 
@@ -770,6 +779,27 @@ Para maiores informações envolvendo a padronização de commits, acesse a docu
 
 <!-- Back to Top -->
 <a href="#meu-cheatsheet-de-git"><img width="40px" src="https://icons.veryicon.com/png/o/internet--web/property-2/back-to-top-1.png" align="right" /></a>
+
+### 6.4. Removendo Completamente o Histórico Indesejado
+
+Se você não precisar manter um histórico completo, poderá usar o conjunto de comandos abaixo para remover o histórico inteiro do seu repositório Git:
+
+```cmd
+git checkout --orphan freshBranch 
+git add -A 
+git commit 
+git branch -D master 
+git branch -m master 
+git push -f origin master 
+git gc --aggressive --prune=all 
+git push -f origin master
+```
+
+Com o repositório clonado em um diretório na sua estação de trabalho, use a opção `--orphan`, que retorna ao estado `init` com apenas um commit. Adicione todos os arquivos no caminho e confirme. Em seguida, exclua a branch `master` remota, renomeie a ramificação atual para `master`, para então, forçar o *push* de sua nova `master` para o ambiente de hospedagem de código. Por fim, remova todos os arquivos antigos com o comando `prune` e envie o novo estado para o controle remoto.
+
+Ao "podar" (_prune_) seus repositórios, você pode melhorar o desempenho da clonagem sem precisar usar **git shallow clone**. A eliminação do histórico indesejado torna seu repositório mais leve, permitindo que ele seja entregue mais rapidamente.
+
+> **Nota:** quer redefinir seu repositório local? Você também pode usar `git force clone` para substituir seu histórico completamente. Mas tenha cuidado, pois isso destruirá seu trabalho local.
 
 ## 7. Utilidades
 
