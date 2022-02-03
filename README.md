@@ -801,6 +801,32 @@ Ao "podar" (_prune_) seus repositórios, você pode melhorar o desempenho da clo
 
 > **Nota:** quer redefinir seu repositório local? Você também pode usar `git force clone` para substituir seu histórico completamente. Mas tenha cuidado, pois isso destruirá seu trabalho local.
 
+### 6.5. Removendo arquivos "untrackeds" locais
+
+Essa situação acontece quando não são necessárias as alterações realizadas depois do último commit e que não foram adicionadas no _track_ (`git add`). O comando utilizado aqui é o `git clean`. Ele limpa a árvore de trabalho removendo recursivamente os arquivos que não estão sob controle de versão, começando no diretório atual. Suporta as seguintes opções:
+
+```cmd
+git clean [-d] [-f] [-i] [-n] [-q] [-e <pattern>] [-x | -X] [--] <path>…
+```
+
+Assim sendo, o primeiro passo é mostrar o que será deletado com:
+
+```cmd
+git clean -n -d
+```
+
+Em sequência, limpe-os utilizando:
+
+```cmd
+git clean -f -d
+```
+
+- Para remover diretórios, execute `git clean -f -d` ou `git clean -fd`;
+- Para remover arquivos ignorados, execute `git clean -f -X` ou `git clean -fX`;
+- Para remover arquivos ignorados e não ignorados, execute `git clean -f -x` ou `git clean -fx`.
+
+Consulte a documentação do [git-clean][17] para obter mais informações.
+
 ## 7. Utilidades
 
 ### 7.1. GitFlow
@@ -953,6 +979,7 @@ Esta é provavelmente a melhor característica no momento, uma visão gráfica m
 [14]: https://www.sourcetreeapp.com/
 [15]: https://www.gitkraken.com/
 [16]: https://github.com/JonathanTSilva/TP-Standardization/blob/main/Articles/Padroniza%C3%A7%C3%A3o%20de%20commits.md
+[17]: http://git-scm.com/docs/git-clean
 
 <!-- ARQUIVOS -->
 
