@@ -144,7 +144,7 @@ Nós padronizamos os nossos _commits_ com o [Conventional Commits][2]. Confira m
 - Acionar processos de compilação e publicação;
 - Tornar mais fácil para as pessoas contribuírem com seus projetos, permitindo que elas explorem um histórico de commits mais estruturado.
 
-Para utilizá-lo, é preciso instalar a ferramenta [commitizen][3] em seu repositório, com os seguintes passos:
+Para utilizá-lo, é preciso instalar a ferramenta [commitizen][3] em seu repositório, seguindo os seguintes passos:
 
 1. Instalar com o comando: `npm install -g commitizen`;
 2. Em seguida, inicialize seu projeto para usar o adaptador cz-conventional-changelog digitando: `commitizen init cz-conventional-changelog --save-dev --save-exact`;
