@@ -5,11 +5,11 @@
 
 🛠 Passo a passo que adoto na minha utilização do git.
 
-- [Meu CheatSheet de Git](#meu-cheatsheet-de-git)
-  - [1. Instalação e Configuração](#1-instalação-e-configuração)
-    - [1.1. Visual Studio Code](#11-visual-studio-code)
+- [Meu guia de Git](#meu-guia-de-git)
+  - [1 Instalação e Configuração](#1-instalação-e-configuração)
+    - [1.1 Visual Studio Code](#11-visual-studio-code)
     - [1.2. Cmder](#12-cmder)
-      - [1.2.1. Keyboard Shortcuts](#121-keyboard-shortcuts)
+      - [1.2.1 *Keyboard Shortcuts*](#121-keyboard-shortcuts)
       - [1.2.2. Comandos para o vi](#122-comandos-para-o-vi)
   - [2. Primeiros Passos](#2-primeiros-passos)
   - [3. Comunicação com remotos (GitHub, BitBucket, GitLab)](#3-comunicação-com-remotos-github-bitbucket-gitlab)
@@ -20,14 +20,12 @@
     - [3.3. Configuração com Proxy](#33-configuração-com-proxy)
   - [4. Comandos Básicos](#4-comandos-básicos)
     - [4.1. Clonando Repositórios](#41-clonando-repositórios)
-  - [5. Comandos Intermediários e Avançados](#5-comandos-intermediários-e-avançados)
-    - [5.1. Enviando Branch para Remoto](#51-enviando-branch-para-remoto)
-    - [5.2. Atualizando Branch Local com o Remoto](#52-atualizando-branch-local-com-o-remoto)
-    - [5.3. Deletando Branch do Remoto](#53-deletando-branch-do-remoto)
-    - [5.4. Renomeando uma Branch](#54-renomeando-uma-branch)
-    - [5.5. Mesclando Alterações](#55-mesclando-alterações)
+    - [5.1 Enviando *Branch* para Remoto](#51-enviando-branch-para-remoto)
+    - [5.2 Atualizando *Branch* de Remoto](#52-atualizando-branch-de-remoto)
+    - [5.3 Deletando *Branch* do Remoto](#53-deletando-branch-do-remoto)
+    - [5.4 Renomeando uma *Branch*](#54-renomeando-uma-branch)
     - [5.6. Resolvendo Conflitos](#56-resolvendo-conflitos)
-    - [5.7. Pull Request](#57-pull-request)
+    - [5.7 Pull Request](#57-pull-request)
     - [5.8. Criando e Listando Tags](#58-criando-e-listando-tags)
       - [5.8.1. *Semantic Versioning*](#581-semantic-versioning)
     - [5.9. Stash](#59-stash)
@@ -37,29 +35,30 @@
     - [6.1. Alterações Não Versionadas](#61-alterações-não-versionadas)
     - [6.2. Desfazendo Commits](#62-desfazendo-commits)
     - [6.3. Padronizando Commits](#63-padronizando-commits)
+    - [6.4. Removendo Completamente o Histórico Indesejado](#64-removendo-completamente-o-histórico-indesejado)
+    - [6.5. Removendo arquivos "untrackeds" locais](#65-removendo-arquivos-untrackeds-locais)
   - [7. Utilidades](#7-utilidades)
     - [7.1. GitFlow](#71-gitflow)
     - [7.2. Alias](#72-alias)
       - [7.2.1. Minhas Aliases](#721-minhas-aliases)
+  - [8 Minhas Aliases](#8-minhas-aliases)
     - [7.3. Grep](#73-grep)
   - [8. Ferramentas Gráficas](#8-ferramentas-gráficas)
     - [8.1. kdiff3](#81-kdiff3)
       - [8.2. Sourcetree](#82-sourcetree)
       - [8.3. GitKraken](#83-gitkraken)
 
-## 1. Instalação e Configuração
-
-O download do Git pode ser feito pelo seguinte [LINK][1], e toda a instalação pode ser feita pelas opções *default* do instalador. Ou, no caso de um cliente Linux (Debian/Ubuntu), utilizar: `apt-get install git` (ver mais opções na [página de Linux do Git][2]). Vale ressaltar um ponto importante na instalação do Git que é a opção de "Adding Git-Bash to the new Windows Terminal"; este novo terminal do windows agrupa as ferramentas e shells de linha de comando, como prompt de comando, PowerShell, WSL e GitBash, caso marque a opção na instalação do Git. O download pode ser feito na Microsoft Store ou pelo seguinte [link][8].
+## 1 Instalação e Configuração
+O download do Git pode ser feito pelo seguinte [LINK][1], e toda a instalação pode ser feita pelas opções *default* do instalador. Ou, no caso de um cliente Linux (Debian/Ubuntu), utilizar: `apt-get install git` (ver mais opções na [página de Linux do Git][2]). Vale ressaltar um ponto importante na instalação do Git que é a opção de *"Adding Git-Bash to the new Windows Terminal"*; este novo terminal do *windows* agrupa as ferramentas e *shells* de linha de comando, como prompt de comando, *PowerShell*, *WSL* e *GitBash*, caso marque a opção na instalação do Git. O download pode ser feito na Microsoft Store ou pelo seguinte [link][8].
 
 Fica a dica de uma aplicação desenvolvida para uma melhor visualização de como funciona o Git, ou até mesmo, uma ferramenta para criar imagens para didática do Git: [Git-School][10].
 
 ![git-school][git-school]
 
-### 1.1. Visual Studio Code
+### 1.1 Visual Studio Code
+O *VSCode* é o editor de código-fonte mais utilizado do mundo. Uma de suas principais vantagens frente à outros editores é a utilização de extensões desenvolvidas pela comunidade, que inclui suporte para depuração, controle de versionamento Git incorporado (*Source Control*), realce de sintaxe, complementação inteligente de código, *snippets* e refatoração de código.. Neste tópico serão abordadas as melhores extensões para utilizar o Git com o *VSCode* da melhor forma e aproveitando os melhores recursos que o editor tem a oferecer.
 
-O VSCode é o editor de código-fonte mais utilizado do mundo. Uma de suas principais vantagens frente à outros editores é a utilização de extensões desenvolvidas pela comunidade, que inclui suporte para depuração, controle de versionamento Git incorporado (*Source Control*), realce de sintaxe, complementação inteligente de código, snippets e refatoração de código.. Neste tópico serão abordadas as melhores extensões para utilizar o Git com o VSCode da melhor forma e aproveitando os melhores recursos que o editor tem a oferecer.
-
-Um detalhe a acrescentar para este tópico a possibilidade de uma pasta `.vscode/` que contenha as informações específicas para esta integração, como um arquivo `extensions.json` que carrega as extensões recomendadas para uma melhor utilização de um determinado *workspace* (repositório):
+Um detalhe a acrescentar para este tópico é a possibilidade de uma pasta `.vcode/` que contenha as informações específicas para esta integração, como um arquivo `extensions.json` que carrega as extensões recomendadas para uma melhor utilização de um determinado *workspace* (repositório):
 
 ```json
 {
@@ -69,7 +68,7 @@ Um detalhe a acrescentar para este tópico a possibilidade de uma pasta `.vscode
 }
 ```
 
-Para mais dicas de instalação, teclas de atalho, plugins e integrações, ver material de apoio [1][9].
+Para mais dicas de instalação, teclas de atalho, *plugins* e integrações, ver material de apoio [1][9].
 
 **Source Control** <br>
 O Visual Studio Code integrou o gerenciamento de controle de origem (SCM) e inclui suporte Git pronto para uso. Muitos outros provedores de controle de origem estão disponíveis por meio de extensões no VS Code Marketplace.
@@ -98,11 +97,11 @@ Visualize um gráfico Git de seu repositório e execute facilmente ações Git a
 Uma outra opção de utilização do Git, é pelo aplicativo terceiro [Cmder][3]. Nele o git já vem instalado e basta realizar os seguintes passos para completar a configuração:
 
 1. Ao fazer o download do arquivo .zip, extrair todo o conteúdo dentro da pasta **.cmder** no **%UserProfile%**;
-2. Definir um atalho para o .exe do Cmder e enviar para o local de preferência;
-3. Ao abrir o Cmder, `Ctrl + T` e criar um novo console como `{bash::mintty as Admin}` para entrar como um editor Unix. Para não ficar fazendo isso toda vez, realizar as seguintes alterações:
-   - <kbd>Settings</kbd> > <kbd>Startup</kbd> > Check "Specified named task" > Choose <kbd>{bash::mintty as Admin}</kbd> > <kbd>Save Settings</kbd>
+2. Definir um atalho para o .exe do *Cmder* e enviar para o local de preferência;
+3. Ao abrir o *Cmder*, `Ctrl + T` e criar um novo console como `{bash::mintty as Admin}` para entrar como um editor *Unix*. Para não ficar fazendo isso toda vez, realizar as seguintes alterações:
+   * <kbd>Settings</kbd> > <kbd>Startup</kbd> > Check "Specified named task" > Choose <kbd>{bash::mintty as Admin}</kbd> > <kbd>Save Settings</kbd>
 
-#### 1.2.1. Keyboard Shortcuts
+#### 1.2.1 *Keyboard Shortcuts*
 
 <kbd>Ctrl</kbd>+<kbd>L</kbd> - Limpar a tela do terminal
 
@@ -187,13 +186,13 @@ Para realizar a comunicação entre o Git local e aplicações remotas é necess
 
 O SSH (*Secure Shell* ou *Secure Socket Shell*) é um protocolo que permite a conexão com servidores remotos, de forma criptografada e mais segura, usando um par de chaves (RSA, DSA...). Há duas principais formas de criarmos essa chave: utiliazando um software terceiro - PuTTY, ou criando por linha de comando.
 
-Primeiramente, deve-se criar uma pasta do **%UserProfile%** denominada **.ssh**, na qual guardará todas as chaves do usuário. É recomendado apenas uma de cada. Para verificar se você já tem alguma chave cadastrada, dê o seguinte comando em seu Git Bash:
+Primeiramente, deve-se criar uma pasta do **%UserProfile%** denominada **.ssh**, a qual guardará todas as chaves do usuário. É recomendado apenas uma de cada. Para verificar se você já tem alguma chave cadastrada, dê o seguinte comando em seu *Git Bash*:
 
 ```cmd
 (11) λ ls -al ~/.ssh
 ```
 
-Também é possível criar uma chave de segurança de hardware para que cada vez que utilizar uma máquina diferente, não precise gerar outras chaves. Entretanto, é necessário ter o hardware para este tipo de chave.
+Também é possível criar uma chave de segurança de *hardware* para que cada vez que utilizar uma máquina diferente, não precise gerar outras chaves. Entretanto, é necessário ter o *hardware* para este tipo de chave.
 
 #### 3.1.1. PuTTY
 
@@ -225,7 +224,7 @@ Caso queira simplificar, apenas o comando abaixo realizará o trabalho:
 (12.4) λ ssh-keygen -t rsa
 ```
 
-Esses comandos criaram uma nova chave SSH, usando o e-mail fornecido como uma etiqueta. Quando aparecer a solicitação "Enter a file in which to save the key" (Insira um arquivo no qual salvar a chave), pressione Enter. O local padrão do arquivo será aceito. Em seguida, digite uma frase secreta segura para essa senha gerada.
+Esses comandos criaram uma nova chave SSH, usando o e-mail fornecido como uma etiqueta. Quando aparecer a solicitação "*Enter a file in which to save the key*" (Insira um arquivo no qual salvar a chave), presssione *Enter*. O local padrão do arquivo será aceito. Em seguida, digite uma frase secreta segura para essa senha gerada.
 
 No próximo tópico, será mostrado um código .bash que adiciona a chave criada ao `ssh-agent`, mas caso queira inseri-la manualmente, seguir os códigos abaixo:
 
@@ -260,7 +259,7 @@ Após criada a chave SSH, é necessário avisar para a sua conta do GitHub qual 
 
 - <kbd>Settings</kbd> > <kbd>SSH and GPG keys</kbd> > <kbd>New SSH key</kbd> > Coloca o título de preferência e cole todo o conteúdo da chave pública gerada no campo key
 
-Deve-se avisar também ao cliente remoto uma forma de como autenticar a sua chave local. Uma das que mais facilitam essa autenticação é a criação de um arquivo `.bashrc`, assim, sempre que o Cmder ou outro edito de texto for aberto, pedirá sua senha da chave privada para que haja a conexão.
+Deve-se avisar também ao cliente remoto uma forma de como autenticar a sua chave local. Uma das que mais facilitam essa autenticação é a criação de um arquivo `.bashrc`, assim, sempre que o *Cmder* ou outro edito de texto for aberto, pedirá sua senha da chave privada para que haja a conexão.
 
 Abaixo está um exemplo de um `.bashrc` utilizado com variáveis Alias:
 
@@ -304,9 +303,9 @@ Caso o seu repositório local esteja em uma máquina na rede com proxy ou firewa
 (15) λ git config --global http.proxy http://proxyuser:proxypwd@proxy.server.com:8080
 ```
 
-É necessário alterar `proxyuser` para o seu usuário do proxy, `proxypwd` para a senha do usuário, `proxy.server.com` para o server e `8080` para a porta configurada.
+É necessário alterar `proxyuser` para o seu usuário do *proxy*, `proxypwd` para a senha do usuário, `proxy.server.com` para o server e `8080` para a porta configurada.
 
-Em alguns casos o https também deve ser configurado. Se mesmo realizando a etapa acima não resolver, é necessário adicionar a chave manualmente na config do git seguindo os passos deste [LINK][6]
+Em alguns casos o https também deve ser configurado. Se mesmo realizando a etapa acima não resolver, é necessário adicionar a chave manualmente na *config* do git seguindo os passos deste [LINK][6]
 
 ```cmd
 $ ssh -Tv git@bitbucket.org
@@ -356,7 +355,7 @@ Para verificar alterações no repositório local, segue os códigos:
 (19.3) λ git diff --staged
 ```
 
-O (18.1) mostra a diferença que ocorreu entre o meu repositório de trabalho e as alterações do último commit. No (18.2) e (18.3), as diferenças da área de preparação (*Staging Area*) são apresentadas. Caso goste de todas as alterações mostradas nessas diferenças, mandar para staged com o `git add`.
+O (18.1) mostra a diferença que ocorreu entre o meu repositório de trabalho e as alterações do último *commit*. No (18.2) e (18.3), as diferenças da área de preparação (*Staging Area*) são apresentadas. Caso goste de todas as alterações mostradas nessas diferenças, mandar para *staged* com o `git add`.
 
 Já para listar o histórico de alterações, tem-se o comando:
 
@@ -364,9 +363,9 @@ Já para listar o histórico de alterações, tem-se o comando:
 (20) λ git log
 ```
 
-No (19), as modificações são listadas sempre da mais recente (topo) para mais antiga e cada uma carrega um número **SHA** (algoritmo que consegue gerar um número único) para fácil rastreio do commit e cada um carrega o Nome, Email, Data e Mensagem de Commit. Note-se também nesta etapa o conceito **HEAD**. **HEAD** é um ponteiro que aponta sempre para última modificação de uma branch. Há variações do `git log` que estão disponíveis no arquivo [CRIAR ARQUIVO COM TODOS OS COMANDOS] [Minhas Aliases](#minhas-aliases).
+No (19), as modificações são listadas sempre da mais recente (topo) para mais antiga e cada uma carrega um número **SHA** (algoritmo que consegue gerar um número único) para fácil rastreio do *commit* e cada um carrega o Nome, Email, Data e Mensagem de Commit. Note-se também nesta etapa o conceito **HEAD**. **HEAD** é um ponteiro que aponta sempre para última modificação de uma *branch*. Há variações do `git log` que estão disponíveis no arquivo [CRIAR ARQUIVO COM TODOS OS COMANDOS] [Minhas Aliases](#minhas-aliases).
 
-Para retornar a commits anteriores, usar o comando abaixo, sendo que não é necessário copiar o número SHA inteiro do commit, apenas os 5/6 primeiros dígitos já bastam.
+Para retornar a *commits* anteriores, usar o comando abaixo, sendo que não é necessário copiar o número SHA inteiro do *commit*, apenas os 5/6 primeiros dígitos já bastam.
 
 ```cmd
 (21.1) λ git checkout [nºSHA]
@@ -374,9 +373,9 @@ Para retornar a commits anteriores, usar o comando abaixo, sendo que não é nec
 (22.1) λ git reset --hard
 ```
 
-Para retornar ao HEAD, utilizar o `git checkout [BRANCH]`. Há parâmetros que podem ser passados com o `checkout` como `-b`, que já cria e muda de branch de uma forma direta. No (20.2), é desfeito toda alteração do arquivo em questão e também, quando deletado algum, é possível recuperá-lo através deste programa. Mas note que se muitos arquivos forem modificados (excluídos), fica inviável refazer as alterações com este comando um po um. Assim, o (21.1) força o reset para o último commit. Se for apenas `git reset` é mostrado as opções de reset para escolha.
+Para retornar ao HEAD, utilizar o `git checkout [BRANCH]`. Há parâmetros que podem ser passados com o `checkout` como `-b`, que já cria e muda de *branch* de uma forma direta. No (20.2), é desfeito toda alteração do arquivo em questão e também, quando deletado algum, é possível recuperá-lo através deste programa. Mas note que se muitos arquivos forem modificados (excluídos), fica inviável refazer as alterações com este comando um por um. Assim, o (21.1) força o *reset* para o último *commit*. Se for apenas `git reset` são mostradas as opções de *reset* para escolha.
 
-Caso opte por [retornar para um commit][5], há a opção de reset:
+Caso opte por [retornar para um commit][5], há a opção de *reset*:
 
 ```cmd
 (22.2) λ git reset --hard HEAD~1
@@ -387,7 +386,7 @@ Caso opte por [retornar para um commit][5], há a opção de reset:
 (25) λ git commit -c ORIG_HEAD
 ```
 
-A diferença entre a opção hard e soft é que se utilizar o hard, os commits posteriores ao do retorno serão perdidos, diferentemente do soft, que manterá todos. (21.2) e (21.3) apenas retornam um commit. Caso queira retornar mais, trocar o 1 para tanto de commits anteriores, ou faça a alteração pelo SHA RASH (21.4). Se o commit foi enviado para o repositório remoto, a opção (22) deve ser realizada. Assim, ao refazer as alterações, um novo `git add` deve ser feito e a mensagem de commit pode ser trocada com (24).
+A diferença entre a opção *hard* e *soft* é que se utilizar o *hard*, os *commits* posteriores ao do retorno serão perdidos, diferentemente do *soft*, que manterá todos. (21.2) e (21.3) apenas retornam um *commit*. Caso queira retornar mais, trocar o 1 para tanto de *commits* anteriores, ou faça a alteração pelo SHA RASH (21.4). Se o *commit* foi enviado para o repositório remoto, a opção (22) deve ser realizada. Assim, ao refazer as alterações, um novo `git add` deve ser feito e a mensagem de *commit* pode ser trocada com (24).
 
 ### 4.1. Clonando Repositórios
 
@@ -397,7 +396,7 @@ A diferença entre a opção hard e soft é que se utilizar o hard, os commits p
 (26.1) λ git clone [OLD.DIRECTORY] [NEW.DIRECTORY]
 ```
 
-Mas o mais utilizado é para clonar repositórios do GitHub:
+Mas o mais utilizado é para clonar repositórios do *GitHub*:
 
 ```cmd
 (27) λ cd [DIR]
@@ -406,91 +405,75 @@ Mas o mais utilizado é para clonar repositórios do GitHub:
 
 Entretanto, quando é realizado um clone, geralmente todo o repositório é incluído. Isso significa que não é obtido apenas os arquivos, mas todas as revisões de todos os arquivos já confirmados, além do histórico de cada confirmação. E se o seu repositório possuir muitos ativos, isso incluirá um longo histórico. O principal problema é que isso criará um gargalo nos pipelines de Integração Contínua (CI).
 
-Para contornar esse problema, é possível realizar um clone superficial (chamado Git Shallow Clone) que baixa apenas os commits mais recentes. Portanto, se o seu projeto tiver anos de história ou um histórico de milhares de commits, poderá selecionar uma profundidade específica (_depth_) para extrair (26.3). Também pode ser utilizado para acessar uma única branch (26.4).
+Esta seção necessita necessariamente da configuração previamente realizada nas seções [1](#1-instalação-e-configuração), [2](#2-primeiros-passos) e [3](#3-comunicação-com-remotos-github-gitbucket-gitlab).
 
-```cmd
-(26.3) λ git clone --depth [NUMERO] [URL]
-(26.4) λ git clone [URL] --branch [NOME] --single-branch [PASTA]
-```
+### 5.1 Enviando *Branch* para Remoto
 
-<!-- Back to Top -->
-<a href="#meu-cheatsheet-de-git"><img width="40px" src="https://icons.veryicon.com/png/o/internet--web/property-2/back-to-top-1.png" align="right" /></a>
-
-## 5. Comandos Intermediários e Avançados
-
-Esta seção necessita necessariamente da configuração previamente realizada nas seções [1](#1-instalação-e-configuração), [2](#2-primeiros-passos) e [3](#3-comunicação-com-remotos-github-bitbucket-gitlab).
-
-### 5.1. Enviando Branch para Remoto
-
-Para enviar as alterações (commits) realizados localmente, é necessário "empurrar" com os comandos:
+Para enviar as alterações (*commits*) realizados localmente, é necessário "empurrar" com os comandos:
 
 ```cmd
 (28.1) λ git push
 (28.2) λ git push -u origin [BRANCH]
 ```
 
-Caso não exista nenhum repositório remoto com o nome da branch indicada, será preciso enviar o comando `git push --set-upstream origin [BRANCH]`. Para simplificar, a opção `-u` substitui este comando (27.2).
+Caso não exista nenhum repositório remoto com o nome da *branch* indicada, será preciso enviar o comando `git push --set-upstream origin [BRANCH]`. Para simplificar, a opção `-u` substitui este comando (27.2).
 
-### 5.2. Atualizando Branch Local com o Remoto
+### 5.2 Atualizando *Branch* de Remoto
 
-Em um cenário real, seriam duas pessoas trabalhando no mesmo repositório remoto, e consequentemente, com dois locais em diferentes estados. Caso o primeiro não tenha feito o `checkout` neste repositório, não será mostrado no comando `branch`. Mas mesmo que ele faça em alguma branch já criada pelo segundo, esta só ira aparecer no seu repositório local se tiver trazido o remoto pelo código:
+Em um cenário real, seriam duas pessoas trabalhando no mesmo respositório remoto, e consequentemente, com dois locais em diferentes estados. Caso o primeiro não tenha feito o `checkout` neste repositório, não será mostrado no comando `branch`. Mas mesmo que ele faça em alguma *branch* já criada pelo segundo, esta só ira aparecer no seu repositório local se tiver trazido o remoto pelo código:
 
 ```cmd
 (29.1) λ git pull
 (29.2) λ git fetch
 ```
 
-Ainda assim, mesmo com o comando (28.1), se não for feito o checkout, não será mostrado as novas branchs no `git branch`. Para verificar quais são as novas, utilizar a opção dada em (8.4).
+Ainda assim, mesmo com o comando (28), se não for feito o *checkout*, não será mostrado as novas *branch*s no `git branch`. Para verificar quais são as novas, utilizar a opção dada em (8.4).
 
-Como uma outra alternativa mais segura para o (28.1), há o (28.2), que baixa commits, arquivos e referências de um repositório remoto para seu repositório local, mas não obriga a realização de um merge das mudanças em seu repositório. O Git isola o conteúdo buscado do conteúdo local existente e não tem efeito algum no trabalho local de desenvolvimento. O conteúdo buscado tem de ser explicitamente verificado, usando o comando `git checkout`. Isso faz com que a busca seja uma forma segura de analisar commits antes de serem integrados ao repositório local. Portanto, se comparado com `git pull`, o *fetch* é a versão segura, irá baixar as atualização mas não as aplicará ao trabalho do repositório local, necessitando de um `git merge` para finalizar a atualização.
+### 5.3 Deletando *Branch* do Remoto
 
-### 5.3. Deletando Branch do Remoto
+Os comandos para remoção da *branch* local podem ser revisados em (8.5) e (8.6). No entanto, para remover uma beanch de um servidor, é necessário o seguinte comando:
 
-Os comandos para remoção da branch local podem ser revisados em (8.5) e (8.6). No entanto, para remover uma beanch de um servidor, é necessário o seguinte comando:
-
-```cmd
-(30) λ git push --delete origin [BRANCH]
+```
+(29) λ git push --delete origin [*BRANCH*]
 ```
 
-Tome muito cuidado com este comando caso trabalhe em grupo, pois pode ser que alguém esteja editando está branch e perderá o backup do servidor. **ATENÇÃO: ALINHE COM TODOS OS INTEGRANTES DO SEU TIME!**. Para confirmar que deu certo, abrir o GitHub e ver que a branch sumiu.
+Tome muito cuidado com este comando caso trabalhe em grupo, pois pode ser que alguém esteja editando está *branch* e perderá o backup do servidor. **ATENÇÂO: ALINHE COM TODOS OS INTEGRANTES DO SEU TIME!**. Para confirmar que deu certo, abrir o GitHub e ver que a *branch* sumiu.
 
-### 5.4. Renomeando uma Branch
+### 5.4 Renomeando uma *Branch*
 
-O comando para renomear uma branch local, basta seguir as intruções abaixo:
+Para renomear uma *branch* local, basta seguir as intruções abaixo:
 
 ```cmd
 (31.1) λ git branch -m [nomeANTIGO] [nomeNOVO]
 (31.2) λ git branch -m [nomeNOVO]
 ```
 
-Adicionar a opção `-m` ao comando branch para realizar a mudança e em seguida, digitar o nome antigo da branch, seguido do novo, caso não esteja na branch de alteração, ou apenas o novo nome se estiver.
+Adicionar a opção `-m` ao comando *branch* para realizar a mudança e em seguida, digitar o nome antigo da *branch*, seguido do novo, caso não esteja na *branch* de alteração, ou apenas o novo nome se estiver.
 
-Não é possível renomear uma branch do servidor estando localmente. Para tal realização, há um caminho específico:
+Não é possível renomear uma *branch* do servidor estando localmente. Para tal realização, há um caminho específico:
 
 1. `git pull` - para trazer as últimas alterações do meu código remoto;
 2. `git branch -m [nomeNOVO]` - para alterar o nome localmente;
 3. `git push --delete origin [nomeANTIGO]` - apagar a antiga do servidor;
-4. `git push -u origin [nomeNOVO]` - para mandar para servidor a branch com novo nome.
+4. `git push -u origin [nomeNOVO]` - para mandar para o servidor a *branch* com novo nome.
+   
+Mas **‼ ATENÇÂO:** para fazer este tipo de alteração, **ALINHE COM TODOS OS INTEGRANTES DO SEU TIME!**
 
-Mas **‼ ATENÇÃO:** para fazer este tipo de alteração, **ALINHE COM TODOS OS INTEGRANTES DO SEU TIME!**
-
-### 5.5. Mesclando Alterações
-
-Incorpora as alterações dos commits citados (desde o momento em que os seus históricos divergirem do ramo atual) para dentro do ramo atual. Este comando é utilizado pelo `git pull` para incorporar as alterações vindas de outro repositório e pode ser utilizado manualmente para mesclar as alterações de uma branch para outra.
+Incorpora as alterações dos *commits* citados (desde o momento em que os seus históricos divergirem do ramo atual) para dentro do ramo atual. Este comando é utilizado pelo `git pull` para incorporar as alterações vindas de outro repositório e pode ser utilizado manualmente para mesclar as alterações de uma *branch* para outra. 
 
 ```cmd
 (32) λ git merge [BRANCH]
 ```
 
-O Git merge traz as alterações já com um commit de `Merged`. Caso não queria este commit, basta utilizar a opção `--no-commit`. Uma observação importante é que o comando só realiza o commit se não existir conflitos, entretanto, se houver, é necessário tratá-los manualmente para a finalização do merge (ver subseção [5.6](#56-resolvendo-conflitos)).
+O Git merge traz as alterações já com um *commit* de `Merged`. Caso não queira este *commit*, basta utilizar a opção `--no-commit`. Uma observação importante é que o comando só realiza o *commit* se não existir conflitos, entretanto, se houver, é necessário tratá-los manualmente para a finalização do merge (ver subseção [5.6](#56-resolvendo-conflitos)).
 
-Lembre-se que o merge carrega sempre o conceito de **TRAZER AS ALTERAÇÕES PARA A BRANCH ATUAL**.
+Lembre-se que o merge carrega sempre o conceito de **TRAZER AS ALTERAÇÔES PARA A *BRANCH* ATUAL**.
 
 ### 5.6. Resolvendo Conflitos
 
-Os conflitos acontecem quando em um mesmo arquivo, há alterações na mesma linha. Ou então quando algum desenvolvedor exclui arquivos enquanto outra pessoa faz alterações. Nesses casos, o Git não pode determinar qual está correto, sendo necessária uma resolução manual por parte do desenvolvedor que conduz o merge; o resto da equipe não fica ciente deles. O Git apenas marca os arquivos em conflito e interrompe o processo de merge.
+Os conflitos acontecem quando em um mesmo arquivo, há alterações na mesma linha. Ou então quando algum desenvolvedor exclui arquivos enquanto outra pessoa faz alterações. Nesses casos, o Git não pode determinar qual está correto, sendo necessária uma resolução manual por parte do desenvolvedor que conduz o *merge*; o resto da equipe não fica ciente deles. O Git apenas marca os arquivos em conflito e interrompe o processo de *merge*. 
 
-Geralmente o Git apresenta um primeiro aviso, sempre forçando o developer a trazer as alterações do servidor:
+Geralmente o Git apresenta um primeiro aviso, sempre forçando o *developer* a trazer as alterações do servidor:
 
 ```cmd
 ! [rejected]           main -> main (fetch first)
@@ -510,17 +493,29 @@ CONFLICT (content): Merge conflict in [ARQUIVO]
 Automatic merge failed; fix conflicts and then commit the result.
 ```
 
-Assim, basta abrir o editor de texto de sua preferência e decidir o que fazer com as mudanças e commit-as para fechar o commit (no final deve ter 2 commits na frente do servidor, um do merge e o outro da alteração).
+Assim, basta abrir o editor de texto de sua preferência e decidir o que fazer com as mudanças e commitá-las para fechar o *commit* (no final deve ter 2 *commits* na frente do servidor, um do merge e o outro da alteração).
 
 ❕ **DICA**: Sempre quando for começar uma alteração no código, SEMPRE realizar um `git pull`, para evitar conflitos deste tipo.
 
 Há uma ferramenta gráfica que auxilia a resolução dos conflitos, chamada kdiff3 (vide [8.1] - software antigo - última release em 2014, mas leve e muito funcional).
 
-### 5.7. Pull Request
+Há uma ferramenta gráfica que auxilia a resolução dos conflitos, chamada kdiff3 (*software* antigo - última release em 2014, mas leve e muito funcional). Ao realizar a instalação padrão do *software*, ir para o *Git Bash* e inicializar:
 
-O pull request, é o pedido para que o repositório original, ou uma branch do repositório original, faça a ação de pull (puxar) as atualizações do repositório fork ou de um branch do próprio repositório. Depois que uma pull request é aberta, você pode discutir e revisar as possíveis alterações com colaboradores e adicionar commits de acompanhamento antes que as alterações sofram merge no branch base.
+```
+(31.1) λ git config --global --add merge.tool kdiff3
+(31.2) λ git config --global --add mergetool.kdiff3.path "[DIR]"
+(31.3) λ git config --global --add mergetool.kdiff3.trustExitCode false
+(32) λ git mergetool
+```
 
-Este pedido é realizado no servidor (GitHub, GitLab, BitBucket) e feito de uma maneira visual. No GitHub pode ser feito rascunhos de pull requests em repositório público.
+O arquivo .gitconfig será editado com os comandos. Para listar os comandos atuais do arquivo, basta adicionar a opção *list*: `git config --global --list`. Com o código (31.1) é passado para o arquivo qual ferramenta externa de *merge* será utilizada. O (31.2) configura o local que o *software* kdiff3 foi instalado, geralmente: "C:/Program Files/KDiff3/kdiff3.exe". Por fim, quando tiver um ambiente em conflito, utilizar (32) para que seja resolvido pelo kdiff3.
+
+![kdiff3][kdiff3]
+
+### 5.7 Pull Request
+O *pull request*, é o pedido para que o repositório original, ou uma *branch* do repositório original, faça a ação de *pull* (puxar) as atualizações do repositório *fork* ou de um *branch* do próprio repositório. Depois que uma *pull request* é aberta, você pode discutir e revisar as possíveis alterações com colaboradores e adicionar *commits* de acompanhamento antes que as alterações sofram merge no *branch* base.
+
+Este pedido é realizado no servidor (*GitHub, GitLab, BitBucket*) e feito de uma maneira visual. No *GitHub* pode ser feito rascunhos de *pull requests* em repositório público.
 
 ### 5.8. Criando e Listando Tags
 
@@ -742,7 +737,7 @@ A mensagem de erro abaixa é dada sempre quando o usuário quer trocar de uma br
 ```error
 error: Your local changes to the following files would be overwritten by checkout:
   index.html
-Please commit your changes or stash them before you switch branches.
+Please commit your changes or stash them before you switch *branch*es.
 ```
 
 Para resolvê-lo, realizar algum dos passos a seguir:
@@ -753,7 +748,7 @@ Para resolvê-lo, realizar algum dos passos a seguir:
 
 ### 6.2. Desfazendo Commits
 
-Quando realizar algum commit errado e quiser alterar mensagem, arquivos e qualquer alteração realizada naquele commit, seguir os passos a seguir:
+Quando realizar algum *commit* errado e quiser alterar mensagem, arquivos e qualquer alteração realizada naquele *commit*, seguir os passos a seguir:
 
 1. `git commit -m "Something terribly misguided"`
 2. `git reset HEAD~`
@@ -761,15 +756,15 @@ Quando realizar algum commit errado e quiser alterar mensagem, arquivos e qualqu
 4. `git add .`
 5. `git commit -c ORIG_HEAD`
 
-O comando em (2) é responsável por refazer um commit. Isso irá desfazer seu último commit enquanto deixa sua *branch* de trabalho (o estado de seus arquivos no disco) intocada. É preciso adicioná-los novamente antes de confirmá-los. Caso queira retornar para outro commit em específico, colocar na frente do `HEAD~` o valor de commits que devem ser retornados.
+O comando em (1) é responsável por refazer um *commit*. Isso irá desfazer seu último *commit* enquanto deixa sua árvore de trabalho (o estado de seus arquivos no disco) intocada. É preciso adicioná-los novamente antes de confirmá-los.
 
-No item (5) é confirmado as alterações, reutilizando a mensagem de confirmação antiga. `reset` copia o antigo cabeçalho para `.git/ORIG_HEAD`; O commit com `-c ORIG_HEAD` irá abrir um editor, que inicialmente contém a mensagem de log do commit antigo e permite que você o edite. Se não precisar editar a mensagem, pode usar a opção `-C`.
+No item (5) é confirmado as alterações, reutilizando a mensagem de confirmação antiga. `reset` copia o antigo cabeçalho para `.git/ORIG_HEAD`; O *commit* com `-c ORIG_HEAD` irá abrir um editor, que inicialmente contém a mensagem de log do commit antigo e permite que você o edite. Se não precisar editar a mensagem, pode usar a opção `-C`.
 
-**Alternativamente, para editar o commit anterior (ou apenas sua mensagem)**, `git commit --amend` irá adicionar mudanças dentro do índice atual ao commit anterior, podendo adicionar a opção `-m [MSG]`, para não editar pelo VIM. Ocorre quando você acabou de alterar alguma coisa e adicioná-la na *staging*, entretanto, esta alteração deveria estar em um commit anteriormente feito por você e que não foi enviado para o servidor.
+**Alternativamente, para editar o commit anterior (ou apenas sua mensagem)**, `commit --amend` irá adicionar mudanças dentro do índice atual ao *commit* anterior.
 
 **Para remover (não reverter) um commit que foi enviado para o servidor**, é necessário reescrever o histórico com `git push origin master --force`.
 
-Estes dois POSTs no StackOverflow aborda maneiras diferentes de realizar o Undo & Redo de um commit: [How do I undo the most recent local commits in Git?][12] e [How can I move HEAD back to a previous location? (Detached head) & Undo commits][13].
+Estes dois *POSTs* no *StackOverflow* abordam maneiras diferentes de realizar o *Undo & Redo* de um *commit*: [*How do I undo the most recent local commits in Git?] e [How can I move HEAD back to a previous location? (Detached head) & Undo commits*]
 
 O segundo link mostra o `git reflog`, que você pode usar para determinar o SHA-1 para o commit ao qual deseja reverter. Depois de obter esse valor, use a sequência de comandos conforme explicado acima.
 
@@ -877,10 +872,11 @@ alias ci='git commit'
 
 Na tabela abaixo, estão apresentadas as aliases criadas pelo autor:
 
-| Alias |     Git Command     |                                                    Description                                                    |
+## 8 Minhas Aliases
+| Alias |     Comando GIT     |                                                    Descrição                                                    |
 | ----- | :-----------------: | :---------------------------------------------------------------------------------------------------------------: |
 | gs    | `git status` | Verificar status do Git |
-| gch   | `git checkout --` |  |
+| gch   | `git *checkout* --` |  |
 | gl    | `git log` |  |
 | glo   | `git log --oneline` |  |
 | glp   | `git log --pretty=format:[FORMATO]` | "%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s" --date=short' #"%h%x09%an%x09%ad%x09%s" ---> %h = abbreviated commit hash ; %x09 = tab (character for code 9) ; %an = author name ; %ad = author date (format respects --date= option) ; %s = subject  |
